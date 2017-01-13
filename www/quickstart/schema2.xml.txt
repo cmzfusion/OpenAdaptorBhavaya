@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<schema>
+
+    <type name="Instrument"
+        generatedClass="generatedBeans.Instrument"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="example2Database"
+        sql="SELECT INSTRUMENT.* FROM INSTRUMENT"
+        dataVolatility="HIGH"
+        dataQuantity="HIGH">
+
+        <property name="instrumentId" type="int" column="INSTRUMENT_ID"/>
+        <property name="description" type="java.lang.String" column="DESCRIPTION"/>
+        <property name="valid" type="java.lang.String" column="VALID"/>
+        <property name="price" type="double" column="PRICE"/>
+
+        <primaryKey>
+            <column name="INSTRUMENT_ID" tableName="INSTRUMENT" idFactory="org.bhavaya.db.IncrementMaxValueIdFactory"/>
+        </primaryKey>
+    </type>
+
+ </schema>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<propertyGroup key="configMigrationStrategies">
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="1"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.ConfigurableTableView\$Config</value>
+            <value>com\.drkw\.shiva\.ui\.ViewConfiguration</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="2"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.bl\.Shiva\$ShivaConfig</value>
+            <value>com\.drkw\.shiva.\ui\.Shiva\$ShivaConfig</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="3"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.bl</value>
+            <value>com\.drkw\.cm\.ui\.bl</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="4"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.bl</value>
+            <value>com\.drkw\.cm\.bl</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="6"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.DecimalRenderer</value>
+            <value>com\.drkw\.shiva.\ui\.table\.DecimalRenderer</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="7"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.DateSeries([^"]*)</value>
+            <value>com\.drkw\.shiva.\ui\.table\.DateSeries$1</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="8"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.dataset\.([^"]*Criterion)</value>
+            <value>com\.drkw\.shiva.\db\.criterion\.$1</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="9"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.([\w]*View")</value>
+            <value>com\.drkw\.shiva.\ui\.view\.$1</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="10"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.Workspace</value>
+            <value>com\.drkw\.shiva.\ui\.view\.Workspace</value>
+        </property>
+    </propertyGroup>
+
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="13"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.ViewConfiguration</value>
+            <value>com\.drkw\.shiva\.ui\.TableViewConfiguration</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="14"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.db\.DBBeanCollection</value>
+            <value>com\.drkw\.shiva\.db\.CriteriaBeanCollection</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="16"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.db\.criterion\.RelativeDateString</value>
+            <value>com\.drkw\.shiva\.util\.RelativeDate</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="17"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.view\.DBTableView</value>
+            <value>com\.drkw\.shiva\.ui\.view\.BeanCollectionTableView</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="18"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.db\.DBBeanCollection</value>
+            <value>com\.drkw\.shiva\.db\.CriteriaBeanCollection</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="19"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="20"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="21"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>dataSets\.([\w]*)&lt;</value>
+            <value>beanCollectionGroups\.$1&lt;</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="22"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.view\.SoundEnabledBeanCollectionTableView</value>
+            <value>com\.drkw\.shiva\.ui\.view\.EventActionBeanCollectionTableView</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="23"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.dataset\.BeanCollectionGroup</value>
+            <value>com\.drkw\.shiva\.collection\.BeanCollectionGroup</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="24"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="40"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="41"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="42"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="43"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="44"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="45"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.db\.CriteriaBeanCollection</value>
+            <value>com\.drkw\.shiva\.beans\.criterion\.CriteriaBeanCollection</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="45"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.db\.criterion\.</value>
+            <value>com\.drkw\.shiva\.beans\.criterion\.</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="46"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.db\.BeanFactory</value>
+            <value>com\.drkw\.shiva\.beans\.BeanFactory</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="47"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.beans\.CriteriaBeanCollection</value>
+            <value>com\.drkw\.shiva\.beans\.criterion\.CriteriaBeanCollection</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="59"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.series\.DateFunction</value>
+            <value>com\.drkw\.shiva\.util\.DateFunction</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="60"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.series\.FixedDateFunction</value>
+            <value>com\.drkw\.shiva\.util\.FixedDateFunction</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="61"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.series\.RelativeDateFunction</value>
+            <value>com\.drkw\.shiva\.util\.RelativeDateFunction</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="62"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.ui\.series\.SymbolicDateFunction</value>
+            <value>com\.drkw\.shiva\.util\.SymbolicDateFunction</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="63"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="64"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>columnConfigIds</value>
+            <value>columnRendererIds</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="66"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="67"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>com\.drkw\.shiva\.</value>
+            <value>org\.bhavaya\.</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="76"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="77"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200310271231"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200406010900"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>decimal(\d)</value>
+            <value>$1|Right</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200406010901"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>quantity(\d)</value>
+            <value>$1|Right</value>
+        </property>
+    </propertyGroup>
+
+    <!-- For dancing tabs -->
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200503181609"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <!-- For sound settings -->
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200508031737"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200508231316"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <!-- For fixed columns -->
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200509011451"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200602221208"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200603011008"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200603192329"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200605021705"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200609051213"/>
+        <property key="strategyClass" value="org.bhavaya.util.NullMigrationStrategy"/>
+        <property key="arguments">
+        </property>
+    </propertyGroup>
+
+</propertyGroup>

@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>Bhavaya - Overview</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+<h3>Bhavaya Overview</h3>
+
+      <p>The functionality provided by the complete Bhavaya package is
+         introduced here, where its use as a real-time database viewer
+         is described. Bhavaya encapsulates a persistence layer and a
+         GUI optimised for displaying data that changes. These
+         features and others are discussed in the <a
+         href="architecture.html">architecture</a> section, which
+         covers the software's components and is intended for
+         developers who want to use just some of Bhavaya's
+         features.</p>
+
+    <h4>Bhavaya demo</h4>
+
+      <p>The Bhavaya demo application showcases the software's main
+         features. It is self-contained and can be <a
+         href="builder/demo.jnlp" title="launch bhavaya demo">launched
+         directly</a> using JavaWebStart. A brief guide to using the
+         demo application is given in the <a
+         href="quickstart/demo.html">Quickstart</a> section.</p>
+
+      <p><center><img src="images/demo.png"></center></p>
+
+      <p><center><em>Screen shot of the Bhavaya demo
+        application</em></center></p>
+
+      <!-- <p> The demo uses Bhavaya's persistence layer <B>ADD
+           ANCHOR</B> to retrieve dynamic java objects from the
+           database. The objects are then displayed using classes
+           inherited from standard swing components that are optimised
+           for displaying transient data.</p> -->
+
+       <p>The Data Collections tab on the left shows the classes that
+          are available from the database. Bhavaya can be configured
+          to synthesise and display classes from the database
+          automatically (according to its contents) or in conjunction
+          with requirements specified by the user. The classes
+          synthesised in the demo application are from a database
+          containing information about bond trades. The data
+          collections tab allows criteria to be specified that
+          determine which objects of these classes (obtained from the
+          database data) are displayed in the spreadsheet-like area in
+          the centre of the application. Spreadsheet cells are flashed
+          when their corresponding database data changes. The
+          right-hand Edit tab allows the user to specify which
+          properties of the class (synthesised from database columns)
+          are displayed. For more information about the persistence
+          layer and Bhavaya's class synthesis click <a
+          href="architecture.html#persistence_layer">here</a>. (The
+          demo application contains an in-memory database whose
+          content is changing in real-time as the program runs,
+          simulating a real-world database connection.)</p>
+
+       <p>There is an undocked spreadsheet tab in the lower left-hand
+          corner. This tab shows an aggregated view of the data, and
+          highlights the application's sorting and grouping
+          functions. Each row displays the total value of all bonds
+          that mature within a specific time frame.</p>
+
+       <p>Bhavaya, used in this fashion, provides a real-time database
+          viewer. MS Excel or MS Access users will recognise some of
+          Bhavaya's features as part of the functionality available in
+          database browsers and spreadsheets.  Without writing any
+          code, you can point Bhavaya at a database, select a table,
+          load the data from the table into a grid widget in a
+          spreadsheet-like application and then sort, group, pivot and
+          graph it. What is different about Bhavaya is that, once you
+          have created this configuration it is possible to use
+          Bhavaya as a real-time application - i.e. you can track the
+          changes to the data as they are happening in the
+          database. This solves one of the perennial problems of
+          database browsers and spreadsheets - that they tend to
+          &quot;snapshot&quot; the data they display, and so need a
+          system to be built around them to keep them
+          up-to-date. Bhavaya does this automatically, by monitoring
+          either the logs or audit trail of the database.</p>
+
+       <h4>Bhavaya Builder</h4>
+
+       <p>The <a href="builder/builder.jnlp" title="Start Bhavaya
+          Builder">Bhavaya Builder application</a> (launches via
+          JavaWebStart) provides a simple interface for creating a
+          real-time view of database data using Bhavaya and its
+          GUI. It is not necessary to write any code to get a view of
+          the database data up and running, allowing non-developers to
+          browse the data in their database. However, users will need
+          to know the jdbc connection parameters for their database and
+          technical work is required to set up the notification
+          mechanism from the database to enable the real-time
+          functionality. Quickstart instructions for using Bhavaya
+          Builder can be found <a href="quickstart/builder.html">here</a>.</p>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="overview.html"><div class="toplinks">Overview</div></a></td>
+            <td><a href="architecture.html">Architecture</a></td>
+            <td><a href="quickstart.html">Quickstart</a></td>
+            <td><a href="download.html">Download</a></td>
+	    <td><a href="feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+  </div>
+</div>
+
+</body>
+</html>
+
+

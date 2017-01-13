@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<propertyGroup key="criterion">
+
+    <propertyGroup key="dataset">
+
+        <propertyGroup key="Bond_MaturityDate">
+            <property key="type" value="basic"/>
+            <property key="name" value="Maturity Date"/>
+            <property key="toBeanType" value="java.util.Date"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Bond"/>
+                    <property key="beanPath" value="maturityDate"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="Bond_ParAmount">
+            <property key="type" value="basic"/>
+            <property key="name" value="Par Amount"/>
+            <property key="toBeanType" value="double"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Bond"/>
+                    <property key="beanPath" value="parAmount"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="Bond_Coupon">
+            <property key="type" value="basic"/>
+            <property key="name" value="Coupon"/>
+            <property key="toBeanType" value="double"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Bond"/>
+                    <property key="beanPath" value="coupon"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="BondFuture_ContractSize">
+            <property key="type" value="basic"/>
+            <property key="name" value="Contract Size"/>
+            <property key="toBeanType" value="double"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.BondFuture"/>
+                    <property key="beanPath" value="contractSize"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="BondFuture_FirstDeliveryDate">
+            <property key="type" value="basic"/>
+            <property key="name" value="First Delivery Date"/>
+            <property key="toBeanType" value="java.util.Date"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.BondFuture"/>
+                    <property key="beanPath" value="firstDeliveryDate"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="BondFuture_LastDeliveryDate">
+            <property key="type" value="basic"/>
+            <property key="name" value="Last Delivery Date"/>
+            <property key="toBeanType" value="java.util.Date"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.BondFuture"/>
+                    <property key="beanPath" value="lastDeliveryDate"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="Counterparty">
+            <property key="type" value="enumeration"/>
+            <property key="name" value="Counterparty"/>
+            <property key="toBeanType" value="org.bhavayademo.beans.Counterparty"/>
+            <property key="descriptionColumn" value="NAME"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Trade"/>
+                    <property key="beanPath" value="counterparty"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="Currency">
+            <property key="type" value="enumeration"/>
+            <property key="name" value="Currency"/>
+            <property key="toBeanType" value="org.bhavayademo.beans.Currency"/>
+            <property key="descriptionColumn" value="CODE"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Instrument"/>
+                    <property key="beanPath" value="currency"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Bond"/>
+                    <property key="beanPath" value="instrument.currency"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.BondFuture"/>
+                    <property key="beanPath" value="instrument.currency"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.InstrumentPrice"/>
+                    <property key="beanPath" value="instrument.currency"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.InstrumentRating"/>
+                    <property key="beanPath" value="instrument.currency"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Trade"/>
+                    <property key="beanPath" value="instrument.currency"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Position"/>
+                    <property key="beanPath" value="instrument.currency"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="Instrument">
+            <property key="type" value="enumeration"/>
+            <property key="name" value="Instrument"/>
+            <property key="toBeanType" value="org.bhavayademo.beans.Instrument"/>
+            <property key="descriptionColumn" value="DESCRIPTION"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Bond"/>
+                    <property key="beanPath" value="instrument"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.BondFuture"/>
+                    <property key="beanPath" value="instrument"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.InstrumentPrice"/>
+                    <property key="beanPath" value="instrument"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.InstrumentRating"/>
+                    <property key="beanPath" value="instrument"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Trade"/>
+                    <property key="beanPath" value="instrument"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Position"/>
+                    <property key="beanPath" value="instrument"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="Instrument_Valid">
+            <property key="type" value="basic"/>
+            <property key="name" value="Valid"/>
+            <property key="toBeanType" value="boolean"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Instrument"/>
+                    <property key="beanPath" value="valid"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="InstrumentType">
+            <property key="type" value="enumeration"/>
+            <property key="name" value="Instrument Type"/>
+            <property key="toBeanType" value="org.bhavayademo.beans.InstrumentType"/>
+            <property key="descriptionColumn" value="NAME"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Instrument"/>
+                    <property key="beanPath" value="instrumentType"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Bond"/>
+                    <property key="beanPath" value="instrument.instrumentType"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.BondFuture"/>
+                    <property key="beanPath" value="instrument.instrumentType"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.InstrumentPrice"/>
+                    <property key="beanPath" value="instrument.instrumentType"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.InstrumentRating"/>
+                    <property key="beanPath" value="instrument.instrumentType"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Trade"/>
+                    <property key="beanPath" value="instrument.instrumentType"/>
+                </propertyGroup>
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Position"/>
+                    <property key="beanPath" value="instrument.instrumentType"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="Rating">
+            <property key="type" value="enumeration"/>
+            <property key="name" value="Rating"/>
+            <property key="toBeanType" value="org.bhavayademo.beans.Rating"/>
+            <property key="descriptionColumn" value="RATING"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.InstrumentRating"/>
+                    <property key="beanPath" value="rating"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="Trade_Version">
+            <property key="type" value="basic"/>
+            <property key="name" value="Version"/>
+            <property key="toBeanType" value="double"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Trade"/>
+                    <property key="beanPath" value="version"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="Trade_TradeDate">
+            <property key="type" value="basic"/>
+            <property key="name" value="Trade Date"/>
+            <property key="toBeanType" value="java.util.Date"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Trade"/>
+                    <property key="beanPath" value="tradeDate"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="Trade_Comments">
+            <property key="type" value="basic"/>
+            <property key="name" value="Comments"/>
+            <property key="toBeanType" value="java.lang.String"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Trade"/>
+                    <property key="beanPath" value="comments"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="Trade_Quantity">
+            <property key="type" value="basic"/>
+            <property key="name" value="Quantity"/>
+            <property key="toBeanType" value="double"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Trade"/>
+                    <property key="beanPath" value="quantity"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="Trade_Price">
+            <property key="type" value="basic"/>
+            <property key="name" value="Price"/>
+            <property key="toBeanType" value="double"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Trade"/>
+                    <property key="beanPath" value="price"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="TradeType">
+            <property key="type" value="enumeration"/>
+            <property key="name" value="Trade Type"/>
+            <property key="toBeanType" value="org.bhavayademo.beans.TradeType"/>
+            <property key="descriptionColumn" value="NAME"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Trade"/>
+                    <property key="beanPath" value="tradeType"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+        <propertyGroup key="VersionStatus">
+            <property key="type" value="enumeration"/>
+            <property key="name" value="Version Status"/>
+            <property key="toBeanType" value="org.bhavayademo.beans.VersionStatus"/>
+            <property key="descriptionColumn" value="NAME"/>
+            <propertyGroup key="beanTypes">
+                <propertyGroup key="beanType">
+                    <property key="beanType" value="org.bhavayademo.beans.Trade"/>
+                    <property key="beanPath" value="versionStatus"/>
+                </propertyGroup>
+            </propertyGroup>
+        </propertyGroup>
+
+    </propertyGroup>
+
+</propertyGroup>
+

@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<propertyGroup key="demoProperties">
+
+    <propertyGroup key="databaseMetaData">
+        <propertyGroup key="datasourceMapping">
+            <property key="fromDatasource" value="demoDatabaseInstrumentsTx"/>
+            <property key="toDatasource" value="demoDatabaseForInstruments"/>
+        </propertyGroup>
+        <propertyGroup key="datasourceMapping">
+            <property key="fromDatasource" value="demoDatabaseTradesTx"/>
+            <property key="toDatasource" value="demoDatabaseForTrades"/>
+        </propertyGroup>
+    </propertyGroup>
+
+    <propertyGroup key="dataSources">
+
+        <property key="defaultDataSource" value="demoDatabaseForInstruments"/>
+
+        <propertyGroup key="datasource">
+            <property key="name" value="demoDatabaseForInstruments"/>
+            <property key="type" value="org.bhavaya.db.DefaultDataSource"/>
+            <property key="driverName" value="org.hsqldb.jdbcDriver"/>
+            <property key="dialectClass" value="org.bhavaya.db.DefaultDatabaseDialect"/>
+            <property key="url" value="jdbc:hsqldb:."/>
+            <property key="user" value="sa"/>
+            <property key="password" value=""/>
+            <property key="autoCommit" value="true"/>
+            <property key="transactionIsolation" value="DEFAULT"/>
+            <property key="sqlNotificationSubject" value="instrumentSql"/>
+        </propertyGroup>
+
+        <propertyGroup key="datasource">
+            <property key="name" value="demoDatabaseForTrades"/>
+            <property key="type" value="org.bhavaya.db.DefaultDataSource"/>
+            <property key="driverName" value="org.hsqldb.jdbcDriver"/>
+            <property key="dialectClass" value="org.bhavaya.db.DefaultDatabaseDialect"/>
+            <property key="url" value="jdbc:hsqldb:."/>
+            <property key="user" value="sa"/>
+            <property key="password" value=""/>
+            <property key="autoCommit" value="true"/>
+            <property key="transactionIsolation" value="DEFAULT"/>
+            <property key="sqlNotificationSubject" value="tradeAndPositionSql"/>
+        </propertyGroup>
+
+        <propertyGroup key="datasource">
+            <property key="name" value="demoDatabaseInstrumentsTx"/>
+            <property key="type" value="org.bhavaya.db.DefaultDataSource"/>
+            <property key="dialectClass" value="org.bhavaya.db.DefaultDatabaseDialect"/>
+            <property key="driverName" value="org.hsqldb.jdbcDriver"/>
+            <property key="url" value="jdbc:hsqldb:."/>
+            <property key="user" value="sa"/>
+            <property key="password" value=""/>
+            <property key="autoCommit" value="false"/>
+            <property key="transactionIsolation" value="DEFAULT"/>
+        </propertyGroup>
+
+        <propertyGroup key="datasource">
+            <property key="name" value="demoDatabaseTradesTx"/>
+            <property key="type" value="org.bhavaya.db.DefaultDataSource"/>
+            <property key="dialectClass" value="org.bhavaya.db.DefaultDatabaseDialect"/>
+            <property key="driverName" value="org.hsqldb.jdbcDriver"/>
+            <property key="url" value="jdbc:hsqldb:."/>
+            <property key="user" value="sa"/>
+            <property key="password" value=""/>
+            <property key="autoCommit" value="false"/>
+            <property key="transactionIsolation" value="DEFAULT"/>
+        </propertyGroup>
+
+        <!--        <propertyGroup key="datasource">-->
+        <!--            <property key="name" value="demoDatabase"/>-->
+        <!--            <property key="type" value="org.bhavaya.db.DefaultDataSource"/>-->
+        <!--            <property key="driverName" value="com.mysql.jdbc.Driver"/>-->
+        <!--            <property key="dialectClass" value="org.bhavaya.db.DefaultDatabaseDialect"/>-->
+        <!--            <property key="url" value="jdbc:mysql://localhost:3306/test"/>-->
+        <!--            <property key="user" value="root"/>-->
+        <!--            <property key="password" value=""/>-->
+        <!--            <property key="defaultCatalog" value="test"/>-->
+        <!--            <property key="autoCommit" value="true"/>-->
+        <!--            <property key="transactionIsolation" value="DEFAULT"/>-->
+        <!--        </propertyGroup>-->
+        <!---->
+        <!--        <propertyGroup key="datasource">-->
+        <!--            <property key="name" value="demoDatabaseTx"/>-->
+        <!--            <property key="type" value="org.bhavaya.db.DefaultDataSource"/>-->
+        <!--            <property key="dialectClass" value="org.bhavaya.db.DefaultDatabaseDialect"/>-->
+        <!--            <property key="driverName" value="com.mysql.jdbc.Driver"/>-->
+        <!--            <property key="url" value="jdbc:mysql://localhost:3306/test"/>-->
+        <!--            <property key="user" value="root"/>-->
+        <!--            <property key="password" value=""/>-->
+        <!--            <property key="defaultCatalog" value="test"/>-->
+        <!--            <property key="autoCommit" value="false"/>-->
+        <!--            <property key="transactionIsolation" value="DEFAULT"/>-->
+        <!--        </propertyGroup>        -->
+
+    </propertyGroup>
+
+    <propertyGroup key="sqlbroadcaster">
+        <property key="sqlFilename" value="DEMO.script"/>
+        <property key="allowFileToEnd" value="true"/>
+    </propertyGroup>
+
+    <propertyGroup key="beanFactory">
+        <property key="referenceType" value="SOFT"/>
+        <property key="maximumJoinTableCount" value="10"/>
+    </propertyGroup>
+
+    <propertyGroup key="notifications">
+
+        <propertyGroup key="subject">
+            <property key="name" value="instrumentSql"/>
+            <property key="autoCommit" value="false"/>
+            <property key="subscriber" value="%subscriber%"/>
+            <property key="publisher" value="%publisher%"/>
+            <property key="host" value="127.0.0.1"/>
+            <property key="subscribePort" value="5444"/>
+            <property key="publishPort" value="5445"/>
+            <property key="maximumQueuedNotificationsPerSubscriberOnServer" value="256"/>
+            <property key="maximumQueuedNotificationsOnSubscriber" value="5000"/>
+            <property key="serverReconnectionPeriod" value="5000"/>
+            <property key="reconnectionPeriod" value="30000"/>
+            <property key="failedMessageCache" value="false"/>
+        </propertyGroup>
+
+        <propertyGroup key="subject">
+            <property key="name" value="tradeAndPositionSql"/>
+            <property key="autoCommit" value="false"/>
+            <property key="subscriber" value="%subscriber%"/>
+            <property key="publisher" value="%publisher%"/>
+            <property key="host" value="127.0.0.1"/>
+            <property key="subscribePort" value="5446"/>
+            <property key="publishPort" value="5447"/>
+            <property key="maximumQueuedNotificationsPerSubscriberOnServer" value="256"/>
+            <property key="maximumQueuedNotificationsOnSubscriber" value="5000"/>
+            <property key="serverReconnectionPeriod" value="5000"/>
+            <property key="reconnectionPeriod" value="30000"/>
+            <property key="failedMessageCache" value="false"/>
+        </propertyGroup>
+
+    </propertyGroup>
+
+    <property key="applicationName" value="Demo"/>
+    <property key="applicationId" value="demo"/>
+    <property key="versionNumber" value="@build.displayVersion@"/>
+    <property key="environmentName" value=""/>
+    <property key="environmentId" value=""/>
+    <property key="schema" value="schema.xml"/>
+
+    <property key="applicationContextClass" value="org.bhavayademo.ui.Demo"/>
+    <property key="workspaceClass" value="org.bhavaya.ui.view.Workspace"/>
+    <property key="frameTitle" value="Demo"/>
+    <property key="splashScreenImage" value="bhavaya.png"/>
+    <property key="splashScreenLogoImage" value="blank_logo.png"/>
+    <property key="frameIcon" value="bhavaya_icon.gif"/>
+
+    <property key="flashingUpdatesOn" value="true"/>
+    <property key="defaultToUsingCurrencySpecificPrecision" value="false"/>
+    <property key="autoSaveDefaultStrategy" value="Autosave"/>
+
+    <property key="useSubclassMappingCache" value="false"/>
+    <property key="useMetaDataCache" value="true"/>
+
+    <propertyGroup key="beanCollectionGroups">
+
+        <propertyGroup key="instruments">
+            <property key="displayName" value="Instrument"/>
+            <property key="pluralDisplayName" value="Instruments"/>
+            <property key="beanType" value="org.bhavayademo.beans.Instrument"/>
+            <property key="collectionType" value="org.bhavaya.beans.criterion.CriteriaBeanCollection"/>
+            <property key="collectionViewClass" value="org.bhavaya.ui.view.BeanCollectionTableView"/>
+            <property key="default" value="true"/>
+        </propertyGroup>
+        <propertyGroup key="counterparties">
+            <property key="displayName" value="Counterparty"/>
+            <property key="pluralDisplayName" value="Counterparties"/>
+            <property key="beanType" value="org.bhavayademo.beans.Counterparty"/>
+            <property key="collectionType" value="org.bhavaya.beans.criterion.CriteriaBeanCollection"/>
+            <property key="collectionViewClass" value="org.bhavaya.ui.view.BeanCollectionTableView"/>
+            <property key="default" value="true"/>
+        </propertyGroup>
+        <propertyGroup key="instrumentRatings">
+            <property key="displayName" value="Instrument Rating"/>
+            <property key="pluralDisplayName" value="Instrument Ratings"/>
+            <property key="beanType" value="org.bhavayademo.beans.InstrumentRating"/>
+            <property key="collectionType" value="org.bhavaya.beans.criterion.CriteriaBeanCollection"/>
+            <property key="collectionViewClass" value="org.bhavaya.ui.view.BeanCollectionTableView"/>
+            <property key="default" value="true"/>
+        </propertyGroup>
+        <propertyGroup key="trades">
+            <property key="displayName" value="Trade"/>
+            <property key="pluralDisplayName" value="Trades"/>
+            <property key="beanType" value="org.bhavayademo.beans.Trade"/>
+            <property key="collectionType" value="org.bhavaya.beans.criterion.CriteriaBeanCollection"/>
+            <property key="collectionViewClass" value="org.bhavaya.ui.view.BeanCollectionTableView"/>
+            <property key="default" value="true"/>
+        </propertyGroup>
+        <propertyGroup key="positions">
+            <property key="displayName" value="Position"/>
+            <property key="pluralDisplayName" value="Positions"/>
+            <property key="beanType" value="org.bhavayademo.beans.Position"/>
+            <property key="collectionType" value="org.bhavaya.beans.criterion.CriteriaBeanCollection"/>
+            <property key="collectionViewClass" value="org.bhavaya.ui.view.BeanCollectionTableView"/>
+            <property key="default" value="true"/>
+        </propertyGroup>
+    </propertyGroup>
+
+    <propertyGroup key="unitConversionRateServices">
+        <propertyGroup key="currencyConversionRateService">
+            <property key="unitType" value="currency"/>
+            <property key="serviceClass" value="org.bhavayademo.FxRateService"/>
+        </propertyGroup>
+    </propertyGroup>
+
+    <propertyGroup key="sortingExclusion">
+    </propertyGroup>
+
+    <propertyGroup key="propertyTree">
+        <property key="strategy">
+            <value>org.bhavaya.util.PropertyModel$SchemaStrategy</value>
+            <value>org.bhavaya.util.PropertyModel$ClassPathStrategy</value>
+        </property>
+
+        <propertyGroup key="hiddenProperties">
+        </propertyGroup>
+
+        <propertyGroup key="selectableTypes">
+        </propertyGroup>
+
+        <propertyGroup key="displayNames">
+        </propertyGroup>
+    </propertyGroup>
+
+    <propertyGroup key="emailService">
+        <property key="smtpHost" value="localhost"/>
+        <property key="to" value="issues@bhavaya.openadaptor.org"/>
+        <property key="from" value="bhavayamailer@drkw.com"/>
+    </propertyGroup>
+
+    <propertyGroup key="columnRendererFactories">
+
+        <propertyGroup key="StringJustifyFactory">
+            <property key="factoryClass" value="org.bhavaya.ui.table.StringRendererFactory"/>
+        </propertyGroup>
+
+        <propertyGroup key="StdDecimalFactory">
+            <property key="factoryClass" value="org.bhavaya.ui.table.DecimalTableCellRendererFactory"/>
+            <property key="factoryConstructorArguments">
+                <value>0</value><!-- rangeStart -->
+                <value>6</value><!-- rangeEnd -->
+                <value>true</value><!-- freeAllowed -->
+                <value>Free|Right</value><!--default-->
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="StdQuantityFactory">
+            <property key="factoryClass" value="org.bhavaya.ui.table.QuantityRendererFactory"/>
+            <property key="factoryConstructorArguments">
+                <value>0</value><!-- rangeStart -->
+                <value>6</value><!-- rangeEnd -->
+                <value>false</value><!-- freeAllowed -->
+                <value>0|Right</value><!--default-->
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="CheckboxFactory">
+            <property key="factoryClass" value="org.bhavaya.ui.table.SimpleTableCellRendererFactory"/>
+            <property key="factoryConstructorArguments">
+                <value>org.bhavaya.ui.table.BooleanTableCellRenderer</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="DateTimeFactory">
+            <property key="factoryClass" value="org.bhavaya.ui.table.DateTimeRendererFactory"/>
+            <property key="factoryConstructorArguments">
+                <value>date</value><value>dd-MMM-yyyy</value>
+                <value>time</value><value>HH:mm:ss</value>
+                <value>dateTime</value><value>dd-MMM-yyyy - HH:mm:ss</value>
+            </property>
+        </propertyGroup>
+    </propertyGroup>
+
+    <propertyGroup key="columnConfigRules">
+        <propertyGroup key="typeSpecific">
+            <propertyGroup key="java.lang.String">
+                <property key="rendererFactory" value="StringJustifyFactory"/>
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket"/>
+            </propertyGroup>
+
+
+            <propertyGroup key="java.lang.Float">
+                <property key="rendererFactory" value="StdDecimalFactory"/>
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket"/>
+            </propertyGroup>
+
+            <propertyGroup key="java.lang.Double">
+                <property key="rendererFactory" value="StdDecimalFactory"/>
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.DoubleSumBucket</value>
+                    <value>org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.DoubleSumBucket"/>
+            </propertyGroup>
+
+            <propertyGroup key="java.lang.Integer">
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket</value>
+                    <value>org.bhavaya.ui.table.IntegerSumBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket"/>
+            </propertyGroup>
+
+            <propertyGroup key="org.bhavaya.util.ScalableNumber">
+                <property key="rendererFactory" value="StdDecimalFactory"/>
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket"/>
+            </propertyGroup>
+
+            <propertyGroup key="org.bhavaya.util.Quantity">
+                <property key="rendererFactory" value="StdQuantityFactory"/>
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.QuantitySumBucket</value>
+                    <value>org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.QuantitySumBucket"/>
+            </propertyGroup>
+
+            <propertyGroup key="org.bhavaya.util.Quantity">
+                <property key="beanPath" value="amountInGBP"/>
+                <property key="rendererFactory" value="StdQuantityFactory"/>
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.DoubleSumBucket</value>
+                    <value>org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.DoubleSumBucket"/>
+            </propertyGroup>
+
+            <propertyGroup key="org.bhavaya.util.Quantity">
+                <property key="beanPath" value="amountInEUR"/>
+                <property key="rendererFactory" value="StdQuantityFactory"/>
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.DoubleSumBucket</value>
+                    <value>org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.DoubleSumBucket"/>
+            </propertyGroup>
+
+            <propertyGroup key="org.bhavaya.util.Quantity">
+                <property key="beanPath" value="amountInUSD"/>
+                <property key="rendererFactory" value="StdQuantityFactory"/>
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.DoubleSumBucket</value>
+                    <value>org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.DoubleSumBucket"/>
+            </propertyGroup>
+
+            <propertyGroup key="org.bhavaya.util.Quantity">
+                <property key="beanPath" value="amountInJPY"/>
+                <property key="rendererFactory" value="StdQuantityFactory"/>
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.DoubleSumBucket</value>
+                    <value>org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.DoubleSumBucket"/>
+            </propertyGroup>
+
+            <propertyGroup key="org.bhavaya.util.Quantity">
+                <property key="beanPath" value="amountWithLegacyEURConversion"/>
+                <property key="rendererFactory" value="StdQuantityFactory"/>
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.DoubleSumBucket</value>
+                    <value>org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.DoubleSumBucket"/>
+            </propertyGroup>
+
+            <propertyGroup key="java.util.Date">
+                <property key="rendererFactory" value="DateTimeFactory"/>
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.GroupedRowManager$UnmergeableDataBucket"/>
+            </propertyGroup>
+
+            <propertyGroup key="org.bhavaya.beans.Bean">
+                <property key="beanPath" value="count"/>
+                <property key="bucketTypes">
+                    <value>org.bhavaya.ui.table.IntegerSumBucket</value>
+                </property>
+                <property key="defaultBucket" value="org.bhavaya.ui.table.IntegerSumBucket"/>
+            </propertyGroup>
+
+        </propertyGroup>
+
+    </propertyGroup>
+
+</propertyGroup>
+
+

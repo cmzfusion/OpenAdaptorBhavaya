@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<propertyGroup key="applicationPropertiesTest">
+
+    <propertyGroup key="doubleOverrideTest">
+        <property key="test" value="sub_sub"/>
+    </propertyGroup>
+
+</propertyGroup>

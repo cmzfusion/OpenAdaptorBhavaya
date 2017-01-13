@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<propertyGroup key="example9Properties">
+
+    <propertyGroup key="dataSources">
+
+        <property key="defaultDataSource" value="example9Database"/>
+
+        <propertyGroup key="datasource">
+            <property key="name" value="example9Database"/>
+            <property key="type" value="org.bhavaya.db.DefaultDataSource"/>
+            <property key="driverName" value="org.hsqldb.jdbcDriver"/>
+            <property key="dialectClass" value="org.bhavaya.db.DefaultDatabaseDialect"/>
+            <property key="url" value="jdbc:hsqldb:hsql://localhost"/>
+            <property key="user" value="sa"/>
+            <property key="password" value=""/>
+            <property key="autoCommit" value="true"/>
+            <property key="transactionIsolation" value="DEFAULT"/>
+        </propertyGroup>
+
+
+    </propertyGroup>
+
+    <propertyGroup key="sqlbroadcaster">
+        <property key="sqlFilename" value="Bhavaya_RT_Demo.script"/>
+        <property key="allowFileToEnd" value="true"/>
+    </propertyGroup>
+
+    <propertyGroup key="notifications">
+        <propertyGroup key="subject">
+            <property key="name" value="sql"/>
+            <property key="autoCommit" value="true"/>
+            <property key="subscriber" value="org.bhavaya.coms.SocketNotificationSubscriber"/>
+            <property key="publisher" value="org.bhavaya.coms.SocketNotificationPublisher"/>
+            <property key="host" value="127.0.0.1"/>
+            <property key="subscribePort" value="5444"/>
+            <property key="publishPort" value="5445"/>
+            <property key="diagnosticPort" value="5446"/>
+            <property key="maximumQueuedNotificationsPerSubscriberOnServer" value="256"/>
+            <property key="maximumQueuedNotificationsOnSubscriber" value="5000"/>
+            <property key="serverReconnectionPeriod" value="5000"/>
+            <property key="reconnectionPeriod" value="30000"/>
+            <property key="failedMessageCache" value="false"/>
+        </propertyGroup>
+    </propertyGroup>
+
+    <property key="schema" value="schema9.xml"/>
+
+</propertyGroup>

@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>Bhavaya - Quickstart - Persistence Layer 5</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+  <h3>Quickstart Guides</h3>
+
+  <h4>The Persistence Layer - Property Change Events</h4>
+
+  <p>Bhavaya's real-time functionality is provided by firing
+     PropertyChanges to registered PropertyChangeListeners. As such
+     Bhavaya beans must implement the org.bhavaya.util.Observable
+     interface and the PropertyChange methods described
+     below. However, this can be achieved easily by making any new
+     beans a subclass of org.bhavaya.util.DefaultObservable.</p>
+
+  <h5>&nbsp;&nbsp;The Observable interface</h5>
+
+    <p>
+      <table>
+        <tr>
+	  <th>
+	  </th>
+	  <th>
+	  </th>
+	</tr>
+        <tr>
+	  <td>public void addPropertyChangeListener(PropertyChangeListener l)
+	  </td>
+	  <td>
+	  </td>
+	</tr>
+        <tr>
+	  <td>public void addPropertyChangeListener(String propertyName, PropertyChangeListener l)
+	  </td>
+	  <td>
+	  </td>
+	</tr>
+        <tr>
+	  <td>public void removePropertyChangeListener(PropertyChangeListener l)
+	  </td>
+	  <td>
+	  </td>
+	</tr>
+        <tr>
+	  <td>public void removePropertyChangeListener(String propertyName, PropertyChangeListener l)
+	  </td>
+	  <td>
+	  </td>
+	</tr>
+      </table>
+    </p>
+
+  <h5>&nbsp;&nbsp;PropertyChange methods</h5>
+
+  <p>
+    <table>
+      <tr>
+        <th>
+	</th>
+	<th>
+	</th>
+      </tr>
+      <tr>
+        <td>protected void firePropertyChange(String propertyName, Object oldValue, Object newValue)
+	</td>
+	<td>
+	</td>
+      </tr>
+      <tr>
+        <td>protected void firePropertyChange(String propertyName, int oldValue, int newValue)
+	</td>
+	<td>
+	</td>
+      </tr>
+      <tr>
+        <td>protected void firePropertyChange(String propertyName, double oldValue, double newValue)
+	</td>
+	<td>
+	</td>
+      </tr>
+      <tr>
+        <td>protected void firePropertyChange(String propertyName, boolean oldValue, boolean newValue)
+	</td>
+	<td>
+	</td>
+      </tr>
+      <tr>
+        <td>protected void firePropertyChange(String propertyName, long oldValue, long newValue)
+	</td>
+	<td>
+	</td>
+      </tr>
+      <tr>
+        <td>protected void firePropertyChange(String propertyName, short oldValue, short newValue)
+	</td>
+	<td>
+	</td>
+      </tr>
+      <tr>
+        <td>protected void firePropertyChange(String propertyName, char oldValue, char newValue)
+	</td>
+	<td>
+	</td>
+      </tr>
+      <tr>
+        <td>protected void firePropertyChange(String propertyName, byte oldValue, byte newValue)
+	</td>
+	<td>
+	</td>
+      </tr>
+      <tr>
+        <td>protected void firePropertyChange(String propertyName, float oldValue, float newValue)
+	</td>
+	<td>
+	</td>
+      </tr>
+    </table>
+  </p>
+
+
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>

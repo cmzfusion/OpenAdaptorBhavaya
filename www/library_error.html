@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Bhavaya - Architecture - Library Linking Error</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+  <h3>Bhavaya Architecture</h3>
+   
+  <h4>Library Linking Error</h4>
+
+  <p>The native interface classes rely on library dlls. These dlls
+     must be available to the virtual machine at runtime, and require
+     the library path to be set accordingly, which can be achieved
+     with the Java option: <pre>
+     -Djava.library.path="C:/download/path/bhavaya/lib"</pre></p>
+
+  <p>where download/path should be changed to reflect the actual
+     location of the library.</p>
+
+  <p>For example, you might run the program as:<pre>
+     java -cp ".;c:/Projects/bhavaya/bin/bhavaya.jar"
+          -Djava.library.path="C:/Projects/bhavaya/lib" ThreadDumpDemo</pre>
+
+  <p>If this variable is not set correctly then an error similar to
+     the following will result:<pre>
+        ERROR - Thread-0          -NativeProcess           - no Environment in java.library.path
+        java.lang.UnsatisfiedLinkError: no Process in java.library.path
+	at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1491)
+	at java.lang.Runtime.loadLibrary0(Runtime.java:788)
+	at java.lang.System.loadLibrary(System.java:834)
+	at org.bhavaya.util.NativeProcess.<clinit>(NativeProcess.java:47)
+	at org.bhavaya.util.CpuLoad.updateUsage(CpuLoad.java:89)
+	at org.bhavaya.util.CpuLoad.access$100(CpuLoad.java:44)
+	at org.bhavaya.util.CpuLoad$1.run(CpuLoad.java:61)
+	at java.util.TimerThread.mainLoop(Timer.java:432)
+	at java.util.TimerThread.run(Timer.java:382)</pre></p>
+
+
+
+
+  </div>
+</div>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="overview.html">Overview</a></td>
+            <td><a href="architecture.html">Architecture</a></td>
+            <td><a href="quickstart.html">Quickstart</a></td>
+            <td><a href="download.html">Download</a></td>
+	    <td><a href="feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>

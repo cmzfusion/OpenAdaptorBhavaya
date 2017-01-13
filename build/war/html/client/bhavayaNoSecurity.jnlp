@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp codebase="@codebase@" href="bhavayaNoSecurity.jnlp">
+    <information>
+        <title>Bhavaya No Security</title>
+        <vendor>Bhavaya</vendor>
+    </information>
+
+    <resources>
+        <jar href="jfreechart-0.9.8.jar" download="eager" @versionNumber@/>
+        <jar href="jcommon-0.8.0.jar" download="eager" @versionNumber@/>
+        <jar href="jms.jar" download="eager" @versionNumber@/>
+        <jar href="dom4j.jar" download="eager" @versionNumber@/>
+        <jar href="jdom.jar" download="eager" @versionNumber@/>
+        <jar href="jakarta-oro-2.0.6.jar" download="eager" @versionNumber@/>
+        <jar href="trove.jar" download="eager" @versionNumber@/>
+        <jar href="myswing.jar" download="eager" @versionNumber@/>
+        <jar href="od-filtertable-1.0.6.jar" download="eager" @versionNumber@/>
+
+    </resources>
+
+    <component-desc/>
+</jnlp>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<propertyGroup key="applicationPropertiesTest">
+
+    <propertyGroup key="externalProperties">
+        <property key="simpleProperty" value="simpleValue"/>
+        <property key="encryptedProperty" value="xF9I2B15LcPuMlBbVj2nwQ==" encrypted="true"/>
+    </propertyGroup>
+
+    <propertyGroup key="externalReferencedGroup">
+        <property key="test" value="one"/>
+    </propertyGroup>
+
+    <propertyGroup key="externalReferencedGroup">
+        <property key="test" value="two"/>
+    </propertyGroup>
+
+    <propertyGroup key="simpleGroup">
+        <property key="overriddenProperty" value="overridden"/>
+    </propertyGroup>
+
+    <propertyGroup key="overrideTest">
+        <propertyGroup key="overriddenGroup">
+            <property key="test" value="overridden"/>
+        </propertyGroup>
+    </propertyGroup>
+
+    <propertyGroup key="doubleOverrideTest" check_for_override="true">
+        <property key="test" value="sub"/>
+    </propertyGroup>
+
+    <property key="simpleExternalReferencedProperty" value="token"/>
+
+</propertyGroup>

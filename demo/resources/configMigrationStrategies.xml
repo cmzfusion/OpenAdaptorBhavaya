@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<propertyGroup key="configMigrationStrategies">
+
+    <propertyGroup key="strategy">
+        <property key="versionTarget" value="200507250901"/>
+        <property key="strategyClass" value="org.bhavaya.util.RegexMigrationStrategy"/>
+        <property key="arguments">
+            <value>demoDatabase</value>
+            <value>demoDatabaseForInstruments</value>
+        </property>
+    </propertyGroup>
+
+</propertyGroup>

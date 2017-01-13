@@ -1,0 +1,114 @@
+<head>
+<title>Bhavaya - Architecture - Environment Variables</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+  <h3>Bhavaya Architecture</h3>
+   
+  <h4>Environment Variables</h4>
+
+   <p>Access to system environment variables is provided by Bhavaya's
+      singleton class Environment (org.bhavaya.util.Environment),
+      which uses a c compiled native library. Its use is as simple
+      as:<pre>
+      System.out.println(Environment.getProperty("USERNAME")); </pre>
+   </p>
+
+   <p>The getProperty method returns a string, and takes as its
+      argument the name of the environment variable required. The
+      function will return null if the specified variable does not
+      exist. There is a <a
+      href="builder/environment-variables.jnlp">demo</a> available via
+      JavaWebStart.</p>
+
+   <p>The table below summarises the environment variable access
+      available from the Environment class.</p>
+
+  <p>
+    <table>
+      <tr>
+        <th>Function</th>
+	<th>Return type</th>
+	<th>Usage</th>
+      </tr>
+      <tr>
+        <td>getProperty(String property)</td>
+	<td>String</td>
+        <td>Returns the value of the property</td>
+      </tr>
+      <!--<tr>
+        <td>setProperty(String name, String value)</td>
+	<td>void</td>
+	<td>Doesn't seem to work</td>
+      </tr>-->
+      <tr>
+        <td>getProperties()</td>
+	<td>Map</td>
+	<td>Returns a property map (LinkedHashMap), where the key used
+	    to obtain the value of each property is the property's
+	    name as an all upper-case string.</td>
+      </tr>
+     </table>
+   </p>
+
+  <p>When using this component, it is necessary to ensure that the VM
+     knows the location of the native library, by using an
+     appropriately modified command line argument (see <a
+     href="library_error.html">library error</a>) similar
+     to:<pre>
+     -Djava.library.path="C:/extract/location/bhavaya/lib"</pre><p>
+
+  <p>(Also remember to add Bhavaya's jar files to your classpath
+     (extract_location/bhavaya/bin/bhavaya.jar and
+     extract_location/bhavaya/lib/log4j-1.2.15-patched.jar).)</p>
+
+<!--
+   <p>To use this component it is necessary to:
+     <ul>
+       <li>Ensure that the VM knows the location of the native
+           library, by using an appropriately modified command line
+           argument (see <a href="library_error.html">Library
+           Error</a>) similar
+           to:<pre>-Djava.library.path="C:/extract/location/bhavaya/lib"</pre></li>
+       <li>Add Bhavaya's jar files to your classpath
+      (extract_location/bhavaya/bin/bhavaya.jar and
+       extract_location/bhavaya/lib/log4j-1.2.15-patched.jar).</li>
+       <li>Add the line <pre>
+       import org.bhavaya.util.Environment;</pre>
+        to your source file.</li>
+     </ul>
+   <p>
+-->
+
+   <p><br><a href="architecture.html#jni">back to
+       Bhavaya Architecture</a></p>
+
+  </div>
+</div>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="overview.html">Overview</a></td>
+            <td><a href="architecture.html">Architecture</a></td>
+            <td><a href="quickstart.html">Quickstart</a></td>
+            <td><a href="download.html">Download</a></td>
+	    <td><a href="feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>
+

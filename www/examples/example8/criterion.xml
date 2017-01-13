@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<propertyGroup key="criterion">
+
+    <propertyGroup key="By_Type">
+        <property key="type" value="enumeration"/>
+        <property key="name" value="Buy or Sell"/>
+        <property key="toBeanType" value="TradeType"/>
+        <property key="descriptionColumn" value="NAME"/>
+        <propertyGroup key="beanTypes">
+            <propertyGroup key="beanType">
+                <property key="beanType" value="Trade"/>
+                <property key="beanPath" value="tradeType"/>
+            </propertyGroup>
+        </propertyGroup>
+    </propertyGroup>
+
+    <propertyGroup key="By_Currency">
+        <property key="type" value="enumeration"/>
+        <property key="name" value="Currency (Object)"/>
+        <property key="toBeanType" value="Currency"/>
+        <property key="descriptionColumn" value="CODE"/>
+        <propertyGroup key="beanTypes">
+            <propertyGroup key="beanType">
+                <property key="beanType" value="Instrument"/>
+                <property key="beanPath" value="currency"/>
+            </propertyGroup>
+            <propertyGroup key="beanType">
+                <property key="beanType" value="Trade"/>
+                <property key="beanPath" value="instrument.currency"/>
+            </propertyGroup>
+        </propertyGroup>
+
+    </propertyGroup>
+
+</propertyGroup>

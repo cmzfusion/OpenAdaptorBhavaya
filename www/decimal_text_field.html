@@ -1,0 +1,124 @@
+<html>
+<head>
+<title>Bhavaya - Architecture - Split Panels</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+  <h3>Bhavaya Architecture</h3>
+   
+  <h4>Decimal Text Field</h4>
+
+  <p>The DecimalTextField (org.bhavaya.ui.DecimalTextField) is an
+     extension of the JTextField. It is intended as a number entry
+     field, and a few of the character keys can be used as shortcuts
+     to multiply the number entered.</p>
+
+  <p>The number keys operate as normal, the special keys are
+     summarised in the table below.
+
+<center>
+<table>
+<tr><th>Key</th><th>Description</th><th>multiplier</th></tr>
+<tr><td>k</td><td>Thousand</td><td>10<sup>3</sup> (1000)</td></tr>
+<tr><td>t</td><td>Thousand</td><td>10<sup>3</sup> (1000)</td></tr>
+<tr><td>m</td><td>Million</td><td>10<sup>6</sup> (1000000)</td></tr>
+<tr><td>b</td><td>Billion (US)</td><td>10<sup>9</sup> (1000000000)</td></tr>
+<tr><td>,</td><td>Comma</td><td>Decimal point separator</td></tr>
+<tr><td>.</td><td>Full stop / Period</td><td>Decimal point separator</td></tr>
+</table>
+</center>
+
+</p>
+
+  <p>A demo of the DecimalTextField can be <a
+     href="builder/decimal-text-field.jnlp">run directly</a> via
+     JavaWebStart, or alternatively executed via its <a
+     href="examples/DecimalTextFieldDemo.java">source code</a>, or if
+     you have downloaded and extracted <a
+     href="downloads/examples.zip">examples.zip</a> it can be run with:
+     ant decimaltextfielddemo. There is a screen shot of the application
+     below.</p>
+
+<p><center><img src="images/decimal_text_field.png"></center></p>
+
+<p>The keystrokes entered into the above DecimalTextField were
+<em>12.3k</em> The field automatically changed its contents to numeric
+format.</p>
+
+
+<p>Simple use: (see the <a
+     href="DecimalTextFieldDemo.java">demo source code</a>)<pre>
+      String format = "###.##";
+      dtf = new DecimalTextField(format);
+      JPanel contents = new JPanel();      
+      contents.add(dtf);
+</pre></p>
+
+
+<p>Constructor summary:<pre>
+      DecimalTextField(String format) 
+      DecimalTextField(String format, int columns) 
+      DecimalTextField(String format, int columns, Number initalValue) 
+</pre></p>
+
+<p>The <em>format</em> string is a <a
+   href="http://java.sun.com/j2se/1.4.2/docs/api/java/text/DecimalFormat.html">DecimalFormat</a>
+   format specifier whose use is described at the <a
+   href="http://java.sun.com/docs/books/tutorial/java/data/decimalFormat.html">Sun
+   Tutorial</a>. <em>columns</em> sets the number of columns available
+   in the field, and the intialValue is the initially displayed entry.
+</p>
+
+<p>(When using this component remember to add Bhavaya's jar files to
+   your classpath (extract_location/bhavaya/bin/bhavaya.jar and
+   extract_location/bhavaya/lib/log4j-1.2.15-patched.jar).)</p>
+
+<!--
+ <p>To use this component it is necessary to:
+    <ul>
+      <li>Add Bhavaya's jar files to your classpath
+          (extract_location/bhavaya/bin/bhavaya.jar and
+          extract_location/bhavaya/lib/log4j-1.2.15-patched.jar).</li>
+      <li>Add the lines <pre>
+      import org.bhavaya.ui.DecimalTextField;
+      import javax.swing.*;
+      import java.awt.event.ActionListener;
+      import java.awt.event.ActionEvent;
+      import java.awt.*;</pre>
+ 
+          to your source file.</li>
+    </ul>
+  <p>
+-->
+    
+  <p><br><a href="architecture.html#user_interface">back to
+       Bhavaya Architecture</a></p>
+
+  </div>
+</div>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="overview.html">Overview</a></td>
+            <td><a href="architecture.html">Architecture</a></td>
+            <td><a href="quickstart.html">Quickstart</a></td>
+            <td><a href="download.html">Download</a></td>
+	    <td><a href="feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>

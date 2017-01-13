@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+<!DOCTYPE schema PUBLIC "-//Bhavaya/Bhavaya Schema DTD 0.9//EN" "http://bhavaya.openadaptor.org/dtd/schema_0_9.dtd">
+-->
+<!ELEMENT schema (include*, type*)>
+
+<!ELEMENT column EMPTY >
+<!ATTLIST column name NMTOKEN #REQUIRED >
+<!ATTLIST column source NMTOKEN #IMPLIED >
+<!ATTLIST column tableName CDATA #IMPLIED >
+<!ATTLIST column idFactory NMTOKEN #IMPLIED >
+<!ATTLIST column type NMTOKEN #IMPLIED >
+
+<!ELEMENT constructorProperty (column|defaultValue|property)* >
+<!ATTLIST constructorProperty name NMTOKEN #REQUIRED >
+<!ATTLIST constructorProperty type NMTOKEN #REQUIRED >
+<!ATTLIST constructorProperty lazy (true|false) #IMPLIED >
+<!ATTLIST constructorProperty class NMTOKEN #IMPLIED >
+
+<!ELEMENT criterion EMPTY >
+<!ATTLIST criterion leftOperand NMTOKEN #REQUIRED >
+<!ATTLIST criterion operator CDATA #REQUIRED >
+<!ATTLIST criterion rightOperand NMTOKEN #REQUIRED >
+
+<!ELEMENT defaultValue EMPTY >
+<!ATTLIST defaultValue type NMTOKEN #REQUIRED >
+<!ATTLIST defaultValue value NMTOKEN #REQUIRED >
+
+<!ELEMENT foreignKeyProperty (column|defaultValue|property)* >
+<!ATTLIST foreignKeyProperty cardinality (MANY|ONE) #REQUIRED >
+<!ATTLIST foreignKeyProperty foreignIndex NMTOKEN #IMPLIED >
+<!ATTLIST foreignKeyProperty lazy (true|false) #REQUIRED >
+<!ATTLIST foreignKeyProperty name NMTOKEN #REQUIRED >
+<!ATTLIST foreignKeyProperty type NMTOKEN #REQUIRED >
+
+<!ELEMENT index (column+) >
+<!ATTLIST index name NMTOKEN #REQUIRED >
+<!ATTLIST index unique NMTOKEN #REQUIRED >
+
+<!ELEMENT primaryKey (column+) >
+
+<!ELEMENT property EMPTY >
+<!ATTLIST property column NMTOKEN #IMPLIED >
+<!ATTLIST property name NMTOKEN #REQUIRED >
+<!ATTLIST property type NMTOKEN #REQUIRED >
+<!ATTLIST property idFactory NMTOKEN #IMPLIED >
+
+<!ELEMENT subClassMapping (criterion?) >
+<!ATTLIST subClassMapping name NMTOKEN #REQUIRED >
+
+<!ELEMENT subClassMappings (table) >
+
+<!ELEMENT table (subClassMapping+) >
+<!ATTLIST table default NMTOKEN #REQUIRED >
+<!ATTLIST table name CDATA #REQUIRED >
+<!ATTLIST table defaultSubClass NMTOKEN #IMPLIED >
+
+<!ELEMENT include EMPTY >
+<!ATTLIST include schema CDATA #IMPLIED >
+
+<!ELEMENT type (constructorProperty|foreignKeyProperty|index|primaryKey|property|subClassMappings)* >
+<!ATTLIST type beanFactoryType NMTOKEN #IMPLIED >
+<!ATTLIST type dataQuantity (HIGH|LOW) #REQUIRED >
+<!ATTLIST type dataVolatility (HIGH|LOW) #REQUIRED >
+<!ATTLIST type defaultDataSource NMTOKEN #IMPLIED >
+<!ATTLIST type generate NMTOKEN #IMPLIED >
+<!ATTLIST type generatedClass NMTOKEN #REQUIRED >
+<!ATTLIST type name NMTOKEN #REQUIRED >
+<!ATTLIST type sql CDATA #IMPLIED >
+<!ATTLIST type superType NMTOKEN #IMPLIED >
+<!ATTLIST type toStringCode CDATA #IMPLIED >

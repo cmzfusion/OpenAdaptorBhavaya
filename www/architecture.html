@@ -1,0 +1,226 @@
+<html>
+<head>
+<title>Bhavaya - Architecture</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+<h3>Bhavaya Architecture</h3>
+
+<!-- Navigation menu -->
+<!--<p><br></p>
+<div class="band7">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td align="right"><a href="#persistence_layer">Persistence&nbsp;Layer</a></td>
+            <td><a href="#user_interface">User&nbsp;Interface</a></td>
+            <td><a href="#jni">Java&nbsp;Native&nbsp;Interface</a></td>
+        </tr>
+    </table>
+    </p>
+</div>-->
+<!-- Navigation Menu -->
+
+      <p>Bhavaya's components can be grouped into three areas:
+
+      <ul>
+
+	<li><a href="#persistence_layer">The Persistence Layer</a> Realtime
+            object-relational mapping.</li>
+
+	<li><a href="#user_interface">User Interface</a> A collection
+	    of widgets used by the Bhavaya GUI.</li>
+
+	<li><a href="#jni">Java Native Interface</a> A collection of c
+	    library tools for deeper access to Windows OS features. </li>
+
+      </ul>
+    </p>
+
+
+ <a name="persistence_layer">
+ <h4>The Persistence Layer</h4>
+ </a>
+
+    <p>To developers, Bhavaya is mainly a persistence layer, providing
+       an object-relational mapping which is real-time. Records from
+       the database are inflated into Java objects (or JavaBeans) in
+       the client-side Java Virtual Machine. One or more tables in a
+       database correspond to a Java class and columns in a table corresponds
+       to properties of that class.</p>
+
+    <p>Bhavaya can use classes you provide to it and inflate them with
+       data from the database, or it can synthesise classes itself
+       based on the columns in the tables of a database (note, column
+       and table names do not have to match class and property
+       names). The most common use is a combination of the above:
+       where the interesting part of a class is written by hand and
+       used as an abstract superclass for a subclass that Bhavaya can
+       synthesise from database metadata. Bhavaya synthesises classes
+       at runtime, i.e. classes are not stored in class files; they
+       are generated and loaded directly into the virtual
+       machine. (The BCEL class library is used for this.)</p>
+
+    <p>Mapping to JavaBeans was used for the following reasons:</p>
+  </div>
+</div>
+<ul>
+  <li>
+    <div id="domainhome" class="app">
+      <div class="h3" id="domaincontent">It is simple and well understood. </div>
+    </div>
+  </li>
+  <li>
+    <div id="domainhome" class="app">
+      <div class="h3" id="domaincontent">It minimises client memory usage. (The
+        popular alternative: using a generic data structure (like a HashMap)
+        typically requires wrapper objects which are much more expensive). </div>
+    </div>
+  </li>
+  <li>
+    <div id="domainhome" class="app">
+      <div class="h3" id="domaincontent">It is fast. Methods like <font face="Courier New, Courier, mono">getFoo()</font>,
+        do not need to be wrapped or unwrapped and are often inlined by
+        the virtual machine - making data access run at the same speed
+        as accessing a member variable in Java. </div>
+    </div>
+  </li>
+  <li>
+    <div id="domainhome" class="app">
+      <div class="h3" id="domaincontent">It is easy to work with, providing a
+        natural mechanism for class evolution and event generation (PropertyChangeEvents).</div>
+    </div>
+  </li>
+</ul>
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+   <h5>&nbsp;Database communication - real time updates</h5>
+
+   <p>Bhavaya monitors the sql commands issued to the database
+      to keep its objects, that have been inflated from the database,
+      current. Bhavaya's sql interpreter is minimal, requiring
+      sql statements that only affect one row of the database (that
+      is, they should contain a "where" clause that references a
+      primary key entry of a particular row). Such sql statements are
+      commonly available from the middle tier in a three tier architecture,
+      or directly from a database transaction log or audit trail.</p>
+
+   <p>One solution used with Sybase databases is where the database
+      has a secondary database to which the first is replicated.
+      Auditing is switched on in the secondary database. The audit
+      log tables of the secondary are automatically populated with sql
+      statements that only apply to one row of the data. E.g. if an
+      update statement affecting multiple rows is issued on the
+      primary database, the audit log tables of the secondary database
+      will contain multiple statements each affecting a single
+      row. Bhavaya contains a small program which monitors these audit
+      log tables and broadcasts the sql statements to all Bhavaya
+      clients. If you write or know of others solution for
+      automatically extracting sql applied to databases then please
+      let us know via the <a href="feedback.html">feedback</a>
+      section.</p>
+
+    <p><a href="quickstart/persistence.html">Configuring the
+       persistence layer</a> (part of the quickstart guides).</p>
+
+    <p><a href="persistence.html">Overview of the classes used by
+       the Bhavaya Persistence Layer</a></p>
+
+  </div>
+</div>
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+    <a name="user_interface">
+    <h4>User interface</h4>
+    </a>
+
+    <p>
+    <ul>
+      <li><a href="split_panel.html">Tabbed Split Panel</a> Provides pop-up
+          components that "slide" into a main component, that are
+          activated by buttons at the edge of the main component.</li>
+      <li><a href="#user_interface">Tables</a> Tables highlighted,
+          sorted, grouped, pivoted</li>
+      <li><a href="ncb.html">Narrowable Combo box</a>A combo
+          box that supports the concept of narrowing in on a set of data
+          as the user types.  The subset of options that match the
+          user string are shown in a scrollable popup box.</li>
+      <li><a href="decimal_text_field.html">Decimal Text Field</a> A
+          text entry field with extended functionality, providing shortcut
+          keys for standard multipliers.</li>
+      <li><a href="traffic_light.html">Traffic Light</a> An image icon
+          containing a state, the image displayed reflecting the
+          component's state.</li>
+    </ul>
+    </p>
+
+    <p>Bhavaya&#146;s presentation layer is a small collection of
+       components which display tabular data: a JTable derivative that
+       flashes cells when they change value, a TableSorter for sorting
+       data, etc. We use the excellent JFreeChart package for our
+       graphing and have written some wrappers for its interfaces so
+       that its charts can easily be attached to Bhavaya's internal
+       data structures (collections of beans).</p>
+
+     <p><a href="gui.html">Overview of the classes used by the
+        Bhavaya GUI</a></p>
+
+    <a name="jni">
+    <h4>Java Native Interface</h4>
+    </a>
+
+    <p>These utilities link against c compiled libraries and are
+       currently only available for Windows operating systems.</p>
+
+    <ul>
+      <li><a href="on_top.html">Always on top</a> The
+          facility to cause a JFrame to always be the foremost displayed.</li>
+      <li><a href="thread_dump.html">Thread dump</a> Print out of the
+          currently active threads.</li>
+      <li><a href="CpuLoad.html">Process / CPU load</a> Real-time access to the
+          system's current and average load.</li>
+      <li><A href="environment_variables.html">Environment
+          variables</a> Access to the system's environment variables by
+          name.</li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="overview.html">Overview</a></td>
+            <td><a href="architecture.html"><div class="toplinks">Architecture</div></a></td>
+            <td><a href="quickstart.html">Quickstart</a></td>
+            <td><a href="download.html">Download</a></td>
+	    <td><a href="feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+

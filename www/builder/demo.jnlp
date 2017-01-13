@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp codebase="https://bhavaya.openadaptor.org/builder/" href="demo.jnlp">
+    <information>
+        <title>Bhavaya Demo</title>
+        <vendor>Bhavaya</vendor>
+        <homepage href="http://bhavaya.openadaptor.org"/>
+        <description>Bhavaya Demo</description>
+    </information>
+
+    <resources>
+        <j2se version="1.5+" max-heap-size="128m"/>
+        <property name="ENVIRONMENT_PATH" value="application.xml,client_environment.xml"/>
+        <property name="log4j.configuration" value="resources/log.xml"/>
+        <property name="sun.java2d.noddraw" value="true"/>
+
+        <jar href="bhavaya.jar" main="true" download="eager"/>
+        <jar href="demo.jar" download="eager"/>
+        <jar href="log4j-1.2.15-patched.jar" download="eager"/>
+        <jar href="bcel-5.1.jar" download="eager"/>
+        <jar href="trove.jar" download="eager"/>
+        <jar href="myswing.jar" download="eager"/>
+        <jar href="mail.jar" download="lazy"/>
+        <jar href="activation.jar" download="lazy"/>
+        <jar href="openadaptor.jar" download="lazy"/>
+        <jar href="commons-discovery.jar" download="lazy"/>
+        <jar href="commons-logging.jar" download="lazy"/>
+        <jar href="concurrent.jar" download="lazy"/>
+        <jar href="jaxrpc.jar" download="lazy"/>
+        <jar href="saaj.jar" download="lazy"/>
+        <jar href="wsdl4j.jar" download="lazy"/>
+        <jar href="jmxri.jar" download="lazy"/>
+        <jar href="jmxtools.jar" download="lazy"/>
+        <jar href="hsqldb.jar" download="eager"/>
+        <jar href="jfreechart-0.9.8.jar" download="lazy"/>
+        <jar href="jcommon-0.8.0.jar" download="lazy"/>
+        <jar href="jms.jar" download="lazy"/>
+        <jar href="dom4j.jar" download="lazy"/>
+        <jar href="jdom.jar" download="lazy"/>
+        <jar href="jakarta-oro-2.0.6.jar" download="lazy"/>
+        <jar href="od-filtertable-1.0.4.jar" download="eager"/>
+
+
+        <nativelib href="bhavayaNativeLib.jar" download="eager"/>
+    </resources>
+
+    <security>
+        <all-permissions/>
+    </security>
+
+    <application-desc main-class="org.bhavaya.ui.Main"/>
+
+</jnlp>

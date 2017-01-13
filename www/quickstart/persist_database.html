@@ -1,0 +1,143 @@
+<html>
+<head>
+<title>Bhavaya - Quickstart - Persistence Layer - Database Connection</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+
+  <h3>Quickstart Guides</h3>
+  <h4>The Persistence Layer - Configuring the database connection</h4>
+    
+
+  <p>The database configuration is set in application.xml where the
+     usual JDBC parameters are specified. The database entries are set in a
+     property tag, with a key reflecting the JDBC property, for
+     example:<pre>
+         &lt;property key="driverName" value="org.hsqldb.jdbcDriver"/&gt;
+           </pre></p>
+
+  <p><a href="../examples/example1/Example1.java">Example1.java</a>,
+     which is part of the <a
+     href="../downloads/examples.zip">examples</a> download, uses a
+     minimal <a href="application1.xml.txt">application1.xml</a> for
+     hsqldb (if you save the file from this link you will need to
+     remove the .txt extension). application.xml contains a number of
+     nested propertyGroup tags. A propertyGroup is required for the
+     application itself, and within this there is a dataSources
+     propertyGroup where each of the datasources that will be accessed
+     is specified via a datasource propertyGroup. The entries at the
+     datasource level are set with &lt;property key="key"
+     value="value"/&gt;. application.xml is described in full <a
+     href="application.html">here</a>, however the minimal set of
+     entries required is described in the table below.</p>
+
+  <p>
+  <table>
+    <tr>
+      <th>key</th>
+      <th>example value</th>
+      <th>description</th>
+    <tr>
+      <td>name</td>
+      <td>example1Database</td>
+      <td>The name used within the source code when referring to this
+      connection</td>
+    </tr>
+      <td>type</td>
+      <td>org.bhavya.db.DefaultDataSource</td>
+      <td>Type of the datasource, this may also be
+          org.bhavaya.db.JNDIDataSource</td>
+    </tr>
+      <td>driverName</td>
+      <td>org.hsqldb.jdbcDriver</td>
+      <td>Name of the database driver</td>
+    </tr>
+      <td>dialectClass</td>
+      <td>org.bhavaya.db.DefaultDatabaseDialect</td>
+      <td>Dialect to use when communicating with the database. Other
+          dialects currently available are
+          org.bhavaya.db.[OracleDatabaseDialect||SqlServerDatabaseDialect||SybaseDatabaseDialect]</td>
+    </tr>
+      <td>url</td>
+      <td>jdbc:hsqldb:.</td>
+      <td>url for connecting to the relevant driver - see you database
+          driver's documentation.</td>
+    </tr>
+      <td>user</td>
+      <td>sa</td>
+      <td>database user name</td>
+    </tr>
+      <td>password</td>
+      <td></td>
+      <td>database user's password</td>
+    </tr>
+      <td>autoCommit</td>
+      <td>true</td>
+      <td>[true||false] Specifies whether the database's transactions
+          are autocommitted. (If false you may need to also specify
+          <a href="application.html#metadata">databaseMetaData</a>.)</td>
+    </tr>
+      <td>transactionIsolation</td>
+      <td>DEFAULT</td>
+      <td>Allowed values are:
+         [DEFAULT||NONE||READ_UNCOMMITTED||READ_COMMITTED||REPEATABLE_READ||
+         SERIALIZABLE] and these refer to the corresponding JDBC transaction
+         isolation levels.</td>
+    </tr>
+  </table>
+  </p>
+
+  <p>If you edit application.xml and adjust for your database, and
+  then re-run example1, you should see output similar to the
+  following:</p>
+
+  <p><pre>
+  Found resource: file:/C:/Projects/WWWBeanFactoryTesting/./resources1/application1.xml
+  Found resource: file:/C:/Projects/WWWBeanFactoryTesting/./resources1/createExample1.sql
+  0 EUR 0 EIB 3.75 30/09/2007 Y 2.99 
+  1 EUR 0 MRA 4.75 30/12/2004 Y 5.73 
+  2 EUR 1 3M EIB 2.75 01/01/2005 Y 1.24 
+  3 GBP 0 M&amp;S 7.75 30/12/2003 Y 8.96 
+  4 GBP 0 M&amp;S 6.75 30/12/2003 Y 3.52 
+  </pre></p>
+
+  <p>confirming successful communication with your database. (A table
+    was created in the database and populated with data using direct
+    sql commands. Objects were then inflated from this data using
+    Bhavaya's persistence layer. The output is a list of these
+    objects' properties.)</p>
+
+  <p>The number of datasource entries in application.xml is not
+     limited, and as many as required can be added.</p>
+
+  <p><a href="persistence.html">back</a></p>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>
+
+

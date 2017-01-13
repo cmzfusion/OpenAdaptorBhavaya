@@ -1,0 +1,214 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DA1798B2088ABAB300D4E9E0 /* org_bhavaya_util_Environment.h in Headers */ = {isa = PBXBuildFile; fileRef = DA1798B1088ABAB300D4E9E0 /* org_bhavaya_util_Environment.h */; };
+		DAAA19A9088AB11400FBAB1D /* JavaVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAAA19A8088AB11400FBAB1D /* JavaVM.framework */; };
+		DAAA19BF088AB15900FBAB1D /* Environment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DAAA19BE088AB15900FBAB1D /* Environment.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DA1798B1088ABAB300D4E9E0 /* org_bhavaya_util_Environment.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = org_bhavaya_util_Environment.h; path = ../org_bhavaya_util_Environment.h; sourceTree = SOURCE_ROOT; };
+		DAAA1997088AACBC00FBAB1D /* libEnvironment.jnilib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libEnvironment.jnilib; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAAA19A8088AB11400FBAB1D /* JavaVM.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaVM.framework; path = /System/Library/Frameworks/JavaVM.framework; sourceTree = "<absolute>"; };
+		DAAA19BE088AB15900FBAB1D /* Environment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Environment.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DAAA1994088AACBC00FBAB1D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAAA19A9088AB11400FBAB1D /* JavaVM.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DAAA1949088AA44E00FBAB1D = {
+			isa = PBXGroup;
+			children = (
+				DA1798B1088ABAB300D4E9E0 /* org_bhavaya_util_Environment.h */,
+				DAAA19A8088AB11400FBAB1D /* JavaVM.framework */,
+				DAAA195A088AA49500FBAB1D /* Products */,
+				DAAA19BE088AB15900FBAB1D /* Environment.cpp */,
+			);
+			sourceTree = "<group>";
+		};
+		DAAA195A088AA49500FBAB1D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DAAA1997088AACBC00FBAB1D /* libEnvironment.jnilib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		DAAA1992088AACBC00FBAB1D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA1798B2088ABAB300D4E9E0 /* org_bhavaya_util_Environment.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXLibraryTarget section */
+		DAAA1996088AACBC00FBAB1D /* JNILib */ = {
+			isa = PBXLibraryTarget;
+			buildConfigurationList = DAAA1998088AACDB00FBAB1D /* Build configuration list for PBXLibraryTarget "JNILib" */;
+			buildPhases = (
+				DAAA1992088AACBC00FBAB1D /* Headers */,
+				DAAA1993088AACBC00FBAB1D /* Sources */,
+				DAAA1994088AACBC00FBAB1D /* Frameworks */,
+				DAAA1995088AACBC00FBAB1D /* Rez */,
+			);
+			dependencies = (
+			);
+			name = JNILib;
+			productInstallPath = /usr/local/lib;
+			productName = JNILib;
+			productReference = DAAA1997088AACBC00FBAB1D /* libEnvironment.jnilib */;
+		};
+/* End PBXLibraryTarget section */
+
+/* Begin PBXProject section */
+		DAAA194B088AA44E00FBAB1D /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = DAAA194C088AA44E00FBAB1D /* Build configuration list for PBXProject "Environment" */;
+			hasScannedForEncodings = 0;
+			mainGroup = DAAA1949088AA44E00FBAB1D;
+			productRefGroup = DAAA195A088AA49500FBAB1D /* Products */;
+			projectDirPath = "";
+			targets = (
+				DAAA1996088AACBC00FBAB1D /* JNILib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXRezBuildPhase section */
+		DAAA1995088AACBC00FBAB1D /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DAAA1993088AACBC00FBAB1D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAAA19BF088AB15900FBAB1D /* Environment.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DAAA194D088AA44E00FBAB1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		DAAA194E088AA44E00FBAB1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+			};
+			name = Release;
+		};
+		DAAA1999088AACDB00FBAB1D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = (
+					"$(SYSTEM_LIBRARY_DIR)/Frameworks/JavaVM.framework/Versions/A/Headers",
+					/Users/brendon/IdeaProjects/Bhavaya/bhavaya/src/c/Environment,
+				);
+				LIBRARY_STYLE = BUNDLE;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOL_FLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = libEnvironment.jnilib;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		DAAA199A088AACDB00FBAB1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				LIBRARY_STYLE = STATIC;
+				OPTIMIZATION_CFLAGS = "-O0";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOL_FLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = JNILib;
+				REZ_EXECUTABLE = YES;
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DAAA194C088AA44E00FBAB1D /* Build configuration list for PBXProject "Environment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAAA194D088AA44E00FBAB1D /* Debug */,
+				DAAA194E088AA44E00FBAB1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAAA1998088AACDB00FBAB1D /* Build configuration list for PBXLibraryTarget "JNILib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAAA1999088AACDB00FBAB1D /* Debug */,
+				DAAA199A088AACDB00FBAB1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DAAA194B088AA44E00FBAB1D /* Project object */;
+}

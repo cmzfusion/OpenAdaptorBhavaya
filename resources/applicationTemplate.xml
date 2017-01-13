@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<propertyGroup key="%APPLICATION_ID%Properties">
+
+    <propertyGroup key="dataSources">
+
+        <property key="defaultDataSource" value="%APPLICATION_ID%Database"/>
+
+        <propertyGroup key="datasource">
+            <property key="name" value="%APPLICATION_ID%Database"/>
+            <property key="type" value="org.bhavaya.db.DefaultDataSource"/>
+            <property key="dialectClass" value="%DATABASE_DIALECT%"/>
+            <property key="driverName" value="%DATABASE_DRIVER%"/>
+            <property key="url" value="%DATABASE_URL%"/>
+            <property key="user" value="%DATABASE_USER%"/>
+            <property key="password" value="%DATABASE_PASSWORD%"/>
+            <property key="autoCommit" value="true"/>
+            <property key="transactionIsolation" value="DEFAULT"/>
+        </propertyGroup>
+
+    </propertyGroup>
+
+    <propertyGroup key="beanFactory">
+        <property key="referenceType" value="SOFT"/>
+        <property key="maximumJoinTableCount" value="10"/>
+    </propertyGroup>
+
+    <propertyGroup key="notifications">
+        <propertyGroup key="subject">
+            <property key="name" value="sql"/>
+            <property key="autoCommit" value="false"/>
+            <property key="subscriber" value=""/>
+            <property key="publisher" value=""/>
+            <property key="host" value=""/>
+            <property key="subscribePort" value=""/>
+            <property key="publishPort" value=""/>
+            <property key="maximumQueuedNotificationsPerSubscriberOnServer" value="256"/>
+            <property key="maximumQueuedNotificationsOnSubscriber" value="5000"/>
+            <property key="serverReconnectionPeriod" value="5000"/>
+            <property key="reconnectionPeriod" value="30000"/>
+            <property key="failedMessageCache" value="false"/>
+        </propertyGroup>
+    </propertyGroup>
+
+    <property key="applicationName" value="%APPLICATION_NAME%"/>
+    <property key="applicationId" value="%APPLICATION_ID%"/>
+    <property key="versionNumber" value="@build.displayVersion@"/>
+    <property key="environmentName" value=""/>
+    <property key="environmentId" value=""/>
+    <property key="schema" value="schema.xml"/>
+    <property key="schemaStrictValidation" value="true"/>
+
+    <property key="applicationContextClass" value="org.bhavaya.ui.DefaultApplicationContext"/>
+    <property key="workspaceClass" value="org.bhavaya.ui.view.Workspace"/>
+    <property key="frameTitle" value="%APPLICATION_NAME%"/>
+    <property key="frameIcon" value="bhavaya_icon.gif"/>
+    <property key="splashScreenImage" value="bhavaya.png"/>
+    <property key="splashScreenLogoImage" value="blank_logo.png"/>
+
+    <property key="flashingUpdatesOn" value="true"/>
+    <property key="defaultToUsingCurrencySpecificPrecision" value="false"/>
+    <property key="autoSaveDefaultStrategy" value="Autosave"/>
+
+    <propertyGroup key="beanCollectionGroups">
+        %BEAN_COLLECTION_GROUPS%
+    </propertyGroup>
+
+    <propertyGroup key="sortingExclusion">
+    </propertyGroup>
+
+    <propertyGroup key="propertyTree">
+        <property key="strategy">
+            <value>org.bhavaya.util.PropertyModel$SchemaStrategy</value>
+            <value>org.bhavaya.util.PropertyModel$ClassPathStrategy</value>
+        </property>
+
+        <propertyGroup key="hiddenProperties">
+        </propertyGroup>
+
+        <propertyGroup key="selectableTypes">
+        </propertyGroup>
+
+        <propertyGroup key="displayNames">
+        </propertyGroup>
+    </propertyGroup>
+
+    <propertyGroup key="emailService">
+        <property key="smtpHost" value="localhost"/>
+        <property key="to" value="issues@bhavaya.openadaptor.org"/>
+        <property key="from" value="bhavayaclient@bhavaya.org"/>
+    </propertyGroup>
+
+    <propertyGroup key="columnConfigs">
+
+        <propertyGroup key="decimal0">
+            <property key="rendererClass" value="org.bhavaya.ui.table.DecimalRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>0</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="decimal1">
+            <property key="rendererClass" value="org.bhavaya.ui.table.DecimalRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>1</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="decimal2">
+            <property key="rendererClass" value="org.bhavaya.ui.table.DecimalRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>2</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="decimal3">
+            <property key="rendererClass" value="org.bhavaya.ui.table.DecimalRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>3</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="decimal4">
+            <property key="rendererClass" value="org.bhavaya.ui.table.DecimalRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>4</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="decimal5">
+            <property key="rendererClass" value="org.bhavaya.ui.table.DecimalRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>5</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="decimal6">
+            <property key="rendererClass" value="org.bhavaya.ui.table.DecimalRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>6</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="decimalFree">
+            <property key="rendererClass" value="org.bhavaya.ui.table.DecimalRenderer"/>
+        </propertyGroup>
+
+        <propertyGroup key="quantity0">
+            <property key="rendererClass" value="org.bhavaya.ui.table.QuantityRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>0</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="quantity1">
+            <property key="rendererClass" value="org.bhavaya.ui.table.QuantityRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>1</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="quantity2">
+            <property key="rendererClass" value="org.bhavaya.ui.table.QuantityRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>2</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="quantity3">
+            <property key="rendererClass" value="org.bhavaya.ui.table.QuantityRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>3</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="quantity4">
+            <property key="rendererClass" value="org.bhavaya.ui.table.QuantityRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>4</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="quantity5">
+            <property key="rendererClass" value="org.bhavaya.ui.table.QuantityRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>5</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="quantity6">
+            <property key="rendererClass" value="org.bhavaya.ui.table.QuantityRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>6</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="currencySpecific">
+            <property key="rendererClass" value="org.bhavaya.ui.table.CurrencySpecificRenderer"/>
+        </propertyGroup>
+
+        <propertyGroup key="dateTime">
+            <property key="rendererClass" value="org.bhavaya.ui.table.DateTimeRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>dd-MMM-yyyy - HH:mm:ss</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="date">
+            <property key="rendererClass" value="org.bhavaya.ui.table.DateTimeRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>dd-MMM-yyyy</value>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup key="time">
+            <property key="rendererClass" value="org.bhavaya.ui.table.DateTimeRenderer"/>
+            <property key="rendererConstructorArguments">
+                <value>HH:mm:ss</value>
+            </property>
+        </propertyGroup>
+
+    </propertyGroup>
+
+    <propertyGroup key="columnConfigRules">
+
+        <propertyGroup key="typeSpecific">
+            <propertyGroup key="java.lang.Float">
+                <property key="precisionMenuName" value="Precision"/>
+                <property key="default" value="decimal2"/>
+                <property key="renderers">
+                    <value>decimal0</value>
+                    <value>decimal1</value>
+                    <value>decimal2</value>
+                    <value>decimal3</value>
+                    <value>decimal4</value>
+                    <value>decimal5</value>
+                    <value>decimal6</value>
+                    <value>decimalFree</value>
+                </property>
+            </propertyGroup>
+
+            <propertyGroup key="java.lang.Double">
+                <property key="precisionMenuName" value="Precision"/>
+                <property key="default" value="decimal3"/>
+                <property key="renderers">
+                    <value>decimal0</value>
+                    <value>decimal1</value>
+                    <value>decimal2</value>
+                    <value>decimal3</value>
+                    <value>decimal4</value>
+                    <value>decimal5</value>
+                    <value>decimal6</value>
+                    <value>decimalFree</value>
+                </property>
+            </propertyGroup>
+
+            <propertyGroup key="org.bhavaya.util.Quantity">
+                <property key="precisionMenuName" value="Precision"/>
+                <property key="default" value="quantity0"/>
+                <property key="renderers">
+                    <value>quantity0</value>
+                    <value>quantity1</value>
+                    <value>quantity2</value>
+                    <value>quantity3</value>
+                    <value>quantity4</value>
+                    <value>quantity5</value>
+                    <value>quantity6</value>
+                    <value>currencySpecific</value>
+                </property>
+            </propertyGroup>
+
+            <propertyGroup key="java.util.Date">
+                <property key="precisionMenuName" value="Date Format"/>
+                <property key="default" value="dateTime"/>
+                <property key="renderers">
+                    <value>dateTime</value>
+                    <value>date</value>
+                    <value>time</value>
+                </property>
+            </propertyGroup>
+
+        </propertyGroup>
+
+    </propertyGroup>
+
+</propertyGroup>

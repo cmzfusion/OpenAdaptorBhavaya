@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Bhavaya - Quickstart - Persistence Layer 3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+  <h3>Quickstart Guides</h3>
+
+  <h4>The Persistence Layer - The LifeCycle Interface</h4>
+
+
+  <p>By implementing the org.bhavaya.beans.LifeCycle interface a bean
+     can ensure that specific actions take place (methods are called)
+     when certain database events occur. The methods that are called
+     and when they are triggered are described in the table below.</p>
+
+  <p>
+    <table>
+      <tr>
+        <th>Method</th>
+	<th>Trigger</th>
+      <tr>
+        <td>public void init()
+	</td>
+	<td>BeanFactory calls this at the end of a transaction if it
+	    has instantiated the bean.
+	</td>
+      </tr>
+      <tr>
+        <td>public void inserted()
+	</td>
+	<td>BeanFactory calls this at the end of a transaction if the
+	    bean is due to an "insert" sql statement.
+	</td>
+      </tr>
+      <tr>
+        <td>public void updated()
+	</td>
+	<td>BeanFactory calls this at the end of a transaction if it
+	    has updated the bean due to an "update" sql statement.
+	</td>
+      </tr>
+      <tr>
+        <td>public void deleted()
+	</td>
+        <td>BeanFactory calls this at the end of a transaction if it has
+	    removed the bean due to a "delete" sql statement.
+	</td>
+      </tr>
+    </table>
+  </p>
+
+  <p>For example, Bond.init() could increment a private static
+     variable bondCount. NB these methods will only be called if the
+     class explicitly implements the LifeCycle interface.</p>
+
+  <p><a href="persistence.html">back</a></p>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>
+
+
+

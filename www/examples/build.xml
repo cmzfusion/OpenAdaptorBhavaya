@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+
+<project name="Bhavaya Web Examples" default="buildAll" basedir=".">
+
+    <path id="class.path">
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+        <pathelement location="classes"/>
+    </path>
+
+    <target name="buildAll" description="Compile all classes">
+        <javac destdir="classes" srcdir="." classpathref="class.path" source="1.4" debug="on" fork="true">
+            <include name="**/*.java"/>
+        </javac>
+    </target>
+
+    <target name="example1" depends="buildAll" description="run example1">
+        <java classname="Example1" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application1.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example1"/>
+            <jvmarg value="-Dlog4j.configuration=file:example1/log.xml"/>
+        </java>
+    </target>
+
+    <target name="example2" depends="buildAll" description="run example2">
+        <java classname="Example2" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application2.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example2"/>
+            <jvmarg value="-Dlog4j.configuration=file:example1/log.xml"/>
+        </java>
+    </target>
+
+    <target name="example2b" depends="buildAll" description="run example2b">
+        <java classname="Example2b" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application2.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example2"/>
+            <jvmarg value="-Dlog4j.configuration=file:example1/log.xml"/>
+        </java>
+    </target>
+
+    <target name="example3" depends="buildAll" description="run example3">
+        <java classname="Example3" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application3.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example3"/>
+            <jvmarg value="-Dlog4j.configuration=file:example3/log.xml"/>
+        </java>
+    </target>
+
+    <target name="example4" depends="buildAll" description="run example4">
+        <java classname="Example4" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application4.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example4"/>
+            <jvmarg value="-Dlog4j.configuration=file:example4/log.xml"/>
+        </java>
+    </target>
+
+    <target name="example5" depends="buildAll" description="run example5">
+        <java classname="Example5" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application5.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example5"/>
+            <jvmarg value="-Dlog4j.configuration=file:example5/log.xml"/>
+        </java>
+    </target>
+
+    <target name="example6" depends="buildAll" description="run example6">
+        <java classname="Example6" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application6.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example6"/>
+            <jvmarg value="-Dlog4j.configuration=file:example6/log.xml"/>
+        </java>
+    </target>
+
+    <target name="example7" depends="buildAll" description="run example7">
+        <java classname="Example7" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application7.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example7"/>
+            <jvmarg value="-Dlog4j.configuration=file:example7/log.xml"/>
+        </java>
+    </target>
+
+    <target name="example8" depends="buildAll" description="run example8">
+        <java classname="Example8" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application8.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example8"/>
+            <jvmarg value="-Dlog4j.configuration=file:example8/log.xml"/>
+        </java>
+    </target>
+
+    <target name="example9" depends="buildAll" description="run example9">
+        <java classname="Example9" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application9.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example9"/>
+            <jvmarg value="-Dlog4j.configuration=file:example9/log.xml"/>
+        </java>
+    </target>
+
+    <target name="tabbedsplitpaneldemo" depends="buildAll"
+        description="run the tabbed split panel demo">
+        <java classname="TabbedSplitPanelDemo" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-Dlog4j.configuration=file:example7/log.xml"/>
+        </java>
+    </target>
+
+    <target name="narrowableboxdemo" depends="buildAll"
+        description="run the narrowable combo box demo">
+        <java classname="NarrowableBoxDemo" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-Dlog4j.configuration=file:example7/log.xml"/>
+        </java>
+    </target>
+
+    <target name="decimaltextfielddemo" depends="buildAll"
+        description="run the decimal text field demo">
+        <java classname="DecimalTextFieldDemo" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-Dlog4j.configuration=file:example7/log.xml"/>
+        </java>
+    </target>
+
+    <target name="trafficlightdemo" depends="buildAll"
+        description="run the traffic light demo">
+        <java classname="TrafficLightDemo" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-Dlog4j.configuration=file:example7/log.xml"/>
+        </java>
+    </target>
+
+    <target name="ontopdemo" depends="buildAll"
+        description="run the always on top demo">
+        <java classname="OnTopDemo" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-Djava.library.path=lib"/>
+            <jvmarg value="-Dlog4j.configuration=file:example7/log.xml"/>
+        </java>
+    </target>
+
+    <target name="cpuloaddemo" depends="buildAll"
+        description="run the cpu load demo">
+        <java classname="CpuLoadDemo" classpathref="class.path"
+            fork="true">
+            <jvmarg value="-Djava.library.path=lib"/>
+            <jvmarg value="-Dlog4j.configuration=file:example7/log.xml"/>
+        </java>
+    </target>
+
+    <target name="hsqldbservercontrol" depends="buildAll" description="start hsql database server">
+        <java classname="HsqldbServerControl" classpathref="class.path" fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application9.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example9"/>
+            <jvmarg value="-Dlog4j.configuration=file:example9/log.xml"/>
+        </java>
+    </target>
+
+    <target name="sqlbroadcaster" depends="buildAll" description="start SQL broadcaster">
+        <java classname="SqlBroadcaster" classpathref="class.path" fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application9.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example9"/>
+            <jvmarg value="-Dlog4j.configuration=file:example9/log.xml"/>
+        </java>
+    </target>
+
+    <target name="dbupdater" depends="buildAll" description="randomly updates database">
+        <java classname="DBUpdater" classpathref="class.path" fork="true">
+            <jvmarg value="-DENVIRONMENT_PATH=application9.xml"/>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=example9"/>
+            <jvmarg value="-Dlog4j.configuration=file:example9/log.xml"/>
+        </java>
+    </target>
+
+    <target name="realtimedemo" description="4 separate VMs showcasing the real-time features">
+        <parallel>
+            <antcall target="hsqldbservercontrol"/>
+            <sequential>
+                <sleep seconds="5"/>
+                <antcall target="sqlbroadcaster"/>
+            </sequential>
+            <sequential>
+                <sleep seconds="10"/>
+                <antcall target="dbupdater"/>
+            </sequential>
+            <sequential>
+                <sleep seconds="15"/>
+                <antcall target="example9"/>
+            </sequential>
+        </parallel>
+    </target>
+
+</project>

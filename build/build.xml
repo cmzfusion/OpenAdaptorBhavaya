@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+
+<project name="Bhavaya" default="build" basedir=".">
+
+    <property name="application" value="bhavaya"/>
+    <property file="defaultBuild.properties"/>
+
+    <target name="init">
+        <property file="buildVersion.properties"/>
+        <echo message="New tag: ${build.tag}"/>
+        <echo message="Previous tag: ${build.previousTag}"/>
+        <echo message="New Display version: ${build.displayVersion}"/>
+
+        <tstamp>
+            <format property="buildTimestamp" pattern="yyyy-MM-dd HH:mm" timezone="GMT"/>
+        </tstamp>
+
+        <mkdir dir="${deploy.dir}"/>
+        <echo message="${build.tag} on ${buildTimestamp}" file="${deploy.dir}/${build.tag}"/>
+    </target>
+
+    <target name="stampBuild" depends="init">
+        <propertyfile file="buildVersion.properties">
+            <entry key="build.release" type="int" default="1" operation="+"/>
+            <entry key="build.previousRelease" type="int" default="0" operation="+"/>
+        </propertyfile>
+
+        <cvs dest="." command="commit -m 'Automated Build' buildVersion.properties" failonerror="true"/>
+
+        <echo message="Tagging repository with tag: ${build.tag}"/>
+        <cvs dest=".." command="tag -F ${build.tag}" failonerror="true"/>
+
+        <cvstagdiff dest=".."
+            cvsroot=":pserver:guest@cvs.openadaptor.org:/cvs"
+            passfile="./cvspass"
+            package="bhavaya"
+            destfile="${deploy.dir}/tagdiff_bhavaya.xml"
+            startTag="${build.tag}"
+            endTag="${build.previousTag}"/>
+
+        <mail mailhost="${mailSmtpHost}" subject="Tagged Bhavaya from ${build.previousTag} to ${build.tag}" from="${mailFrom}" toList="${mailTo}">
+            <message></message>
+            <fileset dir="${deploy.dir}">
+                <include name="tagdiff_bhavaya.xml"/>
+            </fileset>
+        </mail>
+    </target>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="jaxen-1.1-beta-11.jar"/>
+        </fileset>
+        <fileset dir="${lib.dir}">
+            <exclude name="jaxen-1.1-beta-11.jar"/>
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${lib-chorus.dir}">
+            <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${deploy.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="generatorClasspath">
+        <pathelement path="${classes.dir}"/>
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <antcall target="cleanClasses"/>
+        <delete failOnError="false" includeemptydirs="true">
+            <fileset dir="${deploy.dir}" includes="**/*"/>
+        </delete>
+    </target>
+
+    <target name="cleanClasses">
+        <mkdir dir="${classes.dir}"/>
+        <delete failOnError="false" includeemptydirs="true">
+            <fileset dir="${classes.dir}" includes="**/*"/>
+        </delete>
+    </target>
+
+    <target name="javadoc" description="Create Bhavaya Javadoc">
+        <mkdir dir="${javadoc.dir}"/>
+
+        <javadoc destdir="${javadoc.dir}"
+            classpathref="classpath"
+            packagenames="org.bhavaya.*"
+            author="true"
+            version="true"
+            sourcepath="${src.dir}"/>
+    </target>
+
+    <target name="generateGenerators" depends="init" description="Generate generators">
+        <antcall target="cleanClasses"/>
+        <javac srcdir="../src/java" destdir="${classes.dir}" classpathref="classpath" source="1.7" debug="on" fork="true"/>
+
+        <java classname="org.bhavaya.beans.generator.ByteCodeGenerator" fork="true" failonerror="true" dir="${src.dir}" classpathref="generatorClasspath">
+            <arg value="source"/>
+        </java>
+
+        <!-- This will compile the org.bhavaya.beans.generator.ByteCodeGenerator class -->
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="on" classpathref="generatorClasspath" source="1.7">
+            <include name="**/*.java"/>
+        </javac>
+
+        <!-- Not neccessary but left it in, in case we remove the step above -->
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="on" classpathref="generatorClasspath" source="1.7">
+            <include name="org/bhavaya/db/generator/**/Property*.java"/>
+        </javac>
+
+        <java classname="org.bhavaya.beans.generator.ByteCodeGenerator" fork="true" failonerror="true" dir="${src.dir}" classpathref="generatorClasspath">
+            <arg value="generators"/>
+        </java>
+
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="on" classpathref="generatorClasspath" source="1.7">
+            <include name="org/bhavaya/db/generator/**/CreateProperty*.java"/>
+        </javac>
+    </target>
+
+    <target name="build" depends="init">
+        <antcall target="cleanClasses"/>
+        <javac srcdir="../src/java" destdir="${classes.dir}" classpathref="classpath" target="1.7" debug="on" fork="true"/>
+
+        <jar jarfile="../bin/bhavaya.jar">
+            <fileset dir="${classes.dir}">
+                <include name="**/*.class"/>
+                <exclude name="**/chorus/**/*.class"/>
+            </fileset>
+            <fileset dir="..">
+                <include name="resources/**"/>
+            </fileset>
+            <fileset file="${deploy.dir}/${build.tag}"/>
+        </jar>
+
+        <jar jarfile="../bin/bhavaya-chorus.jar">
+            <fileset dir="${classes.dir}">
+                <include name="**/chorus/**/*.*"/>
+            </fileset>
+            <fileset file="${deploy.dir}/${build.tag}"/>
+        </jar>
+
+        <!-- Make a jar for all native libs-->
+        <jar jarfile="../bin/bhavayaNativeLib.jar">
+            <fileset dir="${lib.dir}">
+                <include name="*.dll"/>
+                <include name="*.so"/>
+                <include name="*.jnilib"/>
+            </fileset>
+            <fileset file="${deploy.dir}/${build.tag}"/>
+        </jar>
+
+        <!-- Just the java source, useful for using for debugging -->
+        <jar jarfile="../bin/bhavaya_src.jar" defaultexcludes="true">
+            <fileset dir="../src/java">
+                <include name="**/*.java"/>
+            </fileset>
+            <fileset file="${deploy.dir}/${build.tag}"/>
+        </jar>
+
+        <mkdir dir="${classes.dir}/tmp"/>
+        <unjar dest="${classes.dir}/tmp">
+            <fileset dir="${lib.dir}">
+                <include name="log4j*.jar"/>
+                <include name="trove.jar"/>
+                <include name="concurrent.jar"/>
+            </fileset>
+        </unjar>
+
+        <jar jarfile="../bin/soundPlayer.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.bhavaya.util.SoundPlayer"/>
+            </manifest>
+            <fileset dir="${classes.dir}">
+                <include name="org/bhavaya/collection/**/*.class"/>
+                <include name="org/bhavaya/coms/**/*.class"/>
+                <include name="org/bhavaya/util/**/*.class"/>
+            </fileset>
+            <fileset dir="${classes.dir}/tmp">
+                <include name="**/*"/>
+                <exclude name="META-INF/"/>
+            </fileset>
+            <fileset dir="..">
+                <include name="resources/ping.wav"/>
+                <include name="resources/logSoundPlayer.xml"/>
+            </fileset>
+            <fileset file="${deploy.dir}/${build.tag}"/>
+        </jar>
+
+        <delete dir="${classes.dir}/tmp" failonerror="false"/>
+
+        <copy file="../bin/bhavaya.jar" todir="../www/builder"/>
+        <copy file="../bin/bhavayaNativeLib.jar" todir="../www/builder"/>
+
+        <signjar keystore="./myKeystore" alias="myself" storepass="grommitt" lazy="true">
+            <fileset dir="../www/builder">
+                <include name="bhavaya.jar"/>
+                <include name="bhavayaNativeLib.jar"/>
+            </fileset>
+        </signjar>
+
+        <antcall target="cleanClasses"/>
+        <javac srcdir="../demo/src/java" destdir="${classes.dir}" source="1.5" debug="on" fork="true">
+            <include name="**/*.java"/>
+            <exclude name="test/**/*.java"/>
+            <classpath>
+                <fileset dir="../bin">
+                    <include name="bhavaya.jar"/>
+                </fileset>
+                <fileset dir="../demo/lib">
+                    <include name="**/*.jar"/>
+                </fileset>
+                <path refid="classpath"/>
+            </classpath>
+        </javac>
+
+        <jar jarfile="../bin/demo.jar">
+            <fileset dir="${classes.dir}">
+                <include name="**/*.class"/>
+            </fileset>
+            <fileset dir="../demo">
+                <include name="resources/**"/>
+            </fileset>
+            <fileset file="${deploy.dir}/${build.tag}"/>
+        </jar>
+
+        <!--Need to uncomment when building Bhavaya solo-->
+        <!--<signjar keystore="./myKeystore" alias="myself" storepass="grommitt" lazy="true">-->
+            <!--<fileset dir="../bin">-->
+                <!--<include name="demo.jar"/>-->
+            <!--</fileset>-->
+        <!--</signjar>-->
+
+        <copy file="../bin/demo.jar" todir="../www/builder"/>
+
+        <!-- pack the test classes for reuage into own jar file -->
+        <antcall target="cleanClasses"/>
+        <javac srcdir="../test" destdir="${classes.dir}" source="1.5" debug="on" fork="true">
+            <include name="**/*.java"/>
+            <exclude name="**/chorus/**/*.java"/>
+
+            <classpath>
+                <fileset dir="${lib.dir}">
+                    <include name="*.jar"/>
+                </fileset>
+                <fileset dir="../testlib">
+                    <include name="*.jar"/>
+                </fileset>
+                <fileset dir="../bin">
+                    <include name="bhavaya.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+
+        <jar jarfile="../bin/bhavaya_tests.jar">
+            <fileset dir="${classes.dir}">
+                <include name="**/*.class"/>
+            </fileset>
+            <fileset file="${deploy.dir}/${build.tag}"/>
+        </jar>
+
+    </target>
+
+    <target name="updateBinaries">
+        <antcall target="build"/>
+
+        <delete file="../www/downloads/bhavaya_bin.zip"/>
+        <delete file="../www/downloads/bhavaya_bin.tar.gz"/>
+        <delete file="../www/downloads/bhavaya_src.zip"/>
+        <delete file="../www/downloads/bhavaya_src.tar.gz"/>
+
+        <zip destfile="../www/downloads/bhavaya_bin.zip">
+            <zipfileset dir=".." prefix="bhavaya" defaultexcludes="true" includes="bin/**,demo/**,lib/**"/>
+            <zipfileset file="${deploy.dir}/${build.tag}"/>
+        </zip>
+        <tar destfile="../www/downloads/bhavaya_bin.tar">
+            <tarfileset dir=".." prefix="bhavaya" defaultexcludes="true" includes="bin/**,demo/**,lib/**"/>
+            <tarfileset file="${deploy.dir}/${build.tag}"/>
+        </tar>
+        <gzip zipfile="../www/downloads/bhavaya_bin.tar.gz" src="../www/downloads/bhavaya_bin.tar"/>
+        <delete file="../www/downloads/bhavaya_bin.tar"/>
+
+        <zip destfile="../www/downloads/bhavaya_src.zip">
+            <zipfileset dir=".." prefix="bhavaya" defaultexcludes="true" excludes="www/**"/>
+            <zipfileset file="${deploy.dir}/${build.tag}"/>
+        </zip>
+        <tar destfile="../www/downloads/bhavaya_src.tar">
+            <tarfileset dir=".." prefix="bhavaya" defaultexcludes="true" excludes="www/**"/>
+            <tarfileset file="${deploy.dir}/${build.tag}"/>
+        </tar>
+        <gzip zipfile="../www/downloads/bhavaya_src.tar.gz" src="../www/downloads/bhavaya_src.tar"/>
+        <delete file="../www/downloads/bhavaya_src.tar"/>
+    </target>
+
+    <target name="updateExamples" depends="init">
+        <zip destfile="../www/downloads/examples.zip">
+            <zipfileset dir="../bin" prefix="examples/lib" includes="bhavaya.jar"/>
+            <zipfileset dir="../lib" prefix="examples/lib" includes="bcel-5.1.jar"/>
+            <zipfileset dir="../lib" prefix="examples/lib" includes="log4j-1.2.15-patched.jar"/>
+            <zipfileset dir="../lib" prefix="examples/lib" includes="jmxtools.jar"/>
+            <zipfileset dir="../lib" prefix="examples/lib" includes="jmxri.jar"/>
+            <zipfileset dir="../lib" prefix="examples/lib" includes="trove.jar"/>
+            <zipfileset dir="../lib" prefix="examples/lib" includes="CpuUsage.dll"/>
+            <zipfileset dir="../lib" prefix="examples/lib" includes="Environment.dll"/>
+            <zipfileset dir="../lib" prefix="examples/lib" includes="GuiGadgets.dll"/>
+            <zipfileset dir="../lib" prefix="examples/lib" includes="Process.dll"/>
+            <zipfileset dir="../demo/lib" prefix="examples/lib" includes="hsqldb.jar"/>
+            <zipfileset dir="../www/examples" prefix="examples" defaultexcludes="true"/>
+            <zipfileset file="${deploy.dir}/${build.tag}"/>
+        </zip>
+    </target>
+
+    <target name="unitTestWithGUI" depends="build">
+        <java fork="true" classname="test.bhavaya.AllTestSuite">
+            <classpath>
+                <fileset dir="${lib.dir}">
+                    <include name="*.jar"/>
+                </fileset>
+                <fileset dir="../bin">
+                    <include name="bhavaya.jar"/>
+                </fileset>
+                <fileset dir="../demo/lib">
+                    <include name="hsqldb.jar"/>
+                </fileset>
+            </classpath>
+            <jvmarg value="-DOVERRIDE_RESOURCE_DIR=../demo/resources"/>
+            <jvmarg value="-DENVIRONMENT_PATH=application.xml,test_environment.xml"/>
+        </java>
+    </target>
+
+</project>

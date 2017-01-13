@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<schema>
+
+    <type name="org.bhavayademo.beans.Instrument"
+        generatedClass="org.bhavayademo.generatedBeans.Instrument"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="demoDatabaseForInstruments"
+        sql="SELECT INSTRUMENT.* FROM INSTRUMENT"
+        dataVolatility="HIGH"
+        dataQuantity="HIGH">
+
+        <property name="instrumentId" type="int" column="INSTRUMENT_ID"/>
+        <property name="description" type="java.lang.String" column="DESCRIPTION"/>
+        <property name="valid" type="java.lang.String" column="VALID"/>
+        <property name="issuerCountry" type="java.lang.String" column="ISSUER_COUNTRY"/>
+
+        <foreignKeyProperty name="currency"
+            type="org.bhavayademo.beans.Currency"
+            cardinality="ONE"
+            lazy="true">
+            <column name="CURRENCY"/>
+        </foreignKeyProperty>
+
+        <foreignKeyProperty name="instrumentType"
+            type="org.bhavayademo.beans.InstrumentType"
+            cardinality="ONE"
+            lazy="true">
+            <column name="INSTRUMENT_TYPE_ID"/>
+        </foreignKeyProperty>
+
+        <foreignKeyProperty name="instrumentRating"
+            type="org.bhavayademo.beans.InstrumentRating"
+            cardinality="MANY"
+            foreignIndex="byInstrument"
+            lazy="true">
+            <column name="INSTRUMENT_ID"/>
+        </foreignKeyProperty>
+
+        <subClassMappings>
+            <table name="INSTRUMENT" default="true">
+                <subClassMapping name="org.bhavayademo.beans.Bond">
+                    <criterion leftOperand="INSTRUMENT_TYPE_ID" rightOperand="0" operator="="/>
+                </subClassMapping>
+
+                <subClassMapping name="org.bhavayademo.beans.BondFuture">
+                    <criterion leftOperand="INSTRUMENT_TYPE_ID" rightOperand="1" operator="="/>
+                </subClassMapping>
+            </table>
+        </subClassMappings>
+
+        <primaryKey>
+            <column name="INSTRUMENT_ID" tableName="INSTRUMENT" idFactory="org.bhavaya.db.IncrementMaxValueIdFactory"/>
+        </primaryKey>
+    </type>
+
+    <type name="org.bhavayademo.beans.Bond"
+        generatedClass="org.bhavayademo.generatedBeans.Bond"
+        superType="org.bhavayademo.beans.Instrument"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="demoDatabaseForInstruments"
+        sql="SELECT INSTRUMENT.*, BOND.* FROM INSTRUMENT, BOND WHERE BOND.INSTRUMENT_ID = INSTRUMENT.INSTRUMENT_ID"
+        dataVolatility="HIGH"
+        dataQuantity="HIGH">
+
+        <property name="maturityDate" type="java.util.Date" column="MATURITYDATE"/>
+        <property name="parAmount" type="double" column="PARAMOUNT"/>
+        <property name="coupon" type="double" column="COUPON"/>
+        <property name="ZSpread" type="double" column="ZSPREAD"/>
+    </type>
+
+    <type name="org.bhavayademo.beans.BondFuture"
+        generatedClass="org.bhavayademo.generatedBeans.BondFuture"
+        superType="org.bhavayademo.beans.Instrument"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="demoDatabaseForInstruments"
+        sql="SELECT INSTRUMENT.*, BOND_FUTURE.* FROM INSTRUMENT, BOND_FUTURE WHERE BOND_FUTURE.INSTRUMENT_ID = INSTRUMENT.INSTRUMENT_ID"
+        dataVolatility="HIGH"
+        dataQuantity="HIGH">
+
+        <property name="contractSize" type="double" column="CONTRACTSIZE"/>
+        <property name="firstDeliveryDate" type="java.util.Date" column="FIRSTDELIVERYDATE"/>
+        <property name="lastDeliveryDate" type="java.util.Date" column="LASTDELIVERYDATE"/>
+
+    </type>
+
+    <type name="org.bhavayademo.beans.Counterparty"
+        generatedClass="org.bhavayademo.generatedBeans.Counterparty"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="demoDatabaseForInstruments"
+        sql="SELECT COUNTERPARTY.* FROM COUNTERPARTY"
+        dataVolatility="LOW"
+        dataQuantity="HIGH">
+
+        <property name="counterpartyId" type="long" column="COUNTERPARTY_ID"/>
+        <property name="name" type="java.lang.String" column="NAME"/>
+
+        <primaryKey>
+            <column name="COUNTERPARTY_ID" tableName="COUNTERPARTY"/>
+        </primaryKey>
+    </type>
+
+    <type name="org.bhavayademo.beans.Currency"
+        generatedClass="org.bhavayademo.generatedBeans.Currency"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="demoDatabaseForInstruments"
+        sql="SELECT CURRENCY.* FROM CURRENCY"
+        dataVolatility="LOW"
+        dataQuantity="LOW">
+
+        <property name="code" type="java.lang.String" column="CODE"/>
+
+        <primaryKey>
+            <column name="CODE" tableName="CURRENCY"/>
+        </primaryKey>
+    </type>
+
+    <type name="org.bhavayademo.beans.InstrumentRating"
+        generatedClass="org.bhavayademo.generatedBeans.InstrumentRating"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="demoDatabaseForInstruments"
+        sql="SELECT INSTRUMENT_RATING.* FROM INSTRUMENT_RATING"
+        dataVolatility="LOW"
+        dataQuantity="HIGH">
+
+
+        <foreignKeyProperty name="rating"
+            type="org.bhavayademo.beans.Rating"
+            cardinality="ONE"
+            lazy="true">
+            <column name="RATING_ID"/>
+        </foreignKeyProperty>
+
+        <foreignKeyProperty name="instrument"
+            type="org.bhavayademo.beans.Instrument"
+            cardinality="ONE"
+            lazy="true">
+            <column name="INSTRUMENT_ID"/>
+        </foreignKeyProperty>
+
+        <primaryKey>
+            <column name="INSTRUMENT_ID" tableName="INSTRUMENT_RATING"/>
+            <column name="RATING_ID" tableName="INSTRUMENT_RATING"/>
+        </primaryKey>
+
+        <index name="byRating" unique="false">
+            <column name="RATING_ID" tableName="INSTRUMENT_RATING"/>
+        </index>
+
+        <index name="byInstrument" unique="false">
+            <column name="INSTRUMENT_ID" tableName="INSTRUMENT_RATING"/>
+        </index>
+
+    </type>
+
+    <type name="org.bhavayademo.beans.InstrumentType"
+        generatedClass="org.bhavayademo.generatedBeans.InstrumentType"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="demoDatabaseForInstruments"
+        sql="SELECT INSTRUMENT_TYPE.* FROM INSTRUMENT_TYPE"
+        dataVolatility="LOW"
+        dataQuantity="LOW">
+
+        <property name="instrumentTypeId" type="int" column="INSTRUMENT_TYPE_ID"/>
+        <property name="name" type="java.lang.String" column="NAME"/>
+
+        <primaryKey>
+            <column name="INSTRUMENT_TYPE_ID" tableName="INSTRUMENT_TYPE"/>
+        </primaryKey>
+    </type>
+
+    <type name="org.bhavayademo.beans.Rating"
+        generatedClass="org.bhavayademo.generatedBeans.Rating"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="demoDatabaseForInstruments"
+        sql="SELECT RATING.* FROM RATING"
+        dataVolatility="LOW"
+        dataQuantity="LOW">
+
+        <property name="ratingId" type="int" column="RATING_ID"/>
+        <property name="rater" type="java.lang.String" column="RATER"/>
+        <property name="rating" type="java.lang.String" column="RATING"/>
+
+        <foreignKeyProperty name="instrumentRating"
+            type="org.bhavayademo.beans.InstrumentRating"
+            cardinality="MANY"
+            foreignIndex="byRating"
+            lazy="true">
+            <column name="RATING_ID"/>
+        </foreignKeyProperty>
+
+        <primaryKey>
+            <column name="RATING_ID" tableName="RATING"/>
+        </primaryKey>
+    </type>
+
+    <type name="org.bhavayademo.beans.Position"
+        generatedClass="org.bhavayademo.generatedBeans.Position"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="demoDatabaseForTrades"
+        sql="SELECT POSITION2.* FROM POSITION2"
+        dataVolatility="HIGH"
+        dataQuantity="HIGH">
+
+        <property name="timestamp" type="java.util.Date" column="UPDATE_TIMESTAMP"/>
+
+        <foreignKeyProperty name="instrument"
+            type="org.bhavayademo.beans.Instrument"
+            cardinality="ONE"
+            lazy="true">
+            <column name="INSTRUMENT_ID"/>
+        </foreignKeyProperty>
+
+        <constructorProperty name="quantity" type="org.bhavaya.util.Quantity">
+            <column name="QUANTITY" source="quantity.amount" type="double"/>
+            <property name="instrument.currency.code" type="java.lang.String"/>
+        </constructorProperty>
+
+        <primaryKey>
+            <column name="INSTRUMENT_ID" tableName="POSITION2"/>
+        </primaryKey>
+
+    </type>
+
+    <type name="org.bhavayademo.beans.Trade"
+        generatedClass="org.bhavayademo.generatedBeans.Trade"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="demoDatabaseForTrades"
+        sql="SELECT TRADE.* FROM TRADE"
+        dataVolatility="HIGH"
+        dataQuantity="HIGH">
+
+        <property name="tradeId" type="int" column="TRADE_ID"/>
+        <property name="version" type="int" column="VERSION"/>
+        <property name="tradeDate" type="java.util.Date" column="TRADE_DATE"/>
+        <property name="comments" type="java.lang.String" column="COMMENTS"/>
+        <property name="price" type="double" column="PRICE"/>
+
+        <foreignKeyProperty name="counterparty"
+            type="org.bhavayademo.beans.Counterparty"
+            cardinality="ONE"
+            lazy="true">
+            <column name="COUNTERPARTY_ID"/>
+        </foreignKeyProperty>
+
+        <foreignKeyProperty name="instrument"
+            type="org.bhavayademo.beans.Instrument"
+            cardinality="ONE"
+            lazy="true">
+            <column name="INSTRUMENT_ID"/>
+        </foreignKeyProperty>
+
+        <foreignKeyProperty name="versionStatus"
+            type="org.bhavayademo.beans.VersionStatus"
+            cardinality="ONE"
+            lazy="true">
+            <column name="VERSION_STATUS_ID"/>
+        </foreignKeyProperty>
+
+        <foreignKeyProperty name="tradeType"
+            type="org.bhavayademo.beans.TradeType"
+            cardinality="ONE"
+            lazy="true">
+            <column name="TRADE_TYPE_ID"/>
+        </foreignKeyProperty>
+
+        <constructorProperty name="quantity" type="org.bhavaya.util.Quantity">
+            <column name="QUANTITY" source="quantity.amount" type="double"/>
+            <property name="instrument.currency.code" type="java.lang.String"/>
+        </constructorProperty>
+
+        <primaryKey>
+            <column name="TRADE_ID" tableName="TRADE" idFactory="org.bhavaya.db.IncrementMaxValueIdFactory"/>
+            <column name="VERSION" tableName="TRADE"/>
+        </primaryKey>
+
+    </type>
+
+    <type name="org.bhavayademo.beans.TradeType"
+        generatedClass="org.bhavayademo.generatedBeans.TradeType"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="demoDatabaseForTrades"
+        sql="SELECT TRADE_TYPE.* FROM TRADE_TYPE"
+        dataVolatility="LOW"
+        dataQuantity="LOW">
+
+        <property name="tradeTypeId" type="int" column="TRADE_TYPE_ID"/>
+        <property name="name" type="java.lang.String" column="NAME"/>
+
+        <primaryKey>
+            <column name="TRADE_TYPE_ID" tableName="TRADE_TYPE"/>
+        </primaryKey>
+    </type>
+
+    <type name="org.bhavayademo.beans.VersionStatus"
+        generatedClass="org.bhavayademo.generatedBeans.VersionStatus"
+        generate="true"
+        beanFactoryType="org.bhavaya.db.SqlBeanFactory"
+        defaultDataSource="demoDatabaseForTrades"
+        sql="SELECT VERSION_STATUS.* FROM VERSION_STATUS"
+        dataVolatility="LOW"
+        dataQuantity="LOW">
+
+        <property name="versionStatusId" type="int" column="VERSION_STATUS_ID"/>
+        <property name="name" type="java.lang.String" column="NAME"/>
+
+        <primaryKey>
+            <column name="VERSION_STATUS_ID" tableName="VERSION_STATUS"/>
+        </primaryKey>
+    </type>
+</schema>
+

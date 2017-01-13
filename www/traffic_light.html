@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>Bhavaya - Architecture - Split Panels</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+  <h3>Bhavaya Architecture</h3>
+   
+  <h4>Traffic Light</h4>
+
+  <p>The TrafficLight (org.bhavaya.ui.TrafficLight) is an image
+     component with three possible states, displaying a different
+     image for each state. The states are RED, YELLOW and GREEN,
+     although the images needn't necessarily reflect the state's
+     names. Three snap-shots, one of each of the TrafficLight's
+     states, are shown below.</p>
+
+  <p><center><table><tr>
+                <td><img src="images/traffic_green.png"></td>
+                <td><img src="images/traffic_amber.png"></td>
+                <td><img src="images/traffic_red.png"></td>
+  </tr></table></center></p>
+ 
+  <p>The essential lines of code required are:<pre>
+        System.setProperty("OVERRIDE_RESOURCE_DIR","C:/location/of/images");
+        TrafficLightModel model = new DefaultTrafficLightModel();
+        TrafficLight trafficLight = new TrafficLight(model);
+	model.setState(TrafficLightState.YELLOW);</pre></p>
+  
+  <p>which are incorporated into <a
+     href="examples/TrafficLightDemo.java">TrafficLightDemo.java</a>. The
+     demo can be <a href="builder/traffic-light.jnlp">run directly</a>
+     via JavaWebStart, or if you have downloaded and extracted <a
+     href="downloads/examples.zip">examples.zip</a> it can be run
+     with: ant trafficlightdemo. The default images are led_red.png,
+     led_green.png and led_amber.png, if you downloaded and extracted
+     the <a href="download.html">Bhavaya source code</a> the images
+     will be located in
+     /extract_location/bhavaya/resources. Alternatively you may use
+     any images required although unfortunately their names are
+     fixed. The system property OVERRIDE_RESOURCE_DIR should be
+     changed to reflect the location of your images. If you're
+     compiling against bhavaya.jar the default images will be picked
+     up automatically providing the resource dir is not
+     overridden.</p>
+
+  <p>The name of the TrafficLight and the pop-up text that appears
+     when the mouse is placed over the component can also be set.<pre>
+        model.setName("Health");
+        model.setDescription("Traffic light displaying the instrument's health");</pre></p>
+  <p>(before the code that constructs the TrafficLight object) and results in:
+  <center><img src="images/traffic_green_health.png"></center></p>
+
+  <p>(When using this component remember to add Bhavaya's jar files to
+     your classpath (extract_location/bhavaya/bin/bhavaya.jar and
+     extract_location/bhavaya/lib/log4j-1.2.15-patched.jar).)</p>
+
+<!--
+ <p>To use this component it is necessary to:
+    <ul>
+      <li>Add Bhavaya's jar files to your classpath
+      (extract_location/bhavaya/bin/bhavaya.jar and
+       extract_location/bhavaya/lib/log4j-1.2.15-patched.jar).</li> 
+      <li>Add the lines <pre>
+      import org.bhavaya.util.*;
+      import org.bhavaya.ui.TrafficLight;
+      import javax.swing.*;</pre>
+ 
+      to your source file.</li>
+    </ul>
+  <p>
+-->
+    
+  <p><br><a href="architecture.html#user_interface">back to
+       Bhavaya Architecture</a></p>
+
+  </div>
+</div>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="overview.html">Overview</a></td>
+            <td><a href="architecture.html">Architecture</a></td>
+            <td><a href="quickstart.html">Quickstart</a></td>
+            <td><a href="download.html">Download</a></td>
+	    <td><a href="feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>
+

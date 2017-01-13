@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Bhavaya - Architecture - Thread Dump Output</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<p><pre>
+-----------------BEGIN DUMP------------------
+Got 0 traces
+       -----Monitor-----
+Java monitor: 0x009FE08C of type: java.lang.ref.ReferenceQueue$Lock
+
+Owner thread has entered this monitor: 1 times
+Owner thread: 0x00000000()
+status: runnable
+Stack trace 1
+Thread:0x00000000()
+
+Other threads awaiting entry to this monitor: 0 their stacktraces are:
+
+Other threads awaiting notify() on the monitor: 1 their stacktraces are:
+Stack trace 1
+Thread:0x009C0860(  ThreadName = [Finalizer]  GroupName = [system]  ParentName = [null])
+     java.lang.Object.wait (Source: Object.java:-3)
+     java.lang.ref.ReferenceQueue.remove (Source: ReferenceQueue.java:111)
+     java.lang.ref.ReferenceQueue.remove (Source: ReferenceQueue.java:127)
+     java.lang.ref.Finalizer$FinalizerThread.run (Source: Finalizer.java:159)
+
+       -----Monitor-----
+Java monitor: 0x009FE098 of type: java.lang.ref.Reference$Lock
+
+Owner thread has entered this monitor: 1 times
+Owner thread: 0x00000000()
+status: runnable
+Stack trace 1
+Thread:0x00000000()
+
+Other threads awaiting entry to this monitor: 0 their stacktraces are:
+
+Other threads awaiting notify() on the monitor: 1 their stacktraces are:
+Stack trace 1
+Thread:0x009BF430(  ThreadName = [Reference Handler]  GroupName = [system]  ParentName = [null])
+     java.lang.Object.wait (Source: Object.java:-3)
+     java.lang.Object.wait (Source: Object.java:429)
+     java.lang.ref.Reference$ReferenceHandler.run (Source: Reference.java:115)
+
+       -----Monitor-----
+Java monitor: 0x009FE0A4 of type: java.util.Properties
+
+Owner thread has entered this monitor: 0 times
+Owner thread: 0x02D1CDC8(  ThreadName = [Monitor Ctrl-Break]  GroupName = [main]  ParentName = [system])
+status: condition wait
+Stack trace 1
+Thread:0x02D1CDC8(  ThreadName = [Monitor Ctrl-Break]  GroupName = [main]  ParentName = [system])
+     java.io.BufferedReader.readLine (Source: BufferedReader.java:288)
+     java.io.BufferedReader.readLine (Source: BufferedReader.java:362)
+     java.util.Properties.load (Source: Properties.java:269)
+     java.security.Security.initialize (Source: Security.java:108)
+     java.security.Security.access$000 (Source: Security.java:26)
+     java.security.Security$1.run (Source: Security.java:85)
+     java.security.AccessController.doPrivileged (Source: AccessController.java:-3)
+     java.security.Security.<clinit> (Source: Security.java:83)
+     sun.net.InetAddressCachePolicy$1.run (Source: InetAddressCachePolicy.java:81)
+     java.security.AccessController.doPrivileged (Source: AccessController.java:-3)
+     sun.net.InetAddressCachePolicy.<clinit> (Source: InetAddressCachePolicy.java:77)
+     java.net.InetAddress.<clinit> (Source: InetAddress.java:572)
+     java.net.InetSocketAddress.<init> (Source: InetSocketAddress.java:84)
+     java.net.ServerSocket.<init> (Source: ServerSocket.java:185)
+     java.net.ServerSocket.<init> (Source: ServerSocket.java:97)
+     com.intellij.rt.execution.application.AppMain$1.run (Source: Unknown Source:-1)
+     java.lang.Thread.run (Source: Thread.java:534)
+
+Other threads awaiting entry to this monitor: 0 their stacktraces are:
+
+Other threads awaiting notify() on the monitor: 0 their stacktraces are:
+
+
+-----------------END DUMP------------------
+</pre></p>
+</body>
+</html>

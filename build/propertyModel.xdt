@@ -1,0 +1,108 @@
+<!-- ************************************************************************************************
+**     This file is generated, DON'T manually edit it.
+************************************************************************************************* -->
+
+<!--
+
+Use xdoclet to parse your source code and generate the propertyModel.xml file with property model config.
+
+1. JavaDoc comment of a property's getter method is used as a property description.
+         Note1: The @return, @param or any other tags within JavaDoc comment will be ignored.
+         Note2: Property description in a tooltip will be automatically wrapped unless the <p> or <br> tags are used.
+
+2. xdoclet tags are used to define property's properties
+        - bhavaya.property
+        - bhavaya.validPropertyTypes
+
+validPropertyTypes tag specifies valid return types for a getter is defined to return a generic type (an Object for instance).
+In example bellow, property 'instrument1' is defined to return a 'Bean' type but we want to restrict properties selection
+in a table view only to properties of the Instrument and CurveBucket classes as any other type (unless sublass of the two classes specified)
+is illegal as a value of this property.
+
+Example:
+
+    /**
+     * Description of a property.
+     *
+     * @bhavaya.property
+     *      displayName="Instrument One"
+     *      hidden="true|false"
+     *
+     * @bhavaya.validPropertyTypes
+     *      com.drkw.ebond.bl.beans.Instrument
+     *      com.drkw.ebond.bl.beans.curve.CurveBucket
+     */
+    public Bean getInstrument1() { ... }
+
+Example ant task to generate the propertyModel.xml:
+
+    <target name="generatePropertyModel">
+        <taskdef name="doclet" classname="xdoclet.DocletTask"/>
+        <doclet destdir="../resources" verbose="true" force="true">
+            <fileset dir="../src/java">
+                <include name="**/*.java"/>
+            </fileset>
+            <template templateFile="propertyModel.xdt" destinationFile="propertyModel.xml"/>
+        </doclet>
+    </target>
+
+-->
+
+<propertyModel>
+<XDtClass:forAllClasses>
+  <XDtCollection:create name="vars"/>
+
+  <XDtMethod:forAllMethods>
+    <XDtMethod:ifIsGetter>
+      <XDtMethod:ifHasMethodTag tagName="bhavaya.property">
+        <XDtCollection:put name="vars" value="include"/>
+        <XDtCollection:put name="vars" value="<XDtMethod:propertyName/>"/>
+      </XDtMethod:ifHasMethodTag>
+      <XDtMethod:ifHasMethodTag tagName="bhavaya.validPropertyTypes">
+        <XDtCollection:put name="vars" value="include"/>
+        <XDtCollection:put name="vars" value="<XDtMethod:propertyName/>"/>
+      </XDtMethod:ifHasMethodTag>
+      <XDtMethod:ifHasMethodComment>
+        <XDtCollection:put name="vars" value="include"/>
+        <XDtCollection:put name="vars" value="<XDtMethod:propertyName/>"/>
+      </XDtMethod:ifHasMethodComment>
+    </XDtMethod:ifIsGetter>
+  </XDtMethod:forAllMethods>
+
+  <XDtCollection:ifContains name="vars" value="include">
+
+    <type className="<XDtClass:fullTransformedClassName/>">
+    <XDtMethod:forAllMethods>
+    <XDtMethod:ifIsGetter>
+    <XDtCollection:ifContains name="vars" value="<XDtMethod:propertyName/>">
+      <XDtMethod:ifHasMethodTag tagName="bhavaya.property">
+        <property name="<XDtMethod:propertyName/>"
+                <XDtMethod:ifHasMethodTag tagName="bhavaya.property" paramName="displayName">
+                  displayName="<XDtMethod:methodTagValue tagName="bhavaya.property" paramName="displayName"/>"
+                </XDtMethod:ifHasMethodTag>
+                  hidden="<XDtMethod:methodTagValue tagName="bhavaya.property" paramName="hidden" default="false"/>">
+      </XDtMethod:ifHasMethodTag>
+      <XDtMethod:ifDoesntHaveMethodTag tagName="bhavaya.property">
+        <property name="<XDtMethod:propertyName/>">
+      </XDtMethod:ifDoesntHaveMethodTag>
+      <XDtMethod:ifHasMethodTag tagName="bhavaya.validPropertyTypes">
+          <XDtMethod:forAllMethodTagTokens tagName="bhavaya.validPropertyTypes" delimiter=" ">
+            <validType className="<XDtMethod:currentToken/>"/>
+          </XDtMethod:forAllMethodTagTokens>
+      </XDtMethod:ifHasMethodTag>
+      <XDtMethod:ifHasMethodComment>
+            <description><![CDATA[
+                <XDtMethod:methodComment no-comment-signs="true"/>
+            ]]></description>
+      </XDtMethod:ifHasMethodComment>
+        </property>
+    </XDtCollection:ifContains>
+    </XDtMethod:ifIsGetter>
+    </XDtMethod:forAllMethods>
+    </type>
+
+  </XDtCollection:ifContains>
+
+  <XDtCollection:destroy name="vars"/>
+</XDtClass:forAllClasses>
+</propertyModel>

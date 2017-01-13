@@ -1,0 +1,215 @@
+<html>
+<head>
+<title>Bhavaya - Architecture - Split Panels</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+  <h3>Bhavaya Architecture</h3>
+   
+  <h4>Tabbed Split Panels</h4>
+  
+  <p>Bhavaya TabbedSplitPanels (org.bhavaya.ui.TabbedSplitPanel)
+     provide a JPanel derivative that can be subdivided (split) into
+     two or more Components when a button is pressed. They can be
+     viewed as providing a pop-up, or drawer feature to a main
+     component. The pop-up component compresses the main component
+     when both are displayed. The TabbedSplitPanel is illustrated
+     below. The figure on the left has non of it's pop-up components
+     activated, there is a blank central JPanel acting as the main
+     component and there are buttons on the left, right and bottom
+     edges of the window. The figure on the right is the result when
+     some of the split panels have been activated. JTextAreas have
+     been used as the pop-up component and the figure also shows how
+     TabbedSplitPanels can be nested within one another.</p>
+
+  <p><center>
+   <table>
+    <tr>
+     <td><img src="images/tabbedsplitpanelbefore.png"></td>
+     <td><img src="images/tabbedsplitpanelafter.png"></td>
+     </tr>
+   </table>
+  </center></p>
+
+  <p>The TabbedSplitPanel demo was used to generate the above two
+     figures, it can be <a
+     href="builder/tabbed-split-panel.jnlp">run directly</a> using
+     JavaWebStart. Alternatively if you have Bhavaya's library files
+     in your classpath you can compile and run the <a
+     href="examples/TabbedSplitPanelDemo.java">source</a> directly, or
+     if you have downloaded and extracted <a
+     href="downloads/examples.zip">examples.zip</a> it can be run with:
+     ant tabbedsplitpaneldemo</p>
+
+  <h5>&nbsp;&nbsp;Usage guide</h5>
+
+  <p>Constructor summary:
+    <pre>  TabbedSplitPanel(Component mainPanel, int orientation)</pre>
+  </p>
+
+  <p>The <em>mainPanel</em> is the centrally displayed object. Next to
+     this the TabbedSplitPanel creates a gutter. The gutter is where
+     the buttons that activate the split panel will be placed. The
+     position of the gutter relative to the <em>mainPanel</em> is
+     controlled by <em>orientation</em> and can be
+     <em>TabbedSplitPanel.LEFT</em>, <em>TabbedSplitPanel.RIGHT</em>
+     and <em>TabbedSplitPanel.BOTTOM</em>.</p>
+
+  <p>The buttons and the component that they activate are added using
+     objects of the MenuPanel class.</p>
+
+  <p>MenuPanel constructor summary:</p>
+
+  <p>
+    <pre>  MenuPanel(String name, Component component, boolean autoTitle)</pre>
+  </p>
+
+  <p>The <em>name</em> is the text for the button created in the
+     gutter, it is also (optionally) the heading used for the pop-up
+     component (if <em>autoTitle</em> is true). <em>component</em> is
+     the Component that is activated and displayed when the MenuPanel
+     is activated.
+  </p>
+
+  <p>MenuPanels are added using
+     TabbedSplitPanel.addMenuPanel(menuPanel) and the number of
+     MenuPanels that can be added is not limited by the software.
+  </p>
+
+  <p>An example of how to use the TabbedSplitPanel is shown below:</p>
+
+  <p><pre>
+        JPanel mainPanel = new JPanel();
+        TabbedSplitPanel centrePanel = new TabbedSplitPanel(mainPanel,TabbedSplitPanel.RIGHT);
+        
+        MenuPanel menuPanel = new MenuPanel("Right Menu", new JTextArea("Menu panel for right tabbed split panel"),true);
+        centrePanel.addMenuPanel(menuPanel);
+	
+	frame.setContentPane(centrePanel)
+  </pre></p>
+
+  <p>where </em>frame</em> is a previously created JFrame.</p>
+
+  <p>This will create an empty centre panel, with a button labelled
+     <em>Right menu</em> in a gutter on the right-hand side. When
+     clicked the button brings up a JTextArea, also on the right-hand
+     side.</p>
+
+<p>(When using this component remember to add Bhavaya's jar files to
+    your classpath (extract_location/bhavaya/bin/bhavaya.jar and
+    extract_location/bhavaya/lib/log4j-1.2.15-patched.jar).)</p>
+
+<!--
+ <p>To use this component it is necessary to:
+    <ul>
+      <li>Add Bhavaya's jar files to your classpath
+          (extract_location/bhavaya/bin/bhavaya.jar and
+          extract_location/bhavaya/lib/log4j-1.2.15-patched.jar).</li>
+      <li>Add the lines <pre>
+      import javax.swing.*;
+      import java.awt.event.ActionListener;
+      import java.awt.event.ActionEvent;
+      import org.bhavaya.ui.*;</pre>
+ 
+      to your source file.</li>
+    </ul>
+  <p>
+-->
+
+  <p><br><a href="architecture.html#user_interface">back to
+       Bhavaya Architecture</a></p>
+
+<!--<p>Three objects are required:
+<ul>
+
+<li>A <b>SplitPanel</b>. This is the top level
+object and replaces the top level view component that would
+otherwise have been used. The original top level object is given to
+the SplitPanel's constructor.</li>
+
+<li>A <b>SplitControlPanel</b>.The class consists of a gutter and a
+ component that acts as the main view.  The gutter can be aligned on
+ the left, right or bottom of the panel.  This class also contains a
+ reference to the SplitPanel which this class is responsible for
+ controlling. </li>
+
+<li>Any number of <b>MenuPanel</b>s. A MenuPanel defines the contents
+of the panel displayed when it is activated.</li>
+
+</ul>
+
+    <p>Split panel constructor:
+    <pre>SplitPanel(Component component, int orientation)</PRE>
+
+    component: The Component that the split panel will will pop out
+    over
+<br>
+orientation: SplitPanel.[LEFT||BOTTOM||RIGHT] The place where the
+panel will appear when activated
+
+</p>
+
+<p><pre>
+SplitControlPanel(int orientation, SplitPanel splitPanel, Component
+component)</pre>
+
+orientation. The location of the gutter.  Can be SplitPanel.LEFT,
+RIGHT or BOTTOM. The gutter is the area of the screen where the
+buttons will appear that allow the split panel to be activated.
+    
+ 
+splitPanel The SplitPanel that this class will be controlling.  This
+is most often also the component.
+ 
+
+component The component that sits next to the gutter (the main view).
+This is often the splitpanel.
+
+</p>
+
+
+<p><pre>
+MenuPanel(String name, Component component, int orientation, boolean
+autoTitle) </pre>
+
+name: The name of this menu. Will be used for the menu's button in the
+gutter, and optionally (dependent on autoTitle) for the menu's main
+heading when the panel is activated.
+
+component: This component will be displayed when the menu is
+activated. This can be another SplitControlPanel, enabling you to nest
+split panels within split panels.
+
+orientation: Not sure what this does.
+
+-->
+
+  </div>
+</div>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="overview.html">Overview</a></td>
+            <td><a href="architecture.html">Architecture</a></td>
+            <td><a href="quickstart.html">Quickstart</a></td>
+            <td><a href="download.html">Download</a></td>
+	    <td><a href="feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>
+

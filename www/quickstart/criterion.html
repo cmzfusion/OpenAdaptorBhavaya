@@ -1,0 +1,125 @@
+<html>
+<head>
+<style type="text/css">
+ #group { background: #FFFF99 ! important}
+</style>
+<title>Bhavaya - Quickstart - Format of the Criterion File</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+  <h3>Quickstart Guides</h3>
+  </a>
+ 
+  <h4>The Persistence Layer - Format of criterion.xml</h4>
+
+  <p>The criterion.xml file essentially maps a name (ID) to a list of
+     property paths which may from a number of different bean
+     types. Use of criterion bean collections is described in the
+     relevant <a href="persist_criterion.html">quickstart
+     guide</a>.</p>
+
+  <p>Criterion.xml is of the form:</p>
+
+  <p><pre>
+  &lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+
+  &lt;propertyGroup key="criterion"&gt;
+
+    &lt;propertyGroup key="IDattribute1"&gt;
+	  ...
+    &lt;/propertyGroup&gt;
+
+    &lt;propertyGroup key="IDattribute2"&gt;
+
+        &lt;propertyGroup key="IDattribute3"&gt;
+            &lt;property key="type" value="attribute"/&gt;
+            &lt;property key="name" value="attribute"/&gt;
+            &lt;property key="toBeanType" value="attribute"/&gt;
+            &lt;propertyGroup key="beanTypes"&gt;
+                &lt;propertyGroup key="beanType"&gt;
+                    &lt;property key="beanType" value="attribute"/&gt;
+                    &lt;property key="beanPath" value="attribute"/&gt;
+                &lt;/propertyGroup&gt;
+            &lt;/propertyGroup&gt;
+        &lt;/propertyGroup&gt;
+
+        &lt;propertyGroup key="IDattribute"&gt;
+	  ...
+        &lt;/propertyGroup&gt;
+
+    &lt;/propertyGroup&gt;
+
+  &lt;/propertyGroup&gt;
+  </pre>
+  </p>
+
+  <p>and there is a complete example <a
+     href="criterion.xml.txt">criterion.xml</a>.</p>
+
+   <p>There is a propertyGroup for each of the criteria specified
+      (uniquely identified by its IDattribute). propertyGroups can be
+      grouped together into larger propertyGroups. Criteria within the
+      larger groups are referenced by combining the propertyGroup's
+      key="attribute" with a "."
+      (e.g. IDattribute2.IDattribute3). The properties that can be
+      specified are described below, where <span
+      id="group">indicates</span> a propertyGroup rather than a
+      property. The propertyGroups "dataset" and "shortcut" are used by
+      the Bhavaya GUI.</p>
+
+  <p>
+    <table>
+      
+      <tr><th colspan="4">Tag attribute</th><th>example value for attribute</th><th>description</th></tr>
+            
+      <tr id="group"><td colspan="4">IDattribute3</td><td>Bond_MaturityDate</td><td>Name used when referring to this criterion. The ID used when referring to this rule within the code.</td></tr>
+      
+      <tr><td>&nbsp;</td><td>type</td><td></td><td></td><td>basic</td><td>[basic||enumeration] Enumeration properties are compared against a set of values, basic properties are compared with a single value.</td></tr>
+      
+      <tr><td></td><td>name</td><td></td><td></td><td>Maturity Date</td><td>Display name. Used by the Bhavaya GUI.</td></tr>
+      
+      <tr><td></td><td>toBeanType</td><td></td><td></td><td>java.util.Date</td><td>The return type of the properties listed in the upcoming beanTypes propertyGroup. i.e. the type that this rule will be evaluated against.</td></tr>
+
+      <tr><td></td><td>descriptionColumn</td><td></td><td></td><td>NAME</td><td> The database column that contains the label that should be displayed (by the Bhavaya GUI) for enumeration options. Must be present for enumerations but is not required if the type is set to basic.</td></tr>
+      
+      <tr id="group"><td></td><td colspan="3">beanTypes</td><td></td><td>Group tag for all of the beans that have the property that this rule relates to. e.g. if the comparison will be against a trade date, all types that have a trade date and the type's property path to trade date will be listed in this group.</td></tr>
+      
+      <tr id="group"><td></td><td></td><td colspan="2">beanType</td><td></td><td>Group tag encapsulating the bean's description.</td></tr>
+      
+      <tr><td></td><td></td><td>&nbsp;</td><td>beanType</td><td>org.bhavayademo.beans.Bond</td><td>Bean type that has the desired property.</td></tr>
+      
+      <tr><td></td><td></td><td></td><td>beanPath</td><td>maturityDate</td><td>Path to the property in question. Can be nested e.g. instrument.maturityDate would result in Bond.getInstrument().getMaturityDate() being called.</td></tr>
+    
+    </table>
+  </p>
+
+  <p><a href="persistence.html">back</a></p>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+
+</div>
+</div>
+</body>
+</html>

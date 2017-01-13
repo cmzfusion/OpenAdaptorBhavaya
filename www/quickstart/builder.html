@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>Bhavaya - Quickstart - Bhavaya Builder</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+    <h3>Quickstart Guides</h3>
+
+    <h4>Bhavaya Builder</h4>
+    </a>
+
+    <p>The Bhavaya Builder application quickly allows you to view the
+       contents of your database and can be used as a starting
+       point for real-time, customised viewing of database data.
+       <a href="../builder/builder.jnlp" title="Start Bhavaya Builder">Start</a>
+       the builder application and then click on
+       the plus sign to add a new database configuration. The
+       resulting window, filled in for a <a
+       href="http://hsqldb.sourceforge.net/">hsqldb</a> database, is
+       shown below.</p>
+
+    <p><center><img src="../images/builder_config.png"></center></p>
+
+    <p>The id and name can be chosen by the user. The database entries
+       should be altered to reflect the database that you're using (NB
+       real-time mode is currently only supported for Sybase).  You
+       will need to click the ellipsis to the right of the
+       catalogue/schema option, at this point the application will
+       connect to your database, so it must be available for this
+       step. You can choose a Schema or simply click in the empty
+       window and then click OK. You must do this even if you chose a
+       "blank" schema. Once done, click create.</p>
+
+    <p>In the main builder window, select the database entry that
+       you've just added, so that it is highlighted.  Click on
+       generate (cogs to the left of the green arrow) and then run
+       (the green arrow).</p>
+
+    <p>Once Bhavaya starts, click on the Collections <a
+       href="../split_panel.html">Split Panel</a>. In the panel that
+       appears you should see entries for each table in your
+       database.</p>
+
+    <p>Right click on a table name and select view all. Then bring up
+       the edit split panel by clicking its label on the right hand
+       side and select the columns (properties) from the database that
+       you wish to view.</p>
+
+    <h5>&nbsp;Configuring the real-time connection</h5>
+
+    <p> A .bhavayaBuilder directory should have been created on your
+        system. It will have been created in c:\ if you used
+        JavaWebStart to run the program, or in your home directory
+        (HOMEDRIVE for Windows XP) if you downloaded and ran the code
+        locally. Open this directory and navigate to application.xml
+        which should be in a directory below one with the ID you chose
+        in the builder application and then below a resources
+        directory. Open the application.xml file in a text editor (in
+        windows, right click and then select edit) and then follow the
+        <a href="persistence.html">persistence layer instructions</a>.</p>
+
+     <p><a href="../quickstart.html">back to Quickstart Guides</a></p>
+
+  </div>
+</div>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</body>
+</html>

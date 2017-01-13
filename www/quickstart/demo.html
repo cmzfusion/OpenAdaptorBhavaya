@@ -1,0 +1,140 @@
+<html>
+<head>
+<title>Bhavaya - Quickstart - Demo Application</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+    <h3>Quickstart Guides</h3>
+
+    <h4>The Demo Application</h4>
+    </a>
+
+    <p>The Demo Application illustrates how Bhavaya could be used. It
+       provides a real-time GUI view of data in a self-contained
+       active database.</p>
+
+  <p>
+    <ul>
+      
+      <li>When <a href="../builder/demo.jnlp" title="launch bhavaya
+          demo">launched</a> the demo application should show trades as
+          they happen in the "Trades - All" tab.</li>
+      
+      <li>Switching to the "Positions - All" tab (by clicking its
+          name) will display the effects of the trades (that are
+          appearing in the "Trades - All" tab) on, for example, the
+          price of a given traded instrument.</li>
+
+       <li>The cells can be seen flashing when their content
+           changes.</li>
+       
+       <li>The "Collections", "Configurations" and "Edit" labels on
+           the left and right edges of the screen can be clicked to
+           bring up new windows. These are Bhavaya's <a
+           href="../split_panel.html">Tabbed Split Panels</a>
+           component. </li>
+
+    </ul>
+  </p>
+  
+  <p>Two of the application's capabilities, that may be
+       useful to users of the software, are highlighted below.</p>
+
+    <h5>&nbsp;Display position for all trades in Euros</h5>
+
+      <p>
+        <ul>
+	  
+	  <li>Open the Collections menu and double click on the
+              positions entry that appears. This will bring up another
+              window, where you can enter a name for this grouping
+              e.g.  Euros.</li>
+
+	  <li>Click the plus button and select currency, then
+              highlight EUR, click the right arrow and click OK.</li>
+
+	  <li>Double click on the Euros entry that should have
+              appeared under the positions tree in the collections
+              tab.</li>
+
+	 </ul>
+       </p> 
+
+       <p>You should now have a new table called "Positions - Euros",
+          which only shows trades in Euros. The information displayed
+          in this table can be configured using the "Edit" split
+          panel, which has check-boxes for the information available
+          for positions (these are actually the properties of the
+          synthesised positions class).</p>
+
+    <h5>&nbsp;Display the total value of instruments grouped by maturity date and categorised by currency</h5>
+
+      <p>Configure the application to only display the relevant
+         properties:</p>
+
+      <p>
+        <ul>
+
+	  <li>Click on the "Positions - all" tab. Then open up the
+              edit split panel, by clicking on the edit label on the
+              right.</li>
+	      
+	  <li>Expand the Instrument and Bond Future tree, and remove
+              the First Delivery Date tick.</li>
+
+	  <li>Also remove Quantity and Timestamp, and from
+              Instrument/Currency remove: Description, Instrument Type
+              and Price. Expand the Currency tree and click on
+              code.</li>
+
+	 </ul>
+       </p>
+
+      <p>Pivot the data by currency, by clicking on the toggle
+         pivoting button (menu bar, table with a highlighted blue top
+         row and green left row).</p>
+
+      <p>Switch on grouping, using the menu bar item with two red
+         arrows and then display the amount in each currency using the
+         Edit panel Quantity tree and checking amount.</p>
+
+      <p>Switch the date series on by clicking on the Sigma symbol in
+         the menu bar.</p>
+
+     <p>Experiment with the effect of the other buttons ...</p>
+
+     <p>The positions tab can be undocked from the main window, by
+        right-clicking its name and selecting Undock Tab as
+        Window. </p>
+
+     <p><a href="../quickstart.html">back to Quickstart Guides</a></p>
+
+  </div>
+</div>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</body>
+</html>
+

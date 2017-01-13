@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<propertyGroup key="applicationPropertiesTest">
+
+    <propertyGroup key="simpleGroup">
+        <property key="simpleProperty" value="simpleValue"/>
+        <property key="encryptedProperty" value="xF9I2B15LcPuMlBbVj2nwQ==" encrypted="true"/>
+        <property key="referencingProperty" internal_ref="internalReferencedGroup.referencedProperty"/>
+        <property key="referencingProperties" internal_ref="internalReferencedGroup.referencedProperties"/>
+        <property key="externalReferencingProperty" external_ref="externalProperties.simpleProperty"/>
+        <property key="encryptedExternalReferencingProperty" external_ref="externalProperties.encryptedProperty"/>
+        <property key="overriddenProperty" value="notOverridden" check_for_override="true"/>
+        <property key="notOverriddenProperty" value="notOverridden" check_for_override="true"/>
+    </propertyGroup>
+
+    <propertyGroup key="internalReferencedGroup">
+        <property key="referencedProperty" value="referencedValue"/>
+        <property key="referencedProperties">
+            <value>propertyOne</value>
+            <value>propertyTwo</value>
+        </property>
+    </propertyGroup>
+
+    <propertyGroup key="externalReferencingGroup" external_ref="externalReferencedGroup"/>
+
+    <propertyGroup key="overrideTest">
+        <propertyGroup key="overriddenGroup" check_for_override="true">
+            <property key="test" value="notOverridden"/>
+        </propertyGroup>
+
+        <propertyGroup key="notOverriddenGroup" check_for_override="true">
+            <property key="test" value="notOverridden"/>
+        </propertyGroup>
+    </propertyGroup>
+
+    <propertyGroup key="doubleOverrideTest" check_for_override="true">
+        <property key="test" value="main"/>
+    </propertyGroup>
+
+    <property key="simpleReferencedProperty" value="token"/>
+    <property key="simpleInlineReferencingProperty" value="test%simpleReferencedProperty%"/>
+    <property key="simpleExternalInlineReferencingPropery" value="test%simpleExternalReferencedProperty%"/>
+
+</propertyGroup>

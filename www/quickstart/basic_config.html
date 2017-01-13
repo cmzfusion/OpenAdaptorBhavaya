@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>Bhavaya - Quickstart - Persistence Layer - Basic Configuration</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+    <h3>Quickstart Guides</h3>
+    <h4>The Persistence Layer - Basic Configuration</h4>
+
+  <p>To use Bhavaya it is necessary to add its libraries to your
+     classpath, and specify the location of its resource files to the
+     virtual machine. If you have downloaded the complete package, you
+     should configure your environment as described
+     below. Alternatively, there is an <a
+     href="../downloads/examples.zip">examples.zip</a> file, which
+     contains the source code and libraries necessary for all of the
+     persistence layer examples that follow. It includes an <a
+     href="http://ant.apache.org/">ant</a> build.xml file allowing
+     each example to be run directly. Its use is detailed <a
+     href="#zip">at the end of this page</a>. Much of Bhavaya's
+     configuration is contained within application.xml and schema.xml
+     and it is important that the location of these files is specified
+     correctly.</p>
+
+  <h4>Entire Bhavaya source - required environment configuration</h4>
+
+  <p>The following assumes that you have <a
+     href="../download.html">downloaded</a> Bhavaya (source or binary)
+     and extracted it to extract/location/.</p>
+
+  <p>Bhavaya uses a number of libraries, which should be added to your
+     classpath:</p>
+
+  <p><pre>
+          extract/location/bhavaya/bin/bhavaya.jar
+          extract/location/bhavaya/lib/log4j-1.2.15-patched.jar
+	  extract/location/bhavaya/lib/bcel-5.1.jar</pre></p>
+
+  <p>It is also necessary to specify the location of your database's
+     driver library, hsqldb was used to test the examples presented
+     here, you should change this to reflect the type of database to
+     which you wish to connect.</p>
+
+  <p><pre>
+          extract/location/bhavaya/demo/lib/hsqldb.jar</pre></p>
+
+  <p>Bhavaya expects all configuration files to reside in a single
+     directory which can be specified to the VM on the command line
+     with:</p>
+
+  <p><pre>
+          -DENVIRONMENT_PATH=application1.xml -DOVERRIDE_RESOURCE_DIR=./resources1</pre></p>
+
+  <p>The value given to OVERRIDE_RESOURCE_DIR is the directory
+     containing your xml configuration files, ENVIRONMENT_PATH
+     specifies which files to load from this directory. If you do not
+     specify a directory, the VM will first try to find these files in
+     your current working directory and then by searching the
+     classpath. Specifying as above will ensure that the intended
+     configuration file is loaded.</p>
+
+  <p>Bhavaya uses <a
+     href="http://logging.apache.org/log4j/docs/">log4j</a>
+     logging. The logging characteristics are set in log.xml, and its
+     location is also set on the VM command line with:</p>
+
+  <p><pre>
+     -Dlog4j.configuration=file:resources1/log.xml
+  </pre></p>
+
+  <p>If the file: prefix is used, the path specified is relative to
+     the project working directory - see the log4j documentation for
+     further information.</p>
+
+  <p>Assuming that you have a C:\Projects directory, and within this
+     Example1, Example1\resources1, Example1\classes and Example1\src
+     directories, typical commands, assuming that your working
+     directory is C:\Projects\Example1 could be:</p>
+
+  <p><small>javac -classpath "C:\Projects\bhavaya\lib\log4j-1.2.15-patched.jar;C:\Projects\bhavaya\lib\bcel-5.1.jar;C:\Projects\bhavaya\demo\lib\hsqldb.jar;C:\Projects\bhavaya\bin\bhavaya.jar"  -d classes src\Example1.java</small></p>
+
+  <p><small>java -DENVIRONMENT_PATH=application1.xml -DOVERRIDE_RESOURCE_DIR=resources1 -classpath "C:\Projects\Example1\classes;C:\Projects\bhavaya\lib\log4j-1.2.15-patched.jar;C:\Projects\bhavaya\lib\bcel-5.1.jar;C:\Projects\bhavaya\demo\lib\hsqldb.jar;C:\Projects\bhavaya\bin\bhavaya.jar;"  -Dlog4j.configuration=file:resources1/log.xml Example1</small></p>
+
+  <p><a href="persistence.html">back</a></p>
+
+  <a name="zip">
+  <h4>Self-contained zip</h4>
+  </a>
+
+  <p>The following examples assume that you have downloaded <a
+     href="../downloads/examples.zip">examples.zip</a> and extracted
+     it to extract/location/.</p>
+
+  <p>If you have <a href="http://ant.apache.org/">ant</a> installed,
+     then from /extract/location/examples, each example can be run e.g.
+     with:<pre>
+     ant example1
+     </pre></p> 
+
+  <p>Alternatively, the examples can be run by hand.</p>
+
+  <p>Typically, resources would be placed in a separate resources
+     directory. However, for the examples, all relevant files extract
+     to the same sub-directory (including the logging
+     configuration). Add all files in extract/location/examples/lib/
+     to your classpath and compile and run with options similar to the
+     following:</p>
+
+  <p>From e.g. extract\location\examples\:</p>
+
+  <p><small>javac -classpath ".\lib\log4j-1.2.15-patched.jar;.\lib\bcel-5.1.jar;.\lib\hsqldb.jar;.\lib\bhavaya.jar;.\example1" example1\Example1.java</small></p>
+
+  <p><small>java -DENVIRONMENT_PATH=application1.xml -DOVERRIDE_RESOURCE_DIR=.\example1 -classpath ".\lib\log4j-1.2.15-patched.jar;.\lib\bcel-5.1.jar;.\lib\hsqldb.jar;.\lib\bhavaya.jar;.\example1" -Dlog4j.configuration=file:.\example1\log.xml Example1</small></p>
+
+  <p>Or alternatively, in absolute terms:</p>
+
+  <p><small>javac -classpath "C:\extract\location\examples\lib\log4j-1.2.15-patched.jar;C:\extract\location\examples\lib\bcel-5.1.jar;C:\extract\location\examples\lib\hsqldb.jar;C:\extract\location\examples\lib\bhavaya.jar;C:\extract\location\examples\example1" C:\extract\location\examples\example1\Example1.java</small></p>
+
+  <p><small>java -DENVIRONMENT_PATH=application1.xml -DOVERRIDE_RESOURCE_DIR=./ -classpath "C:\extract\location\examples\lib\log4j-1.2.15-patched.jar;C:\extract\location\examples\lib\bcel-5.1.jar;C:\extract\location\examples\lib\hsqldb.jar;C:\extract\location\examples\lib\bhavaya.jar;C:\extract\location\examples\example1" -Dlog4j.configuration=file:C:\extract\location\examples\example1\log.xml Example1</small></p>
+
+  <p>The examples use an hsqldb in-memory database, whose jar file is
+     in the lib directory. To change to a different database its
+     library file should be added to the classpath.</p>
+
+  <p><a href="persistence.html">back</a></p>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>
+

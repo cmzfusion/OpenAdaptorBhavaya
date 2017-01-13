@@ -1,0 +1,228 @@
+<html>
+<head>
+<title>Bhavaya - Quickstart - Persistence Layer - Defining Classes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+  <h3>Quickstart Guides</h3>
+
+  <h4>The Persistence Layer - Specifying classes to be inflated
+      from the database</h4>
+ 
+  <p>This example describes how to create a class that obtains some of
+     its properties from a database, and refers to the code contained
+     within the example directories available from <a
+     href="../downloads/examples.zip">examples.zip</a>.</p>
+
+  <p>Any class which has properties inflated from database data should
+     implement the org.bhavaya.util.Observable interface and support
+     the firePropertyChange methods described later. These methods are
+     needed to provide the real-time functionality, however, as a
+     starting point it is only necessary to make the class a sub-class
+     of org.bhavaya.util.DefaultObservable. The new class may also
+     implement the org.bhavaya.beans.LifeCycle interface, which has
+     methods called at various points in a bean's life-cycle and is
+     described <a href="persist_lifecycle.html">here</a>.</p>
+
+  <p>Bhavaya class properties follow the Java Beans convention and are
+     derived from the class's getter and setter methods. e.g. if a
+     class has methods getFoo and setFoo, then it is assumed to have a
+     property foo. If the properties are determined from database data
+     then the getter and setter methods must be implemented as
+     abstract methods within the class. Example2 contains an
+     Instrument class (<a
+     href="../examples/beans/Instrument.java">Instrument.java</a>),
+     which follows these conventions.</p>
+
+  <p>The mapping between class properties and database data is
+     contained in the <a href="schema2.xml.txt">schema.xml</a> file. In
+     turn, the schema to be used is specified in the <a
+     href="application2.xml.txt">application.xml</a> file by adding
+     the tag:<pre>
+     &lt;property key="schema" value="schema.xml"/&gt;</pre></p>
+
+  <p>The format of the schema file should be intuitive. The datasource
+     for the class (as defined in application.xml), and the mapping
+     between the class's properties and database columns is
+     specified. The format used is described completely <a
+     href="schema.html">here</a>.</p>
+
+  <h5>&nbsp;Instantiating objects of generated classes</h5>
+
+  <p><a href="../examples/example2/Example2.java">Example2.java</a> uses the
+     schema.xml and application.xml files discussed above. Objects of
+     classes are obtained from a BeanFactory
+     (org.bhavaya.beans.BeanFactory) for the class in
+     question. e.g.<pre>
+     BeanFactory instrumentFactory = BeanFactory.getInstance(Instrument.class);</pre>
+  </p>
+
+  <p>Obtains a factory for objects of the Instrument class. Objects
+     created in this way will commonly be referred to as beans throughout
+     these webpages. Beans (and
+     collections of beans) can be obtained from this factory using a
+     number of techniques. The simplest of which is to use the
+     database primary key that relates to the bean: 
+  <pre>     Instrument instrument = (Instrument) instrumentFactory.get(new Integer(3)); </pre></p>
+
+   <p>which retrieves an instrument bean using values from the
+     database row that has an integer primary key of 3. If you run
+     Example2 you should see output similar to:<pre>
+     Found resource: file:/C:/Projects/WWWBeanFactoryTesting/./resources2/application2.xml
+     Found resource: file:/C:/Projects/WWWBeanFactoryTesting/./resources2/createExample2.sql
+     Found resource: file:/C:/Projects/WWWBeanFactoryTesting/./resources2/schema2.xml
+     instrument description = M&amp;S 7.75 30/12/2003
+     Price = 8.96 VAT Price = 10.53
+     Setting price to 5.99
+     instrument description = M&amp;S 7.75 30/12/2003
+     Price = 5.99 VAT Price = 7.04
+     Found resource: file:/C:/Projects/WWWBeanFactoryTesting/./resources2/destroyExample2.sql
+</pre></p>
+
+  <p>The code uses instrument's setters and getters to obtain its
+     description and price. Price is obtained from the database,
+     whereas the current VAT rate is a standard class property. The
+     setters only apply to the current bean and do not update the
+     values in the database.</p>
+
+  <p>After briefly reviewing the <a href="schema.html">schema file
+     format</a>, you should be in a position to modify the schema and
+     class files to extract and use classes from tables in your
+     database.</p>
+
+  <a name="foreign">
+  <h5>&nbsp;Class members that are also classes 1 - linking tables
+      via foreign keys</h5></a>
+
+  <p>Generated classes can have properties that return objects of
+     other generated classes. Example3 includes a <a
+     href="../examples/beans/Currency.java">Currency</a> class, and
+     also adds a currency table to the database (the instrument table
+     is also modified to include the currency table foreign key
+     constraint). A type definition for currency has also been added
+     to the <a href="schema3.xml.txt">schema</a> file.</p>
+
+  <p>The two classes are tied together by adding a foreign key
+     property to the type definition for the Instrument class in the
+     schema file, and a corresponding abstract getCurrency() method to
+     the <a href="../examples/beans/Instrument.java">Instrument</a>
+     class.<a
+     href="../examples/example3/Example3.java">Example3.java</a> simply
+     prints out one of the currency entries to illustrate this
+     functionality.</p>
+
+  <p>A foreign key property need not be unique, i.e. it may return a BeanCollection
+     rather than just a single Bean. In this case the foreignKeyProperty has cardinality="MANY"
+     and the abstract bean has getters and setters for a collection and a getter for an array i.e.</p>
+
+  <p><pre>
+     public abstract ReportAttachment[] getReportAttachments();
+     public abstract BeanCollection getReportAttachmentsCollection();
+     public abstract void setReportAttachmentsCollection(BeanCollection collection);
+
+     &lt;foreignKeyProperty name="reportAttachments"
+            type="org.somewhere.ReportAttachment"
+            cardinality="MANY"
+            foreignIndex="byReport" &lt;!-- the indexing rule would by specified in reportAttachments schema entry --&gt;
+            lazy="true">
+            &lt;column name="id"/&gt;
+     &lt;/foreignKeyProperty&gt;
+  </pre></p>
+
+  <a name="subclasses">
+  <h5>&nbsp;Subclasses (Joining tables)</h5></a>
+
+  <p>Generated classes can be subclasses of other generated
+     classes. <a
+     href="../examples/example4/Example4.java">Example4</a> has a <a
+     href="../examples/beans/Bond.java">Bond</a> class which is a
+     subclass of <a
+     href="../examples/beans/Instrument.java">Instrument</a>. The
+     subclass should be added in the same way as any other class:
+     there must be a table for it in the database and its type
+     definition should be added to the schema file.</p>
+
+  <p>The relationship is implemented at the database level and in the
+     schema.xml file. The subclass database table (bond) has a foreign
+     key reference to its parent table (instrument) and both class's
+     definitions in the schema file have additional entries. <a
+     href="schema4.xml.txt">schema4.xml</a> contains these
+     modifications. The parent class (instrument) type definition
+     has a subClassMappings tag, and the Bond type tag contains
+     a reference to the superType. The sql for generating Bonds is
+     also a join on the two tables.</p>
+
+  <p>Bond beans can be obtained from a BeanFactory for
+     Instrument.class or Bond.class. In the case of a BeanFactory for
+     Instrument.class, returned beans can be Instruments or Bonds
+     (depending on the key used for retrieval) with the expected
+     polymorphic behaviour.</p>
+
+  <a name="constructorproperty">
+  <h5>&nbsp;Class members that are also classes 2 -
+      constructorProperty</h5></a>
+
+  <p>Generated classes can have properties that return objects of
+     other classes, where the returned class is not itself based on a
+     database table. The constructor and the data used to instantiate
+     the returned class is specified, allowing some of the returned
+     class's properties to be set using data from the database.</p>
+
+  <p>The schema file is again used via a constructorProperty tag.
+     This tag contains nested tags describing the sources for the
+     constructor's arguments. Each nested tag specifies its return
+     type, so that the correct constructor can be used. Values for the
+     constructor can be obtained from a bean's existing properties
+     (which may be foreign) or from a database column, or they can be
+     a fixed value.</p>
+
+  <p><a href="../examples/example5/Example5.java">Example5</a>
+     demonstrates the use of a constructor property for the <a
+     href="../examples/beans/Quantity.java">Quantity</a>
+     class. The Schema file has the following additional entries:<pre>
+        &lt;constructorProperty name="instrumentQuantity" type="Quantity"&gt;
+            &lt;defaultValue value="5" type="int"/&gt;
+            &lt;column name="PRICE" source="instrumentQuantity.price" type="double"/&gt;
+            &lt;property name="currency.code" type="java.lang.String"/&gt;
+            &lt;defaultValue value="T" type="java.util.Date"/&gt;
+        &lt;/constructorProperty&gt;</pre>
+     </p>
+
+  <p>This defines a property of an Instrument bean to be
+     instrumentQuantity whose return type is Quantity. It will be
+     constructed using Quantity(int, double, String, Date) with fixed
+     values, values obtained from the database, and from instrument's
+     foreignKey property currency. The full syntax is described in the
+     <a href="schema.html#constructorProperty">schema file format</a>.</p>
+
+  <p><a href="persistence.html">back</a></p>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>
+
+    

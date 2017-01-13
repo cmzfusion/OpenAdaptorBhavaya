@@ -1,0 +1,241 @@
+<html>
+<head>
+<style type="text/css">
+ #vcenter { vertical-align: middle ! important}
+</style>
+<title>Bhavaya - Quickstart - Persistence Layer - Criterion Bean Collections</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+  <h3>Quickstart Guides</h3>
+  </a>
+
+  <h4>The Persistence Layer - Criterion Bean Collections</h4>
+
+  <p>Bhavaya provides a simple mechanism for obtaining a group of
+     beans from database data based on certain retrieval
+     conditions. For example, if a Trade bean exists that has a
+     currency property, then users may be interested in retrieving all
+     trade beans that are in a given currency. That is,
+     collections of beans can be obtained, in a single operation, that
+     match given criteria. Once obtained, these collections remain
+     up-to-date in real-time. If changes occur at the database level,
+     the criterion collection will check these changes against its own
+     criterion and its collection of beans will be adjusted accordingly
+     -- the collection will grow or shrink appropriately as the
+     database data changes.</p>
+
+  <p>Bean properties are used to determine which beans are
+     retrieved. However, bean properties are not referenced directly,
+     rather via an ID specifed in the criterion.xml file (the reason
+     for this should become apparent). Multiple beans are stored in
+     classes that implement the org.bhavaya.collection.BeanCollection
+     interface, and rules for obtaining BeanCollections are specified
+     using classes that implement the
+     org.bhavaya.beans.criterion.Criterion interface. </p>
+
+  <p>Bhavaya has a number of Criterion implementations the most commonly used ones are: basic and enumeration.
+     These are discussed separately below.</p>
+
+  <h5>&nbsp;Basic Criterion Bean Collections</h5>
+
+  <p>These critera apply to situations where a relational operator
+     can be used, e.g. return all trades whose sell price
+     is greater than 5 pounds, or all bonds whose maturity date is
+     10<sup>th</sup> April, 2004. An example "By_Currency_Code"
+     ID as specified in <a
+     href="../examples/example6/criterion.xml.txt">criterion.xml</a>
+     is given below:<pre>
+     &lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;
+
+     &lt;propertyGroup key="criterion"&gt;
+
+       &lt;propertyGroup key="By_Currency_Code"&gt;
+         &lt;property key="type" value="basic"/&gt;
+	 &lt;property key="name" value="Currency Code"/&gt;
+	 &lt;property key="toBeanType" value="java.lang.String"/&gt;
+	 &lt;propertyGroup key="beanTypes"&gt;
+	   &lt;propertyGroup key="beanType"&gt;
+             &lt;property key="beanType" value="Instrument"/&gt;
+             &lt;property key="beanPath" value="currency.code"/&gt;
+           &lt;/propertyGroup&gt;
+         &lt;/propertyGroup&gt;
+       &lt;/propertyGroup&gt;
+
+     &lt;/propertyGroup&gt;
+     </pre></p>
+
+  <p>This defines the "By_Currency_Code" ID (the choice of name for
+     the ID is arbitrary) to refer to
+     Instrument.getCurrency().getCode(), which returns a
+     java.lang.String. It can be used as follows:
+
+     <pre>
+     Criterion criterion = new BasicCriterion("By_Currency_Code", "=", "GBP");</pre>
+  </p>
+
+  <p>This criterion matches beans where the By_Currency_Code
+     definition evaluates to the string GBP. The first argument to
+     BasicCriterion is any ID specified in criterion.xml.  The
+     second argument is the operator (allowed values are described in
+     the <a href="#operators_basic">table below</a>). The third is the
+     comparison value, the type of this value must match the return
+     type of the rule in question (e.g. properties from integer
+     database columns should be compared against java.lang.Integer
+     objects).</p>
+
+  <p>Criteria, as defined above, are collected together to define a
+     CriterionGroup. Beans that match this group will have properties that
+     match all of its associated criteria. That is, it is an AND of
+     the individual criteria. The CriterionGroup is then passed to a
+     CriteriaBeanCollection to obtain a BeanCollection that satisfies
+     the criteria:
+
+     <pre>
+     CriterionGroup criterionGroup = new CriterionGroup("GBP currency group", new Criterion[]{criterion});
+     BeanCollection beanCollection = new CriteriaBeanCollection(Instrument.class,criterionGroup);</pre>
+
+  <p>CriterionGroup's constructor requires a name for the collection
+     and a Criterion array. CriteriaBeanCollection's constructor
+     requires the bean type (class) of its elements, and the
+     CriterionGroup. The above code is contained within <a
+     href="../examples/example6/Example6.java">Example6</a>.</p>
+
+  <p>The comparison made above may logically be applied to any number
+     of bean types. Thus, in a fuller example, the ID's entry in <a
+     href="../examples/example7/criterion.xml.txt">criterion.xml</a>
+     defines a set of (bean types + property paths) for beans that
+     have a String property that can be meaningfully compared with
+     a currency (e.g GBP). <a href="../examples/example7/Example7.java">Example7</a>
+     illustrates the use of the other operators and has added <a
+     href="../examples/beans/Trade.java">Trade</a> and <a
+     href="../examples/beans/TradeType.java">TradeType</a>
+     classes. (The Trade class has an associated Instrument bean,
+     accessed via its Instrument property (trade.getInstrument()). This
+     is implemented via a <a
+     href="persist_schema.html#foreign">foreign key property</a> in <a
+     href="../examples/example7/schema7.xml.txt">schema.xml</a>).</p>
+
+  <p>If the return type specified by the ID is a
+     bean representing a row in the database, then any criterion using this ID should be evaluated
+     against the primary key for that bean, rather than
+     the bean itself. An example of this usage is contained within the
+     Enumeration criteria below.</p>
+
+  <h5>&nbsp;Summary of allowed operators</h5>
+
+  <p><a name="operators_basic"></a>
+    <table>
+      <tr>
+        <th>operator</th>
+	<th>description</th>
+      </tr>
+      <tr>
+        <td>=</td>
+	<td>equals</td>
+      </tr>
+      <tr>
+        <td>!=</td>
+	<td rowspan="2" id="vcenter">not equal to</td>
+      </tr>
+      <tr>
+        <td>&lt;&gt;</td>
+      </tr>
+      <tr>
+        <td>&gt;</td>
+	<td>greater than</td>
+      </tr>
+      <tr>
+        <td>&lt;</td>
+	<td>less than</td>
+      </tr>
+      <tr>
+        <td>&gt;=</td>
+	<td>greater than or equal to</td>
+      </tr>
+      <tr>
+        <td>&lt;=</td>
+	<td>less than or equal to</td>
+      </tr>
+    </table>
+  </p>
+
+
+
+  <h5>&nbsp;Enumeration Criterion Bean Collections</h5>
+
+  <p>Bean properties may also be compared against a set of values
+     rather than a single value. Criteria of this type are specified
+     as enumeration rather than basic in <a
+     href="../examples/example8/criterion.xml.txt">criterion.xml</a>,
+     and use the operators IN and NOT IN described in the <a
+     href="#operators_enumeration">table below</a>. Notice that in the
+     following example, the return property of the ID specified in
+     criterion.xml is a bean. In this case the criterion is compared
+     against the primary key for the desired bean.  Obtaining a BeanCollection for an enumeration is
+     illustrated below.
+
+  <pre>
+        EnumerationCriterion.EnumElement[] enumElements = {new EnumerationCriterion.EnumElement("EUR",null),
+                                                          new EnumerationCriterion.EnumElement("USD",null)};
+        Criterion enumCriterion = new EnumerationCriterion("By_Currency", "IN", enumElements);
+        CriterionGroup enumGroup = new CriterionGroup("Not Pounds", new Criterion[]{enumCriterion});
+
+        BeanCollection enumCollection = new CriteriaBeanCollection(Trade.class,enumGroup);
+  </pre></p>
+
+  <p>This code is exercised in <a
+  href="../examples/example8/Example8.java">Example8</a>.</p>
+
+  <h5>&nbsp;Summary of allowed operators</h5>
+
+  <p><a name="operators_enumeration"></a>
+    <table>
+      <tr>
+        <th>operator</th>
+	<th>description</th>
+      </tr>
+      <tr>
+        <td>IN</td>
+	<td>Value is in the specified set.</td>
+      </tr>
+      <tr>
+        <td>NOT IN</td>
+	<td>Value is not in the specified set.</td>
+      </tr>
+    </table>
+  </p>
+
+  <p>There is also a <a href="criterion.html">complete guide to
+     criterion.xml</a></p>
+
+  <p><a href="persistence.html">back</a></p>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+
+</div>
+</div>
+</body>
+</html>

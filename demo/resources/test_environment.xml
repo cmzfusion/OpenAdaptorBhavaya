@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<propertyGroup key="environment">
+
+    <property key="subscriber" value="org.bhavaya.coms.LocalNotificationSubscriber"/>
+    <property key="publisher" value="org.bhavaya.coms.LocalNotificationPublisher"/>
+
+</propertyGroup>

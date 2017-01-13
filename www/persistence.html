@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>Bhavaya - Persistence Layer Class Overview</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+    <h3>Bhavaya Architecture</h3>
+
+    <h4>The Persistence Layer</h4>
+
+    <h5>&nbsp;BeanFactories</h5>
+
+    <p>Tables in a database correspond to Java classes and table
+       columns correspond to properties of those classes. Properties
+       follow JavaBean rules in that there are getter and setter
+       methods for each property. For this reason, object inflated
+       from the database are usually referred to as beans.</p>
+
+    <p>Inflated beans are stored in a Map (java.util.Map), where the
+       value is the bean and the key is the primary key. There is one
+       Map for each class of bean (typically one Map for each database
+       table). The implementations of Map support real-time
+       updates. The class hierarchy used is shown below.</p>
+
+    <p><br></p>
+
+    <p><center><img src="images/persistence_classes.png"></center></p>
+
+    <p><center><em>BeanFactory Class Hierarchy</em></center></p>
+
+    <p><br></p>
+
+    <p>An ObservableMap allows listeners to be added, who are notified
+       when the map's content changes. ObservableMaps fire MapEvents
+       which indicate if beans have been added, removed or deleted.</p>
+
+    <p>BeanFactory subclasses ObservableMap. Beans can be
+       retrieved using the primary key of the bean or alternatively
+       based on criteria. i.e. you can call:</p>
+
+    <p>
+       <pre>
+            Object get(Object key)
+            Object[] get(Object[] keys)
+            BeanCollection get(CriterionGroup criteria)
+       </pre>
+    </p>
+
+    <p>on the BeanFactory. TabularDataBeanFactory subclasses
+       BeanFactory and generates beans from TabularData.
+       SqlBeanFactory subclasses TabularDataBeanFactory and populates
+       itself from a database (by providing an implementation of
+       TabularData that accesses java.sql.ResultSet).  The
+       SqlBeanFactory uses select statements to retrieve beans from
+       the database and also listens for changes to data in the
+       database.</p>
+
+    <a name="storage">
+    <h5>&nbsp;BeanCollections</h5>
+    </a>
+
+    <!--<p><br></p>-->
+
+    <p>Bhavaya allows you to obtain BeanCollections from a BeanFactory
+       (collections of beans) that match certain criteria.  The
+       BeanFactory will also ensure that beans are inserted, updated
+       or deleted in the BeanCollection, as data in the database
+       changes, where that data meets the BeanCollection's criteria.
+       BeanCollections are subclasses of Collection
+       (java.util.Collection) extended with real-time functionality.
+       The class hierarchy used is shown below.</p>
+
+    <p><center><img src="images/persistence_object_classes.png"></center></p>
+
+    <p><center><em>BeanCollection Class Hierarchy</em></center></p>
+
+    <p><br></p>
+
+    <p><a href="cached_object_graph.html">Cached Object Graph</a></p>
+
+    <p><br><a href="architecture.html#persistence_layer">back to
+       Bhavaya Architecture</a></p>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="overview.html">Overview</a></td>
+            <td><a href="architecture.html">Architecture</a></td>
+            <td><a href="quickstart.html">Quickstart</a></td>
+            <td><a href="download.html">Download</a></td>
+	    <td><a href="feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>

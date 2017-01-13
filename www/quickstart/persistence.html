@@ -1,0 +1,185 @@
+<html>
+<head>
+<title>Bhavaya - Quickstart - Persistence Layer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+  <h3>Quickstart Guides</h3>
+  <h4>The Persistence Layer</h4>
+
+  <p>The Bhavaya persistence layer is configured via .xml files,
+     namely application.xml, schema.xml and criterion.xml. There is a
+     step-by-step guide to the entries required in these files,
+     together with example source code that tests each of the new
+     features introduced.  Alternatively, complete annotated sample
+     configuration files are available as a guide for the more
+     adventurous.</p>
+
+  <h4>&nbsp;Step by step guide to configuring the persistence layer</h4>
+
+  <h5>&nbsp;Generating class objects (beans) from the database</h5>
+
+  <p>
+    <ul>
+      <li><a href="basic_config.html">Basic configuration</a> Set-up
+          required for all of the examples that follow. Make sure you read
+          and implement this first!</li>
+      <li><a href="persist_database.html">Configure connection to database</a>
+          A minimal example for obtaining a database connection.</li>
+      <li><a href="persist_schema.html">Defining classes to be inflated from
+          the database</a> - schema.xml</li>
+      <li><a href="persist_persister.html">Persisting classes</a>
+          Rewriting classes back to the database</li>
+      <li><a href="persist_criterion.html">Criterion Bean
+          Collections</a> Retrieving collections of beans based on a
+          Criterion set</li>
+      <li><a href="bean_factory_api.html">Obtaining objects from the
+          database</a> The BeanFactory API</li>
+    </ul>
+  </p>
+
+  <h5>&nbsp;Implementing real-time functionality</h5>
+
+  <p>
+    <ul>
+      <li><a href="persist_realtime.html">Real-time functionality</a>
+          Configuring Bhavaya so that its classes respond to changes
+          in database data</li>
+      <li><a href="persist_lifecycle.html">The life cycle interface</a>
+          Implementing methods to be called at various points in a
+          bean's life</li>
+      <li><a href="persist_propertychangeevents.html">Property Change
+          Events</a> Customising the way your classes behave
+          when database data changes</li>
+   </ul>
+ </p>
+
+ <h4>Complete guides to the configuration files</h4>
+ 
+ <p>
+   <ul>
+     <li><a href="application.html">application.xml</a></li>
+     <li><a href="schema.html">schema.xml</a></li>
+     <li><a href="criterion.html">criterion.xml</a></li>
+   </ul>
+  </p>
+ 
+<!--
+
+    <p>The connection to the database (used for populating the Java
+       objects) and the connection to the sql broadcaster (used for
+       keeping the objects up-to-date) are set in the configuration
+       file application.xml.</p>
+
+    <h5>&nbsp;Setting up a connection to a Sybase database</h5>
+
+    <p>In the case of a Sybase database where Bhavaya monitors the
+       audit trail logs, the relevant entries are in the
+       &lt;propertyGroup&nbsp;key="sqlbroadcaster"&gt; section and are
+       described below.</p>
+
+    <p>
+     <table border="2" cellpadding="2" cellspacing="2" rules="colls">
+      <tr>
+       <td>databaseName</td>
+       <td>Name of the database within the database server</td>
+      </tr>
+      <tr>
+       <td>databaseServer</td>
+       <td>IP address / Name of machine hosting the database server</td>
+      </tr>
+      <tr>
+       <td>sqlFilename</td>
+       <td>Full path and name of file containing the database's audit trail</td>
+      </tr>
+      <tr>
+       <td>auditTableCheckPeriod</td>
+       <td>1000</td>
+      </tr>
+      <tr>
+       <td>auditTableRowCountCheckPeriod</td>
+       <td>60000</td>
+      </tr>
+      <tr>
+       <td>maximumAuditTableRowCount</td>
+       <td>5000</td>
+      </tr>
+      <tr>
+       <td>multicastPort</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td>classpath</td>
+       <td>bhavaya.jar,shiva.jar,log4j-1.2.15-patched.jar,bcel-5.1.jar,jConnect.jar,jmxtools.jar,commons-logging.jar,j2ssh-core-0.2.6.jar</td>
+      </tr>
+      <tr>
+       <td>hostHome</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td>hostUsername</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td>hostPassword</td>
+       <td></td>
+      </tr>
+      <tr>
+       <td>hostJava</td>
+       <td>Location of Java libraries on the host</td>
+      </tr>
+      <tr>
+       <td>hostPathSeparator</td>
+       <td>:</td>
+      </tr>
+      <tr>
+       <td>hostFileSeparator</td>
+       <td>/</td>
+      </tr>
+      <tr>
+       <td>hostLogConfigFile</td>
+       <td>xml file logs written by the sql broadcaster</td>
+      </tr>
+     </table>
+
+   <h5>&nbsp;Listening on a TCP socket for the sql statements</h5>
+
+
+    <p>OTHER DBs BROADCAST THE SQL LET US HAVE THE SOLUTION!</p>
+    <p>SCHEMA FILES, FORMAT AND USE</p>
+
+-->
+
+     <p><a href="../architecture.html#persistence_layer">back to Bhavaya Architecture</a>&nbsp;&nbsp;<a href="../quickstart.html">back to Quickstart Guides</a></p>
+
+  </div>
+</div>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>
+

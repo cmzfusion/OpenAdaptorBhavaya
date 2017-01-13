@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Bhavaya - Architecture - CPU Load</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+  <h3>Bhavaya Architecture</h3>
+   
+  <h4>CPU Load</h4>
+
+<p>The CpuLoad class (org.bhavaya.util) provides load information for
+   the system's processor(s). The class uses a native c compiled
+   program to access the machine's resources.</p>
+
+<p>The class can be seen in action by running the <a
+     href="builder/cpu-load.jnlp">demo directly</a> using
+     JavaWebStart, from the <a href="examples/CpuLoadDemo.java">source
+     code</a>, or if you have downloaded and extracted <a
+     href="downloads/examples.zip">examples.zip</a> it can be run
+     with: ant cpuloaddemo. A screen shot of the CPU Load Demo is
+     shown below.</p>
+
+<p><center><img src="images/cpu_load.png"></center></p>
+
+<p>CpuLoad is a singleton class, with two methods for accessing load
+information:</p>
+
+  <p><pre>
+     System.out.println("Load = " + CpuLoad.getInstance().getLoad()*100.0 + "%");
+     System.out.println("Average Load = " + CpuLoad.getInstance().getLoadAverage()*100 + "%");        
+</pre></p>
+
+  <p>When using this component, it is necessary to ensure that the VM
+     knows the location of the native library, by using an
+     appropriately modified command line argument (see <a
+     href="library_error.html">library error</a>) similar
+     to:<pre>
+     -Djava.library.path="C:/extract/location/bhavaya/lib"</pre><p>
+
+  <p>(Also remember to add Bhavaya's jar files to your classpath
+     (extract_location/bhavaya/bin/bhavaya.jar and
+     extract_location/bhavaya/lib/log4j-1.2.15-patched.jar).)</p>
+
+<!--
+ <p>To use this component it is necessary to:
+    <ul>
+       <li>Ensure that the VM knows the location of the native
+           library, by using an appropriately modified command line
+           argument (see <a href="library_error.html">Library
+           Error</a>) similar
+           to:<pre>-Djava.library.path="C:/extract/location/bhavaya/lib"</pre></li>
+      <li>Add Bhavaya's jar files to your classpath
+      (extract_location/bhavaya/bin/bhavaya.jar and
+       extract_location/bhavaya/lib/log4j-1.2.15-patched.jar).</li>
+      <li>Add the line <pre>
+      import org.bhavaya.util.CpuLoad;</pre>
+       to your source file.</li>
+    </ul>
+  <p>
+-->
+
+  <p><br><a href="architecture.html#jni">back to
+       Bhavaya Architecture</a></p>
+
+  </div>
+</div>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="overview.html">Overview</a></td>
+            <td><a href="architecture.html">Architecture</a></td>
+            <td><a href="quickstart.html">Quickstart</a></td>
+            <td><a href="download.html">Download</a></td>
+	    <td><a href="feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>

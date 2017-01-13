@@ -1,0 +1,428 @@
+<html>
+<head>
+<style type="text/css">
+ #level0 { background: #99CC00 ! important}
+ #level1 { background: #CCFFFF ! important}
+ #level2 { background: #FFCC99 ! important}
+</style>
+<title>Bhavaya - Quickstart - Persistence Layer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+  <h3>Quickstart Guides</h3>
+  <h4>The Persistence Layer - Format of application.xml</h4>
+
+  <p>Application.xml is of the form:<pre>
+ 
+     &lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;   
+
+     &lt;propertyGroup key="key"&gt;
+       
+       &lt;property key="key" value="value"/&gt;
+       
+       &lt;propertyGroup key="key"&gt;
+          &lt;property key="key" value="value"/&gt;
+          ...
+       &lt;/propertyGroup&gt;
+
+       ...
+
+     &lt;/propertyGroup&gt;</pre></p>
+
+    <p>There is a complete example <a
+       href="application.xml.txt">application.xml</a>. There should be
+       a top-level propertyGroup whose key is the application's name
+       concatenated with
+       "Properties". The remaining keys and values are described in the
+       table below.</p>
+
+  <p>
+  <table width="50%">
+    <tr>
+      <th colspan="2">Colour codes</th>
+    </tr>
+    <tr>
+      <td id="level0">top level</td>
+      <td rowspan="3" width="70%">The colours indicate a tag's level
+    of nesting within application.xml, as both propertyGroup tags and
+    propertyKey tags can be at any level within the file.</td>
+    </tr>
+    <tr>
+      <td id="level1">1st level nested</td>
+    </tr>    
+    <tr>
+      <td id="level2">2nd level nested</td>
+    </tr>    
+  </table>
+  </p>
+
+  <p>Do these colours help, or just add to confusion?? Is giving an
+  example file enough?</p>
+
+  <p><br></p>
+
+  <p>
+  <table width="100%">
+    <tr>
+      <th>propertyGroup key=</th>
+      <th>property key=</th>
+      <th>example value</th>
+      <th>description</th>
+    </tr>
+    <tr>
+      <td id=level0>datasources</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level1">defaultDataSource</td>
+      <td>demoDatabase</td>
+      <td>Group containing entries for all datasources used by the
+          persistence layer. Should contain a key pointing to the
+          datasource to use if more than one are specified, and any number
+          of datasource propertyGroups for each datasource.</td>
+    </tr>
+    <tr>
+      <td id="level1">datasource</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">name</td>
+      <td>demoDatabase</td>
+      <td>The name used within the source code when referring to this
+      connection</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">type</td>
+      <td>org.bhavya.db.DefaultDataSource</td>
+      <td>Type of the datasource, this may also be
+          org.bhavaya.db.JNDIDataSource</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">driverName</td>
+      <td>org.hsqldb.jdbcDriver</td>
+      <td>Name of the database driver</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">dialectClass</td>
+      <td>org.bhavaya.db. DefaultDatabaseDialect</td>
+      <td>Dialect to use when communicating with the database. Other
+          dialects currently available are
+          org.bhavaya.db.[OracleDatabaseDialect||SqlServerDatabaseDialect||SybaseDatabaseDialect]</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">url</td>
+      <td>jdbc:hsqldb:.</td>
+      <td>url for connecting to the relevant driver - see you database
+          driver's documentation.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">user</td>
+      <td>sa</td>
+      <td>database user name</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">password</td>
+      <td></td>
+      <td>database user's password</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">defaultCatalog</td>
+      <td>Trades</td>
+      <td>(optional) database catalogue to use.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <a name="autocommit">
+      <td id="level2">autoCommit</td>
+      </a>
+      <td>true</td>
+      <td>[true||false] Specifies whether the database's transactions
+          are autocommitted. (If false you may need to also specify
+          <a href="#metadata">databaseMetaData</a>.)</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">transactionIsolation</td>
+      <td>DEFAULT</td>
+      <td>Allowed values are:
+         [DEFAULT||NONE||READ_UNCOMMITTED||READ_COMMITTED||REPEATABLE_READ||
+         SERIALIZABLE] and these refer to the corresponding JDBC transaction
+         isolation levels.</td>
+    </tr>
+    <tr>
+      <td id="level1">webserviceDatasource</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">name</td>
+      <td>infoservice</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">wsdlLocation</td>
+      <td>http://www.somewhere.com/info.asmx?WSDL</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">endPoint</td>
+      <td>http://www.somewhere.com/info.asmx</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">namespace</td>
+      <td>http://www.somewhere.com/webservices</td>
+      <td</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">service</td>
+      <td>Info</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">serviceStubClass</td>
+      <td>com.somewhere.webservices.InfoStub</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td id="level0">databaseMetaData</td>
+      <td></td>
+      <td></td>
+      <td><b>This is a workaround for some databases, enabling Bhavaya to
+      obtain metadata from databases where autoCommit is false.</b></td>
+    </tr>
+    <tr><a name="metadata">
+      <td id="level1">datasourceMapping</td></a>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">fromDatasource</td>
+      <td>demoDatabaseTx</td>
+      <td>Datasource from which the metadata is required</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">toDatasource</td>
+      <td>demoDatabase</td>
+      <td>Use this datasource instead for obtaining the metadata for
+      fromDatasource</td>
+    </tr>
+    <tr>
+      <td id="level0">sql broadcaster</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level1">sqlFilename</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level1">allowFileToEnd</td>
+      <td>true</td>
+      <td>[true||false]</td>
+    </tr>
+    <tr>
+      <td id="level0">beanFactory</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level1">referenceType</td>
+      <td>SOFT</td>
+      <td>[STRONG||WEAK||SOFT] - Mirrors java.lang.ref - reference type of
+      generated beans, weak references may be removed at the
+      discretion of the garbage collector, strong references will not
+      be garbage collected.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level0">schema</td>
+      <td>schema.xml</td>
+      <td>Schema file to use.</td>
+    </tr>
+    <tr>
+      <td id="level0">sqlbroadcaster</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level1">sqlFilename</td>
+      <td>Bhavaya_RT_Demo.script</td>
+      <td>Name of the file to monitor, where the single-row sql
+          statements for database updates will appear.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level1">allowFileToEnd</td>
+      <td>true</td>
+      <td>[true||false] Continue to process file if its end is reached
+          (i.e. wait for new lines to be appended).</td>
+    </tr>
+    <tr>
+      <td id="level0">notifications</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td id="level1">subject</td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">name</td>
+      <td>sql</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">autoCommit</td>
+      <td>true</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">subscriber</td>
+      <td>org.bhavaya.coms. SocketNotificationSubscriber</td>
+      <td>The class to use when processing subscriber notifications,
+          available classes in org.bhavya.coms are:
+          SocketNotificationSubscriber, LocalNotificationSubscriber,
+          JMSNotificationSubscriber,  TibcoRvNotificationSubscriber and
+          OmegaNotificationSubscriber</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">publisher</td>
+      <td>org.bhavaya.coms. SocketNotificationPublisher</td>
+      <td>The class to use when processing published notifications,
+          available classes in org.bhavya.coms are:
+          SocketNotificationPublisher, LocalNotificationPublisher,
+          JMSNotificationPublisher and TibcoRvNotificationPublisher</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">host</td>
+      <td>127.0.0.1</td>
+      <td>IP address of machine providing the notifications</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">subscribePort</td>
+      <td>5444</td>
+      <td>Port to which you should connect if you wish to receive the
+          broadcast sql.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">publishPort</td>
+      <td>5445</td>
+      <td>Port to which you should send sql to be broadcast to people
+      who have connected to the subscribePort.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">diagnosticPort</td>
+      <td>5446</td>
+      <td>Connect to this port via http for diagnostic information.</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">maximumQueuedNotifications PerSubscriberOnServer</td>
+      <td>256</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">maximumQueuedNotification OnSubscriber</td>
+      <td>5000</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">serverReconnectionPeriod</td>
+      <td>5000</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">reconnectionPeriod</td>
+      <td>30000</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="level2">failedMessageCache</td>
+      <td>false</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </table>
+  </p>
+
+  <p><a href="persistence.html">back</a></p>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>

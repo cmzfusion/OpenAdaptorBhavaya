@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp codebase="@codebase@" href="bhavaya.jnlp">
+    <information>
+        <title>Bhavaya</title>
+        <vendor>Bhavaya</vendor>
+    </information>
+
+    <resources>
+        <jar href="bhavaya.jar" main="true" download="eager" @versionNumber@/>
+        <jar href="mail.jar" download="eager" @versionNumber@/>
+        <jar href="activation.jar" download="eager" @versionNumber@/>
+        <jar href="log4j-1.2.5.jar" download="eager" @versionNumber@/>
+        <jar href="openadaptor.jar" download="lazy" @versionNumber@/>
+        <jar href="bcel-5.1.jar" download="eager" @versionNumber@/>
+        <jar href="axis.jar" download="lazy" @versionNumber@/>
+        <jar href="commons-discovery.jar" download="lazy" @versionNumber@/>
+        <jar href="commons-logging.jar" download="lazy" @versionNumber@/>
+        <jar href="concurrent.jar" download="eager" @versionNumber@/>
+        <jar href="jaxrpc.jar" download="lazy" @versionNumber@/>
+        <jar href="saaj.jar" download="lazy" @versionNumber@/>
+        <jar href="wsdl4j.jar" download="lazy" @versionNumber@/>
+        <jar href="jmxri.jar" download="eager" @versionNumber@/>
+        <jar href="jmxtools.jar" download="eager" @versionNumber@/>
+        <jar href="jmxremote.jar" download="eager" @versionNumber@/>
+        <jar href="jmxremote_optional.jar" download="eager" @versionNumber@/>
+
+        <nativelib href="bhavayaNativeLib.jar" download="eager" @versionNumber@/>
+    </resources>
+
+    <security>
+        <all-permissions/>
+    </security>
+
+    <component-desc/>
+</jnlp>

@@ -1,0 +1,122 @@
+<html>
+<head>
+<title>Bhavaya - Quickstart - Persistence Layer - Persisting Beans</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+  <h3>Quickstart Guides</h3>
+
+  <h4>The Persistence Layer - Rewriting beans back to the database</h4>
+ 
+  <p>Beans are written, updated and deleted from the database using
+     the org.bhavaya.db.Persister class.</p>
+
+  <p>A Persister object relates to a given database connection and
+     will optionally broadcast the sql used to modify the
+     database. Its simplest use is as follows:
+
+     <pre>
+     Persister(String dataSourceName, NotificationPublisher broadcaster)
+     </pre>
+  </p>
+
+  <p>The dataSourceName is one defined in <a
+     href="persist_database.html">application.xml</a> and the
+     broadcaster can be null. The relevant methods for persisting
+     beans are:
+  </p>
+
+  <p>
+    <table>
+      <tr>
+        <th>method</th>
+        <th>return type</th>
+	<th>description</th>
+      </tr>
+      <tr>
+        <td>deleteObject(Object bean)</td>
+	<td>void</td>
+	<td>Remove the entry from the database for the specified bean</td>
+      </tr>
+      <tr>
+        <td>insertObject(Object bean)</td>
+	<td>void</td>
+	<td>Adds an entry for the specified bean to the database. It
+            is up to the user to ensure that the correct primary key has
+            been set on the bean. Alternatively, the primary key can be
+            generated automatically. This will happen if the idFactory 
+	    attribute of primaryKey has been set in 
+            <a href="schema.html#primaryKey">schema.xml</a></td>
+      </tr>
+      <tr>
+        <td>updateObject(Object bean, String[] propertiesToSet)</td>
+	<td>void</td>
+	<td>Updates the entry in the database for the specified bean,
+            updating the properties specified in propertiesToSet.</td>
+      </tr>
+      <tr>
+        <td>commit()</td>
+	<td>void</td>
+	<td>Commit any transactions initiated using this persister
+            instance. Necessary if the datasource has autocommit set
+            to false in
+            <a href="application.html#autocommit">application.xml</a></td>
+      </tr>
+      <tr>
+        <td>rollback()</td>
+	<td>void</td>
+	<td>Rollback to the last commit - can be used if autocommit is
+            set to false in
+            <a href="application.html#autocommit">application.xml</a>.</td>
+      </tr>
+    </table>  
+  </p>
+     
+  <p>An example of updating the price property of an instrument follows:
+
+  <pre>
+        BeanFactory instrumentFactory = BeanFactory.getInstance(Instrument.class);
+        Instrument instrument = (Instrument) instrumentFactory.get(new Integer(3));
+        instrument.setPrice(5.99);
+        Persister persister = new Persister("example2Database",null);
+        try {
+            persister.updateObject(instrument,new String[]{"Price"});
+        } catch (Exception e) {
+            System.err.println("Exception!");
+        }
+  </pre>
+  </p>
+
+  <p>and each of the methods is exercised in <a href="../examples/example2/Example2b.java">Example2b.java</a>.</p>
+
+  <p><a href="persistence.html">back</a></p>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>
+
+    

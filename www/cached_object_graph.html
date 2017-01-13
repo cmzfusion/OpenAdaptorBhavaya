@@ -1,0 +1,205 @@
+<html>
+<head>
+<title>Bhavaya - Architecture - Cached Object Graph</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+    <h3>Bhavaya Architecture</h3>
+
+    <h4>Cached Object Graph</h4>
+
+    <p>This class allows monitoring of a collection of properties of
+       objects of a given class, where each object's properties are
+       observable<sup>1</sup> and may result from objects of other
+       observable classes. Thus, each object's properties may change
+       indirectly as its sub-owned objects change, furthermore, these
+       sub-changes may happen asynchronously. The inter-relationship
+       between the main object and its dependent objects can be viewed
+       as a graph. Cached Object Graph provides a thread-safe way of
+       monitoring a graph of observable objects. </p>
+
+    <p>This scenario could be accommodated using a number of chained
+       listeners, that tie the properties together. For example, if
+       there are objects of a class a, b, c e.t.c, where "a" has an
+       object b [a.setFriend(b)], b an object of c and so on, then the
+       listener structure would typically be:
+       a&#65279;-&#65279;>b&#65279;-&#65279;>c&#65279;-&#65279;>d,
+       where d.setFriend(e) would eventually be propogated to a. The
+       problem in a multi-threaded system is if, for example,
+       d.setFriend(e) and b.setFriend(g) were called at the same
+       time. While adjusting the listeners for b, e's event may make
+       some progress up the chain and encounter an out of date
+       listener link, leading to inconsistent or corrupted data.<p>
+
+    <p><center><img src="images/cached_graph.png"></center></p>
+
+    <p>Of course, the friend classes of the objects depicted above,
+       need not be objects of the same class as the original. This
+       would more likely be the case in a real-world application, for
+       example, class "a" might have a property price, which is a
+       Price class object. The Price class object may have properties
+       dependent on CurrentInterestRates and CurrentRisk class
+       objects. All of these objects are observable<sup>1</sup> and a
+       change in any one of them would have to be propogated back to
+       the original object a.</p>
+
+    <p>Cached Object Graph overcomes the problem of maintaing accurate
+       listener links, and guarantess the integrity of the data that
+       it returns. This is acheived using a copy (cache!) of the
+       underlying reference graph. Only completely propogated changes are
+       returned.</p>
+
+    <p>An observable object is registered as the root object for a
+       Cached Object Graph, then rather than registering any listeners
+       directly on the object's properties, they are registered with
+       the Cached Object Graph instead together with a path specifier
+       for the property that you're interested in. (For example a path
+       might be a.friend.friend.foo or in a more real-world context
+       a.price.currentInterestRates.) You can add as many root objects
+       as you like to a single Cached Object Graph object. The Bhavaya
+       GUI typically displays objects of a given class in a
+       table. Within Bhavaya, one Cached Object Graph object is used
+       for a table. Class properties (a registered root object's
+       observables) are displayed in the table's columns and there is
+       a row for each root object registered with the Cached Object
+       Graph object.</p>
+
+    <p>CachedObjectGraph can operate in "synchronous" or "asynchronous"
+       modes. This relates to whether events are propagated on the same
+       thread as they occur on, and whether requests to a previously
+       unmonitored area call the bean "getters" in the same thread.
+       This is relevant when you may have getters with a high time cost
+       (e.g. database access). In asynchronous mode, CachedObjectGraph 
+       will return the special (final static) "LOADING" object if the
+       underlying bean getter has not returned yet. An event will be
+       issued when the method returns and the value moves from "LOADING"
+       to its real value. In asynchronous mode, the concept of "row ready
+       listeners" are available. The functionality was added due to a
+       requirement then new rows in a table (backed by COG) did not start
+       with all cells showing "loading...". In order to solve this, if you
+       add a "RowReadyListener" to a COG, it will set up a mechanism to notify
+       the listener when all vivible properties of a given root object are no
+       longer "Loading" but show the correct value. In a synchronous COG, there
+       is not multithreading for accesses to the graph, and therefore no need
+       for a RowReadyListener.</p>
+
+    <h5>&nbsp;&nbsp;Usage</h5>
+
+    <p>API summary:
+
+    <br><br>
+    <table>
+      <tr>
+        <th>Function</th>
+	<th>Return type</th>
+	<th>Description</th>
+      </tr>
+      <tr>
+        <td>CachedObjectGraph(class beanType)<br>
+	    CachedObjectGraph(class beanType, boolean asynchronous)</td>
+	<td></td>
+	<td>Constructors. beanType doesn't appear to be used! The boolean
+            determines whether asynchronous loading of an object's
+	    properties occurs.</td>
+      </tr>
+      <tr>
+        <td>addPathListener(String propertyPath,GraphChangeListener
+            listener)</td>
+	<td>void</td>
+	<td>propertyPath is the path to the property that you wish to
+	    observe, in relation to the root object. listener is the
+	    listener to be notified when the property specified by
+            propertyPath changes</td>
+      </tr>
+      <tr>
+        <td>addRootObject(Object object)</td>
+	<td>void</td>
+	<td>The head of the graph of observable objects, to which all
+	    propertyPaths refer. As many root objects as required may
+            be added.</td>
+      </tr>
+      <tr>
+        <td>dispose()</td>
+	<td>void</td>
+	<td>Stop using this CachedObjectGraph object, and remove all
+	    the listeners currently associated with it.</td>
+      </tr>
+      <tr>
+        <td>removePathListener(String propertyPath,
+	GraphChangeListener listener)</td>
+	<td>void</td>
+	<td>Remove the listener associated with this propertyPath</td>
+      </tr>
+      <tr>
+        <td>removeRootObject(object)</td>
+	<td>void</td>
+	<td>Remove the associated root object</td>
+      </tr>
+      <tr>
+        <td></td>
+	<td></td>
+	<td></td>
+      </tr>
+      <tr>
+        <td></td>
+	<td></td>
+	<td></td>
+      </tr>
+    </table>
+
+    </p>
+
+    <p>propertyPaths are Strings of the form "a.b.g.foo" or
+       "a.b.c.d.friend.foo", as taken from the figure above, and refer
+       to the property the user is interested in, in relation to the
+       root object a. It is assumed that if you call a.b, that a has
+       methods getB and setB, i.e. the string would actually be
+       translated into a.getB.</p>
+
+    <p>In asynchronous mode, Cached Object Graph will not block
+       waiting for an object's properties, instead a new thread will
+       be created for each property requested. For example, if
+       "a.b.g.foo" actually results in a database query, with
+       asynchronous set to true the value displayed will be
+       "Loading..." until it is ready, and all other queries will also
+       be initiated.</p>
+
+    <p><br><a href="architecture.html#persistence_layer">back to
+       Bhavaya Architecture</a></p> 
+
+    <br>
+
+    <hr>
+    
+    <p>1: Observable properties are class properties that may change and
+       have associated events and listeners.</p>
+
+
+  </div>
+</div>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="overview.html">Overview</a></td>
+            <td><a href="architecture.html">Architecture</a></td>
+            <td><a href="quickstart.html">Quickstart</a></td>
+            <td><a href="download.html">Download</a></td>
+	    <td><a href="feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>

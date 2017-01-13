@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp
+  codebase="http://bhavaya.openadaptor.org/builder/"
+  href="decimal-text-field.jnlp">
+<!--
+<jnlp
+  codebase="file://C:/Projects/ShivaApps/bhavaya/www/builder/"
+  href="decimal-text-field.jnlp">
+-->
+
+    <information>
+        <title>Bhavaya Decimal Text Field Demo</title>
+        <vendor>Bhavaya</vendor>
+        <homepage href="http://bhavaya.openadaptor.org"/>
+        <description>Bhavaya Decimal Text Field Demo</description>
+	<offline-allowed/>
+    </information>
+
+    <resources>
+        <j2se version="1.4.2* 1.4.1* 1.4" max-heap-size="256m"/>
+        <property name="sun.java2d.noddraw" value="true"/>
+
+        <jar href="bhavaya.jar" main="true" download="eager"/>
+        <jar href="log4j-1.2.15-patched.jar" download="eager"/>
+    </resources>
+
+    <security>
+        <all-permissions/>
+    </security>
+
+    <application-desc main-class="org.bhavaya.ui.DecimalTextFieldDemo"/>
+
+</jnlp>

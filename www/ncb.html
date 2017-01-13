@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>Bhavaya - Architecture - Split Panels</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+  <h3>Bhavaya Architecture</h3>
+   
+  <h4>Narrowable Combo Box</h4>
+
+  <p>The NarrowableComboBox (org.bhavaya.ui.NarrowableComboBox) is a
+     text entry utility that increasingly accurately suggests the
+     correct input from a range of fixed possibilities, as the user
+     enters more characters. That is, the suggested input narrows in
+     on the final value as the user types. This entry method is
+     particularly useful when populating the list of choices is a time
+     consuming operation, for example, when the list of available
+     options is obtained from querying a database.</p>
+  
+  <p>A demonstration of the NarrowableComboBox can be <a
+     href="builder/narrowable-box.jnlp">run directly</a> via
+     JavaWebStart or compiled and run from the <a
+     href="examples/NarrowableBoxDemo.java">source code</a>,
+     alternatively, if you have downloaded and extracted <a
+     href="downloads/examples.zip">examples.zip</a> it can be run with:
+     ant narrowableboxdemo. It is pictured below. The range of allowed
+     values for the demo are the words (strings) representing the
+     numbers one to ten.</p>
+
+  <p><center><img src="images/narrow_combo_box.png"></center></p>
+
+  <h5>&nbsp;&nbsp;Simple usage summary</h5>
+  <p><pre>
+
+        import org.bhavaya.ui.NarrowableComboBox;
+        import org.bhavaya.ui.NarrowableListModel;
+
+        Collection data = Arrays.asList(new String[]{"a", "apple", "abacus", "application",
+                                                     "approcanthy", "applision", "appzomol"});
+
+        int numberOfColumns = 10;
+        int numberOfDisplayedSuggestions = 3;
+        NarrowableListModel model = new NarrowableListModel(data);
+        NarrowableComboBox ncb = new NarrowableComboBox(numberOfColumns,model,numberOfDisplayedSuggestions);
+
+	JPanel panel = new JPanel()
+	panel.add(ncb)</pre>
+  </p>
+
+  <p>The NarrowableListModel is the object container, and is
+     responsible for narrowing the objects down by finding subsets of
+     data within an alphabetically sorted list. Its constructor takes
+     a Collection of all possible values for the data.</p>
+
+  <p>The NarrowableComboBox is an extension of Box, for use with
+     narrowable data. The constructor requires:
+     <em>numberOfColumns</em>, which is the number of columns in the
+     text entry field; <em>model</em> the NarrowableListModel
+     containing the data and <em>numberOfDisplayedSuggestions</em>,
+     which is the number of suggestions to display before using a
+     scroll panel instead - it's the number of rows in the scroll
+     panel.</p>
+
+ <h5>&nbsp;&nbsp;Use when the list data is obtained from a database</h5>
+ 
+  <p><pre>
+        import org.bhavaya.ui.DBNarrowableListModel;
+        import org.bhavaya.util.GenericStringRenderer;
+        import org.bhavaya.ui.NarrowableComboBox;
+        import org.bhavaya.ui.NarrowableListModel;
+
+        String dataSourceName = "example9Database";
+        String selectStatement = "SELECT * FROM INSTRUMENT WHERE DESCRIPTION LIKE ?";
+        NarrowableListModel dbModel = new DBNarrowableListModel(dataSourceName, selectStatement);
+        NarrowableComboBox dbNcb = new NarrowableComboBox(numberOfColumns, dbModel, 
+                                                          numberOfDisplayedSuggestions);
+        dbNcb.setRenderer(new GenericStringRenderer("DESCRIPTION"));
+        panel.add(dbNcb);
+  </pre></p> 
+
+ <p>The dataSourceName is one defined in application.xml (see the
+    persistence layer <a href="quickstart/persistence.html">quickstart
+    trail</a>, example9Database is defined in application9.xml, which
+    is described in the <a
+    href="quickstart/persist_realtime.html">real-time section</a> -
+    the above code was tested by running the HsqldbServerControl and
+    DBUpdater programs from that section). The ? in the select
+    statement will be replaced with whatever is typed into the
+    NarrowableComboBox before querying the database (the resulting
+    data is then cached). Database rows are returned as objects whose
+    properties (column names) can be accessed via the
+    org.bhavaya.util.Generic class, and the string renderer is used to
+    set how these objects are displayed by the combo box, i.e. in this
+    example the content of the DESCRIPTION column for the relevant row
+    is displayed.</p>
+
+ <p>(When using this component remember to add Bhavaya's jar files to
+    your classpath (extract_location/bhavaya/bin/bhavaya.jar and
+    extract_location/bhavaya/lib/log4j-1.2.15-patched.jar).)</p>
+
+<!--
+   <p>To use this component it is necessary to:
+    <ul>
+      <li>Add Bhavaya's jar files to your classpath
+          (extract_location/bhavaya/bin/bhavaya.jar and
+          extract_location/bhavaya/lib/log4j-1.2.15-patched.jar).</li>
+      <li>Add the lines <pre>
+      import org.bhavaya.ui.NarrowableComboBox;
+      import org.bhavaya.ui.NarrowableListModel;
+
+      import javax.swing.*;
+      import java.util.*;
+      import java.awt.event.ActionEvent;
+      import java.awt.event.ActionListener;
+      import java.awt.*;</pre>
+ 
+      to your source file.</li>
+    </ul>
+  </p>
+-->
+
+  <p><br><a href="architecture.html#user_interface">back to
+       Bhavaya Architecture</a></p>
+
+  </div>
+</div>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="overview.html">Overview</a></td>
+            <td><a href="architecture.html">Architecture</a></td>
+            <td><a href="quickstart.html">Quickstart</a></td>
+            <td><a href="download.html">Download</a></td>
+	    <td><a href="feedback.html">Feedback</a></td> 
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<propertyGroup key="criterion">
+    
+    <propertyGroup key="By_Currency_Code">
+        <property key="type" value="basic"/>
+        <property key="name" value="Currency Code"/>
+        <property key="toBeanType" value="java.lang.String"/>
+        <propertyGroup key="beanTypes">
+            <propertyGroup key="beanType">
+                <property key="beanType" value="Instrument"/>
+                <property key="beanPath" value="currency.code"/>
+            </propertyGroup>
+            <propertyGroup key="beanType">
+                <property key="beanType" value="Trade"/>
+                <property key="beanPath" value="instrument.currency.code"/>
+            </propertyGroup>
+        </propertyGroup>
+    </propertyGroup>
+
+    <propertyGroup key="By_Trade_Price">
+        <property key="type" value="basic"/>
+        <property key="name" value="Price"/>
+        <property key="toBeanType" value="double"/>
+        <propertyGroup key="beanTypes">
+            <propertyGroup key="beanType">
+                <property key="beanType" value="Trade"/>
+                <property key="beanPath" value="price"/>
+            </propertyGroup>
+        </propertyGroup>
+    </propertyGroup>
+
+</propertyGroup>

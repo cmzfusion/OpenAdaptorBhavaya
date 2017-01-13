@@ -1,0 +1,2053 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.4.2_02" class="java.beans.XMLDecoder"> 
+ <long>200507250901</long> 
+ <object id="Configuration0" class="org.bhavaya.util.Configuration"> 
+  <void property="childNodes"> 
+   <void method="put"> 
+    <string>DataSets</string> 
+    <object class="org.bhavaya.util.Configuration"> 
+     <void property="data"> 
+      <void method="put"> 
+       <string>beanCollectionGroups.trades</string> 
+       <object class="org.bhavaya.collection.BeanCollectionGroup"> 
+        <string>beanCollectionGroups.trades</string> 
+        <null/> 
+       </object> 
+      </void> 
+      <void method="put"> 
+       <string>beanCollectionGroups.instrumentRatings</string> 
+       <object class="org.bhavaya.collection.BeanCollectionGroup"> 
+        <string>beanCollectionGroups.instrumentRatings</string> 
+        <null/> 
+       </object> 
+      </void> 
+      <void method="put"> 
+       <string>beanCollectionGroups.instruments</string> 
+       <object class="org.bhavaya.collection.BeanCollectionGroup"> 
+        <string>beanCollectionGroups.instruments</string> 
+        <null/> 
+       </object> 
+      </void> 
+      <void method="put"> 
+       <string>beanCollectionGroups.positions</string> 
+       <object class="org.bhavaya.collection.BeanCollectionGroup"> 
+        <string>beanCollectionGroups.positions</string> 
+        <null/> 
+       </object> 
+      </void> 
+      <void method="put"> 
+       <string>beanCollectionGroups.counterparties</string> 
+       <object class="org.bhavaya.collection.BeanCollectionGroup"> 
+        <string>beanCollectionGroups.counterparties</string> 
+        <null/> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="name"> 
+      <string>DataSets</string> 
+     </void> 
+     <void property="parent"> 
+      <object idref="Configuration0"/> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="put"> 
+    <string>Workspace</string> 
+    <object class="org.bhavaya.util.Configuration"> 
+     <void property="data"> 
+      <void method="put"> 
+       <string>ActiveTabIndex</string> 
+       <int>0</int> 
+      </void> 
+      <void method="put"> 
+       <string>FrameViews</string> 
+       <array class="org.bhavaya.ui.view.Workspace$FrameConfig" length="0"/> 
+      </void> 
+      <void method="put"> 
+       <string>TabViews</string> 
+       <array class="org.bhavaya.ui.view.View" length="3"> 
+        <void index="0"> 
+         <object class="org.bhavaya.ui.view.BeanCollectionTableView"> 
+          <string>All Trades</string> 
+          <string>Trades - All</string> 
+          <string>Trades - All</string> 
+          <class>org.bhavayademo.beans.Trade</class> 
+          <string>Default</string> 
+          <object class="org.bhavaya.beans.criterion.CriteriaBeanCollection"> 
+           <object class="org.bhavaya.beans.BeanFactory" method="getInstance"> 
+            <class>org.bhavayademo.generatedBeans.Trade</class> 
+            <string>demoDatabaseForTrades</string>
+           </object> 
+           <class>org.bhavayademo.beans.Trade</class> 
+           <object class="org.bhavaya.beans.criterion.CriterionGroup"> 
+            <string>All</string> 
+            <array class="org.bhavaya.beans.criterion.Criterion" length="0"/> 
+            <void id="CriterionArray0" property="criteria"/> 
+            <void property="criteria"> 
+             <object idref="CriterionArray0"/> 
+            </void> 
+           </object> 
+           <object class="java.util.LinkedHashMap"/> 
+          </object> 
+         </object> 
+        </void> 
+        <void index="1"> 
+         <object class="org.bhavaya.ui.view.BeanCollectionTableView"> 
+          <string>All Instruments</string> 
+          <string>Instruments - All</string> 
+          <string>Instruments - All</string> 
+          <class>org.bhavayademo.beans.Instrument</class> 
+          <string>Default</string> 
+          <object class="org.bhavaya.beans.criterion.CriteriaBeanCollection"> 
+           <object class="org.bhavaya.beans.BeanFactory" method="getInstance"> 
+            <class>org.bhavayademo.generatedBeans.Instrument</class> 
+            <string>demoDatabaseForInstruments</string>
+           </object> 
+           <class>org.bhavayademo.beans.Instrument</class> 
+           <object class="org.bhavaya.beans.criterion.CriterionGroup"> 
+            <string>All</string> 
+            <array class="org.bhavaya.beans.criterion.Criterion" length="0"/> 
+            <void id="CriterionArray1" property="criteria"/> 
+            <void property="criteria"> 
+             <object idref="CriterionArray1"/> 
+            </void> 
+           </object> 
+           <object class="java.util.LinkedHashMap"/> 
+          </object> 
+         </object> 
+        </void> 
+        <void index="2"> 
+         <object class="org.bhavaya.ui.view.BeanCollectionTableView"> 
+          <string>All Positions</string> 
+          <string>Positions - All</string> 
+          <string>Positions - All</string> 
+          <class>org.bhavayademo.beans.Position</class> 
+          <string>Default</string> 
+          <object class="org.bhavaya.beans.criterion.CriteriaBeanCollection"> 
+           <object class="org.bhavaya.beans.BeanFactory" method="getInstance"> 
+            <class>org.bhavayademo.generatedBeans.Position</class> 
+            <string>demoDatabaseForTrades</string> 
+           </object> 
+           <class>org.bhavayademo.beans.Position</class> 
+           <object class="org.bhavaya.beans.criterion.CriterionGroup"> 
+            <string>All</string> 
+            <array class="org.bhavaya.beans.criterion.Criterion" length="0"/> 
+            <void id="CriterionArray2" property="criteria"/> 
+            <void property="criteria"> 
+             <object idref="CriterionArray2"/> 
+            </void> 
+           </object> 
+           <object class="java.util.LinkedHashMap"/> 
+          </object> 
+         </object> 
+        </void> 
+       </array> 
+      </void> 
+     </void> 
+     <void property="name"> 
+      <string>Workspace</string> 
+     </void> 
+     <void property="parent"> 
+      <object idref="Configuration0"/> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="put"> 
+    <string>GlobalTableSettings</string> 
+    <object class="org.bhavaya.util.Configuration"> 
+     <void property="data"> 
+      <void method="put"> 
+       <string>SortOnDoubleClick</string> 
+       <boolean>false</boolean> 
+      </void> 
+     </void> 
+     <void property="name"> 
+      <string>GlobalTableSettings</string> 
+     </void> 
+     <void property="parent"> 
+      <object idref="Configuration0"/> 
+     </void> 
+    </object> 
+   </void> 
+   <void method="put"> 
+    <string>ViewConfigurations</string> 
+    <object class="org.bhavaya.util.Configuration"> 
+     <void property="data"> 
+      <void method="put"> 
+       <string>TypeToNamedViewConfigMap</string> 
+       <object class="java.util.HashMap"> 
+        <void method="put"> 
+         <string>com.DEMO.generatedBeans.Trade</string> 
+         <object class="org.bhavaya.ui.TableViewConfigurationMap"> 
+          <object class="java.util.LinkedHashMap"> 
+           <void method="put"> 
+            <string>Default</string> 
+            <object class="org.bhavaya.ui.TableViewConfiguration"> 
+             <void property="dateSeries"> 
+              <void method="addFunction"> 
+               <object id="SymbolicDateFunction$TodayDateFunction0" class="org.bhavaya.util.SymbolicDateFunction" method="getInstance"> 
+                <string>T</string> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object id="RelativeDateFunction$OffsetType0" class="org.bhavaya.util.RelativeDateFunction" method="getCalendarOffsetType"> 
+                 <string>d</string> 
+                </object> 
+                <object id="RelativeDateFunction$Preposition0" class="org.bhavaya.util.RelativeDateFunction" method="getPreposition"> 
+                 <string>+</string> 
+                </object> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object id="RelativeDateFunction$OffsetType1" class="org.bhavaya.util.RelativeDateFunction" method="getCalendarOffsetType"> 
+                 <string>w</string> 
+                </object> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object id="RelativeDateFunction$OffsetType2" class="org.bhavaya.util.RelativeDateFunction" method="getCalendarOffsetType"> 
+                 <string>m</string> 
+                </object> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>3</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>6</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>9</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object id="RelativeDateFunction$OffsetType3" class="org.bhavaya.util.RelativeDateFunction" method="getCalendarOffsetType"> 
+                 <string>y</string> 
+                </object> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>5</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>10</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>20</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>50</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>100</int> 
+               </object> 
+              </void> 
+             </void> 
+             <void property="locatorToDepthMap"> 
+              <object class="java.util.HashMap"/> 
+             </void> 
+             <void property="pivotColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="pivotDataColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="tableColumnList"> 
+              <object class="java.util.ArrayList"/> 
+             </void> 
+             <void property="tableColumnModel"> 
+              <object class="javax.swing.table.DefaultTableColumnModel"/> 
+             </void> 
+             <void property="tableFont"> 
+              <object class="java.awt.Font"> 
+               <string>Dialog</string> 
+               <int>0</int> 
+               <int>12</int> 
+              </object> 
+             </void> 
+             <void property="verboseDateSeries"> 
+              <boolean>true</boolean> 
+             </void> 
+            </object> 
+           </void> 
+          </object> 
+         </object> 
+        </void> 
+        <void method="put"> 
+         <string>org.bhavayademo.generatedBeans.InstrumentRating</string> 
+         <object class="org.bhavaya.ui.TableViewConfigurationMap"> 
+          <object class="java.util.LinkedHashMap"> 
+           <void method="put"> 
+            <string>Default</string> 
+            <object class="org.bhavaya.ui.TableViewConfiguration"> 
+             <void property="dateSeries"> 
+              <void method="addFunction"> 
+               <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType0"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>3</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>6</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>9</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>5</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>10</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>20</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>50</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>100</int> 
+               </object> 
+              </void> 
+             </void> 
+             <void property="locatorToDepthMap"> 
+              <object class="java.util.HashMap"/> 
+             </void> 
+             <void property="pivotColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="pivotDataColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="tableColumnList"> 
+              <object class="java.util.ArrayList"/> 
+             </void> 
+             <void property="tableColumnModel"> 
+              <object class="javax.swing.table.DefaultTableColumnModel"/> 
+             </void> 
+             <void property="tableFont"> 
+              <object class="java.awt.Font"> 
+               <string>Dialog</string> 
+               <int>0</int> 
+               <int>12</int> 
+              </object> 
+             </void> 
+             <void property="verboseDateSeries"> 
+              <boolean>true</boolean> 
+             </void> 
+            </object> 
+           </void> 
+          </object> 
+         </object> 
+        </void> 
+        <void method="put"> 
+         <string>org.bhavayademo.beans.Instrument</string> 
+         <object class="org.bhavaya.ui.TableViewConfigurationMap"> 
+          <object class="java.util.LinkedHashMap"> 
+           <void method="put"> 
+            <string>Default</string> 
+            <object class="org.bhavaya.ui.TableViewConfiguration"> 
+             <void property="dateSeries"> 
+              <void method="addFunction"> 
+               <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType0"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>3</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>6</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>9</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>5</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>10</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>20</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>50</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>100</int> 
+               </object> 
+              </void> 
+             </void> 
+             <void property="locatorToDepthMap"> 
+              <object class="java.util.HashMap"/> 
+             </void> 
+             <void property="pivotColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="pivotDataColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="sortingColumns"> 
+              <object class="java.util.LinkedHashMap"> 
+               <void method="put"> 
+                <string>instrumentId</string> 
+                <object class="org.bhavaya.ui.table.SortedTableModel$SortingModel"> 
+                 <boolean>true</boolean> 
+                 <null/> 
+                </object> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="tableColumnList"> 
+              <object class="java.util.ArrayList"> 
+               <void method="add"> 
+                <string>description</string> 
+               </void> 
+               <void method="add"> 
+                <string>instrumentId</string> 
+               </void> 
+               <void method="add"> 
+                <string>coupon</string> 
+               </void> 
+               <void method="add"> 
+                <string>maturityDate</string> 
+               </void> 
+               <void method="add"> 
+                <string>parAmount</string> 
+               </void> 
+               <void method="add"> 
+                <string>contractSize</string> 
+               </void> 
+               <void method="add"> 
+                <string>firstDeliveryDate</string> 
+               </void> 
+               <void method="add"> 
+                <string>lastDeliveryDate</string> 
+               </void> 
+               <void method="add"> 
+                <string>instrumentType</string> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="tableColumnModel"> 
+              <object class="javax.swing.table.DefaultTableColumnModel"> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>1</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>instrumentId</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>8</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>instrumentType</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>0</int> 
+                 <int>120</int> 
+                 <void property="identifier"> 
+                  <string>description</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>2</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>coupon</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>3</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>maturityDate</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>4</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>parAmount</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>5</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>contractSize</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>6</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>firstDeliveryDate</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>7</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>lastDeliveryDate</string> 
+                 </void> 
+                </object> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="tableFont"> 
+              <object class="java.awt.Font"> 
+               <string>Dialog</string> 
+               <int>0</int> 
+               <int>12</int> 
+              </object> 
+             </void> 
+             <void property="verboseDateSeries"> 
+              <boolean>true</boolean> 
+             </void> 
+            </object> 
+           </void> 
+          </object> 
+         </object> 
+        </void> 
+        <void method="put"> 
+         <string>com.DEMO.generatedBeans.Bond</string> 
+         <object class="org.bhavaya.ui.TableViewConfigurationMap"> 
+          <object class="java.util.LinkedHashMap"> 
+           <void method="put"> 
+            <string>Default</string> 
+            <object class="org.bhavaya.ui.TableViewConfiguration"> 
+             <void property="dateSeries"> 
+              <void method="addFunction"> 
+               <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType0"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>3</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>6</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>9</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>5</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>10</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>20</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>50</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>100</int> 
+               </object> 
+              </void> 
+             </void> 
+             <void property="locatorToDepthMap"> 
+              <object class="java.util.HashMap"/> 
+             </void> 
+             <void property="pivotColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="pivotDataColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="tableColumnList"> 
+              <object class="java.util.ArrayList"> 
+               <void method="add"> 
+                <string>count</string> 
+               </void> 
+               <void method="add"> 
+                <string>coupon</string> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="tableColumnModel"> 
+              <object class="javax.swing.table.DefaultTableColumnModel"> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>0</int> 
+                 <int>75</int> 
+                 <void property="identifier"> 
+                  <string>count</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>1</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>coupon</string> 
+                 </void> 
+                </object> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="tableFont"> 
+              <object class="java.awt.Font"> 
+               <string>Dialog</string> 
+               <int>0</int> 
+               <int>12</int> 
+              </object> 
+             </void> 
+             <void property="verboseDateSeries"> 
+              <boolean>true</boolean> 
+             </void> 
+            </object> 
+           </void> 
+          </object> 
+         </object> 
+        </void> 
+        <void method="put"> 
+         <string>org.bhavayademo.beans.Trade</string> 
+         <object class="org.bhavaya.ui.TableViewConfigurationMap"> 
+          <object class="java.util.LinkedHashMap"> 
+           <void method="put"> 
+            <string>Default</string> 
+            <object class="org.bhavaya.ui.TableViewConfiguration"> 
+             <void property="dateSeries"> 
+              <void method="addFunction"> 
+               <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType0"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>3</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>6</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>9</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>5</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>10</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>20</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>50</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>100</int> 
+               </object> 
+              </void> 
+             </void> 
+             <void property="locatorToDepthMap"> 
+              <object class="java.util.HashMap"> 
+               <void method="put"> 
+                <string>instrument.currency.code</string> 
+                <int>3</int> 
+               </void> 
+               <void method="put"> 
+                <string>counterparty.name</string> 
+                <int>2</int> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="pivotColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="pivotDataColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="sortingColumns"> 
+              <object class="java.util.LinkedHashMap"> 
+               <void method="put"> 
+                <string>tradeId</string> 
+                <object class="org.bhavaya.ui.table.SortedTableModel$SortingModel"> 
+                 <boolean>true</boolean> 
+                 <null/> 
+                </object> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="tableColumnList"> 
+              <object class="java.util.ArrayList"> 
+               <void method="add"> 
+                <string>cashDelta</string> 
+               </void> 
+               <void method="add"> 
+                <string>price</string> 
+               </void> 
+               <void method="add"> 
+                <string>quantity</string> 
+               </void> 
+               <void method="add"> 
+                <string>tradeDate</string> 
+               </void> 
+               <void method="add"> 
+                <string>tradeId</string> 
+               </void> 
+               <void method="add"> 
+                <string>counterparty.name</string> 
+               </void> 
+               <void method="add"> 
+                <string>instrument.description</string> 
+               </void> 
+               <void method="add"> 
+                <string>instrument.currency.code</string> 
+               </void> 
+               <void method="add"> 
+                <string>tradeType</string> 
+               </void> 
+               <void method="add"> 
+                <string>instrument.instrumentType</string> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="tableColumnModel"> 
+              <object class="javax.swing.table.DefaultTableColumnModel"> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>4</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>tradeId</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>3</int> 
+                 <int>139</int> 
+                 <void property="identifier"> 
+                  <string>tradeDate</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>8</int> 
+                 <int>71</int> 
+                 <void property="identifier"> 
+                  <string>tradeType</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>9</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>instrument.instrumentType</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>6</int> 
+                 <int>134</int> 
+                 <void property="identifier"> 
+                  <string>instrument.description</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>7</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>instrument.currency.code</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>1</int> 
+                 <int>75</int> 
+                 <void property="identifier"> 
+                  <string>price</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>2</int> 
+                 <int>75</int> 
+                 <void property="identifier"> 
+                  <string>quantity</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>0</int> 
+                 <int>138</int> 
+                 <void property="identifier"> 
+                  <string>cashDelta</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>5</int> 
+                 <int>181</int> 
+                 <void property="identifier"> 
+                  <string>counterparty.name</string> 
+                 </void> 
+                </object> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="tableFont"> 
+              <object class="java.awt.Font"> 
+               <string>Dialog</string> 
+               <int>0</int> 
+               <int>12</int> 
+              </object> 
+             </void> 
+             <void property="verboseDateSeries"> 
+              <boolean>true</boolean> 
+             </void> 
+            </object> 
+           </void> 
+          </object> 
+         </object> 
+        </void> 
+        <void method="put"> 
+         <string>org.bhavayademo.beans.InstrumentRating</string> 
+         <object class="org.bhavaya.ui.TableViewConfigurationMap"> 
+          <object class="java.util.LinkedHashMap"> 
+           <void method="put"> 
+            <string>Default</string> 
+            <object class="org.bhavaya.ui.TableViewConfiguration"> 
+             <void property="dateSeries"> 
+              <void method="addFunction"> 
+               <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType0"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>3</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>6</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>9</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>5</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>10</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>20</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>50</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>100</int> 
+               </object> 
+              </void> 
+             </void> 
+             <void property="locatorToDepthMap"> 
+              <object class="java.util.HashMap"/> 
+             </void> 
+             <void property="pivotColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="pivotDataColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="tableColumnList"> 
+              <object class="java.util.ArrayList"> 
+               <void method="add"> 
+                <string>instrument.description</string> 
+               </void> 
+               <void method="add"> 
+                <string>rating.rating</string> 
+               </void> 
+               <void method="add"> 
+                <string>rating.rater</string> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="tableColumnModel"> 
+              <object class="javax.swing.table.DefaultTableColumnModel"> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>0</int> 
+                 <int>75</int> 
+                 <void property="identifier"> 
+                  <string>instrument.description</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>2</int> 
+                 <int>75</int> 
+                 <void property="identifier"> 
+                  <string>rating.rater</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>1</int> 
+                 <int>75</int> 
+                 <void property="identifier"> 
+                  <string>rating.rating</string> 
+                 </void> 
+                </object> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="tableFont"> 
+              <object class="java.awt.Font"> 
+               <string>Dialog</string> 
+               <int>0</int> 
+               <int>12</int> 
+              </object> 
+             </void> 
+             <void property="verboseDateSeries"> 
+              <boolean>true</boolean> 
+             </void> 
+            </object> 
+           </void> 
+          </object> 
+         </object> 
+        </void> 
+        <void method="put"> 
+         <string>org.bhavayademo.beans.Position</string> 
+         <object class="org.bhavaya.ui.TableViewConfigurationMap"> 
+          <object class="java.util.LinkedHashMap"> 
+           <void method="put"> 
+            <string>Default</string> 
+            <object class="org.bhavaya.ui.TableViewConfiguration"> 
+             <void property="columnRendererIds"> 
+              <void method="put"> 
+               <string>instrument.price</string> 
+               <string>decimal2</string> 
+              </void> 
+              <void method="put"> 
+               <string>quantity</string> 
+               <string>decimal0</string> 
+              </void> 
+              <void method="put"> 
+               <string>instrument.maturityDate</string> 
+               <string>date</string> 
+              </void> 
+             </void> 
+             <void property="dateSeries"> 
+              <void method="addFunction"> 
+               <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType0"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>3</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>6</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>9</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>5</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>10</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>20</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>50</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>100</int> 
+               </object> 
+              </void> 
+             </void> 
+             <void property="highlightNewRows"> 
+              <boolean>true</boolean> 
+             </void> 
+             <void property="locatorToDepthMap"> 
+              <object class="java.util.HashMap"> 
+               <void method="put"> 
+                <string>instrument.instrumentType</string> 
+                <int>2</int> 
+               </void> 
+               <void method="put"> 
+                <string>instrument.description</string> 
+                <int>2</int> 
+               </void> 
+               <void method="put"> 
+                <string>instrument.firstDeliveryDate</string> 
+                <int>2</int> 
+               </void> 
+               <void method="put"> 
+                <string>instrument.maturityDate</string> 
+                <int>2</int> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="pivotColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="pivotDataColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="rowTotallingEnabled"> 
+              <boolean>true</boolean> 
+             </void> 
+             <void property="tableColumnList"> 
+              <object class="java.util.ArrayList"> 
+               <void method="add"> 
+                <string>instrument.description</string> 
+               </void> 
+               <void method="add"> 
+                <string>instrument.price</string> 
+               </void> 
+               <void method="add"> 
+                <string>quantity</string> 
+               </void> 
+               <void method="add"> 
+                <string>timestamp</string> 
+               </void> 
+               <void method="add"> 
+                <string>instrument.maturityDate</string> 
+               </void> 
+               <void method="add"> 
+                <string>instrument.instrumentType</string> 
+               </void> 
+               <void method="add"> 
+                <string>instrument.firstDeliveryDate</string> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="tableColumnModel"> 
+              <object class="javax.swing.table.DefaultTableColumnModel"> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>0</int> 
+                 <int>182</int> 
+                 <void property="identifier"> 
+                  <string>instrument.description</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>5</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>instrument.instrumentType</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>1</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>instrument.price</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>2</int> 
+                 <int>115</int> 
+                 <void property="identifier"> 
+                  <string>quantity</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>3</int> 
+                 <int>151</int> 
+                 <void property="identifier"> 
+                  <string>timestamp</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>4</int> 
+                 <int>96</int> 
+                 <void property="identifier"> 
+                  <string>instrument.maturityDate</string> 
+                 </void> 
+                </object> 
+               </void> 
+               <void method="addColumn"> 
+                <object class="javax.swing.table.TableColumn"> 
+                 <int>6</int> 
+                 <int>100</int> 
+                 <void property="identifier"> 
+                  <string>instrument.firstDeliveryDate</string> 
+                 </void> 
+                </object> 
+               </void> 
+              </object> 
+             </void> 
+             <void property="tableFont"> 
+              <object class="java.awt.Font"> 
+               <string>Dialog</string> 
+               <int>0</int> 
+               <int>12</int> 
+              </object> 
+             </void> 
+             <void property="verboseDateSeries"> 
+              <boolean>true</boolean> 
+             </void> 
+            </object> 
+           </void> 
+          </object> 
+         </object> 
+        </void> 
+        <void method="put"> 
+         <string>com.DEMO.generatedBeans.InstrumentPrice</string> 
+         <object class="org.bhavaya.ui.TableViewConfigurationMap"> 
+          <object class="java.util.LinkedHashMap"> 
+           <void method="put"> 
+            <string>Default</string> 
+            <object class="org.bhavaya.ui.TableViewConfiguration"> 
+             <void property="dateSeries"> 
+              <void method="addFunction"> 
+               <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType0"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>3</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>6</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>9</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>5</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>10</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>20</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>50</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>100</int> 
+               </object> 
+              </void> 
+             </void> 
+             <void property="locatorToDepthMap"> 
+              <object class="java.util.HashMap"/> 
+             </void> 
+             <void property="pivotColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="pivotDataColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="tableColumnList"> 
+              <object class="java.util.ArrayList"/> 
+             </void> 
+             <void property="tableColumnModel"> 
+              <object class="javax.swing.table.DefaultTableColumnModel"/> 
+             </void> 
+             <void property="tableFont"> 
+              <object class="java.awt.Font"> 
+               <string>Dialog</string> 
+               <int>0</int> 
+               <int>12</int> 
+              </object> 
+             </void> 
+             <void property="verboseDateSeries"> 
+              <boolean>true</boolean> 
+             </void> 
+            </object> 
+           </void> 
+          </object> 
+         </object> 
+        </void> 
+        <void method="put"> 
+         <string>com.DEMO.generatedBeans.Instrument</string> 
+         <object class="org.bhavaya.ui.TableViewConfigurationMap"> 
+          <object class="java.util.LinkedHashMap"> 
+           <void method="put"> 
+            <string>Default</string> 
+            <object class="org.bhavaya.ui.TableViewConfiguration"> 
+             <void property="dateSeries"> 
+              <void method="addFunction"> 
+               <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType0"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType1"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>3</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>6</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType2"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>9</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>1</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>2</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>5</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>10</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>20</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>50</int> 
+               </object> 
+              </void> 
+              <void method="addFunction"> 
+               <object class="org.bhavaya.util.RelativeDateFunction"> 
+                <object idref="SymbolicDateFunction$TodayDateFunction0"/> 
+                <object idref="RelativeDateFunction$OffsetType3"/> 
+                <object idref="RelativeDateFunction$Preposition0"/> 
+                <int>100</int> 
+               </object> 
+              </void> 
+             </void> 
+             <void property="locatorToDepthMap"> 
+              <object class="java.util.HashMap"/> 
+             </void> 
+             <void property="pivotColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="pivotDataColumnLocator"> 
+              <null/> 
+             </void> 
+             <void property="tableColumnList"> 
+              <object class="java.util.ArrayList"/> 
+             </void> 
+             <void property="tableColumnModel"> 
+              <object class="javax.swing.table.DefaultTableColumnModel"/> 
+             </void> 
+             <void property="tableFont"> 
+              <object class="java.awt.Font"> 
+               <string>Dialog</string> 
+               <int>0</int> 
+               <int>12</int> 
+              </object> 
+             </void> 
+             <void property="verboseDateSeries"> 
+              <boolean>true</boolean> 
+             </void> 
+            </object> 
+           </void> 
+          </object> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+     </void> 
+     <void property="name"> 
+      <string>ViewConfigurations</string> 
+     </void> 
+     <void property="parent"> 
+      <object idref="Configuration0"/> 
+     </void> 
+    </object> 
+   </void> 
+  </void> 
+  <void property="data"> 
+   <void method="put"> 
+    <string>bringAllToFrontWhenFocussed</string> 
+    <boolean>false</boolean> 
+   </void> 
+  </void> 
+  <void property="name"> 
+   <string>config</string> 
+  </void> 
+  <void property="versionNumber"> 
+   <long>200310271231</long> 
+  </void> 
+ </object> 
+</java> 
+

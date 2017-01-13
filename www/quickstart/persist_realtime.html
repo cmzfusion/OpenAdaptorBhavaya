@@ -1,0 +1,235 @@
+<html>
+<head>
+<style type="text/css">
+ #antcall { font-family: monospace ! important}
+</style>
+<title>Bhavaya - Quickstart - Persistence Layer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+
+<div id="domainhome" class="app">
+  <div class="h3" id="domaincontent">
+
+  <h3>Quickstart Guides</h3>
+
+  <h4>The Persistence Layer - Real-time Functionality</h4>
+
+  <p>As discussed in the <a href="../architecture.html">architecture
+     section</a>, Bhavaya monitors the SQL commands issued to the
+     database to keep its beans current. Bhavaya's SQL interpreter is
+     minimal, requiring SQL statements that only affect one row of the
+     database (that is, they should contain a "where" clause that
+     references a primary key entry of a particular row). Solutions
+     exist<sup>1</sup> for <a href="http://www.sybase.com">Sybase</a>
+     and <a href="http://hsqldb.sourceforge.net">HSQL database
+     engine</a> databases. The HSQL solution relies on monitoring a
+     file where the SQL database updates are recorded and will be
+     presented here.</p>
+
+  <p>Bhavaya contains a SimpleFileSqlBroadcaster class which can be
+     used to monitor a file and broadcast new lines as they are
+     appended to the file. It relies on the sqlbroadcaster
+     propertyGroup and the notifications propertyGroup in
+     application.xml.  The file to monitor is set in the
+     sqlbroadcaster propertyGroup:
+
+     <pre>
+     &lt;propertyGroup key="sqlbroadcaster"&gt;
+         &lt;property key="sqlFilename" value="C:\Projects\Bhavaya_Demo\Bhavaya_RT_Demo.script"/&gt;
+         &lt;property key="allowFileToEnd" value="true"/&gt;
+     &lt;/propertyGroup&gt;
+     </pre>
+  </p>
+
+  <p>Properties relating to the transport method for the broadcaster
+     are set in the notifications propertyGroup:
+
+     <pre>
+     &lt;propertyGroup key="notifications"&gt;
+         &lt;propertyGroup key="subject"&gt;
+             &lt;property key="name" value="sql"/&gt;
+             &lt;property key="autoCommit" value="true"/&gt;
+             &lt;property key="subscriber" value="org.bhavaya.coms.SocketNotificationSubscriber"/&gt;
+             &lt;property key="publisher" value="org.bhavaya.coms.SocketNotificationPublisher"/&gt;
+             &lt;property key="host" value="127.0.0.1"/&gt;
+             &lt;property key="subscribePort" value="5444"/&gt;
+             &lt;property key="publishPort" value="5445"/&gt;
+             &lt;property key="diagnosticPort" value="5446"/&gt;
+             &lt;property key="maximumQueuedNotificationsPerSubscriberOnServer" value="256"/&gt;
+             &lt;property key="maximumQueuedNotificationsOnSubscriber" value="5000"/&gt;
+             &lt;property key="serverReconnectionPeriod" value="5000"/&gt;
+             &lt;property key="reconnectionPeriod" value="30000"/&gt;
+             &lt;property key="failedMessageCache" value="false"/&gt;
+         &lt;/propertyGroup&gt;
+     &lt;/propertyGroup&gt;
+     </pre>
+  </p>
+
+  <p>The subscriber and publisher entries define the classes to use to
+     send and receive the SQL updates. JMS and TibcoRv notification
+     classes are available as well as the Socket class illustrated
+     here.</p>
+
+  <p>For socket notifications, the key entries to be adjusted are the
+     desired host and subscribe port.</p>
+
+  <p>All of the above properties are described fully in the complete
+     guide to <a href="application.html">application.xml</a>.
+
+  <p>The class can be run with:
+
+     <pre>
+     SimpleFileSqlBroadcaster sqlBroadcaster = new SimpleFileSqlBroadcaster(false);
+     sqlBroadcaster.startWithFailover();
+     </pre>
+  </p>
+
+  <p>The source of the SQL updates used by the persistence layer is
+     also retrieved from the notifications propertyGroup of
+     application.xml. In the case described here, where the
+     SimpleFileSqlBroadcaster is providing the broadcast SQL, the
+     entries are automatically correct. If another application or
+     protocol is being used to broadcast the SQL, then the
+     notifications propertyGroup should be altered accordingly.</p>
+
+  <p>With the above in place, Bhavaya Beans will remain up-to-date in
+     real-time. Listeners may be registered on the Beans or on
+     BeanCollections so that users will be notified when a change
+     occurs.</p>
+
+  <p>A listener (java.beans.PropertyChangeListener) may be registered
+     with a single bean (see <a
+     href="persist_propertychangeevents.html">Property Change
+     Events</a>):
+
+     <pre>
+     Instrument instrument = (Instrument) instrumentFactory.get(new Integer(3));
+     instrument.addPropertyChangeListener("price", new PropertyChangeListener() {
+         public void propertyChange(PropertyChangeEvent event) {
+             System.out.print("Bean with ID=3 changed! ");
+             System.out.println("price changed from " + event.getOldValue()
+             + " to " + event.getNewValue());
+         }
+     });
+     </pre>
+  </p>
+
+  <p>or alternatively, with a BeanCollection:
+
+     <pre>
+     BeanCollection gbpInstruments = new CriteriaBeanCollection(Instrument.class,criterionGroup);
+     gbpInstruments.addCollectionListener(new CollectionListener(){
+       public void collectionChanged(ListEvent e) {
+        //Code to be run when changes to the collection occur
+       }             
+     });
+     </pre>
+  </p>
+
+  <p>The CollectionListener interface specifies the collectionChanged
+     method that is called whenever the collection changes and the
+     ListEvent class is described <a
+     href="listevent.html">here</a>.</p>
+
+  <p>There is a demo of the real-time functionality contained within
+     the <a href="../downloads/examples.zip">examples</a> that
+     demonstrates the configuration described above. The demo uses
+     four separate classes:</p>
+
+  <p>
+     <ul>
+       <li><a
+           href="../examples/example9/HsqldbServerControl.java">HsqldbServerControl</a>
+           Starts a hsqldb database running in server mode.</li>
+       <li><a
+           href="../examples/example9/SqlBroadcaster.java">SqlBroadcaster</a>
+           Starts the SQL broadcaster that monitors and broadcasts the
+           hsqldb's log file to a socket.</li>
+       <li><a
+           href="../examples/example9/DBUpdater.java">DBUpdater</a>
+           Randomly adds and modifies database rows.
+           </li>
+       <li><a
+           href="../examples/example9/Example9.java">Example9</a> Uses
+           the Bhavaya persistence layer to obtain a bean collection and
+           notify the user when it has changed.</li>
+     </ul>
+  </p>
+
+  <p>The communication occurring between the separate processes within
+     the demo is illustrated in the figure below.</p>
+
+  <p><center><img src="../images/real_time_demo.png"></center></p>
+
+  <p>The demo is intended to be run by making four separate ant calls,
+     each in its own window (i.e. as four separate processes in four
+     separate VMs). However, all four programs can be started at once
+     with <span id="antcall">ant realtimedemo</span>, the output from
+     each of the four programs is then directed to the same console,
+     although four separate VMs are still invoked.</p>
+
+  <p>ant should be called in each window from the
+     extract/location/examples directory.</p>
+
+  <p><span id="antcall">ant hsqldbservercontrol</span> will start the
+     database. This creates and starts a server mode hsqldb database
+     (only one of these can be running at any time on a single
+     PC). This database should be browsable by any third-party
+     database browsing software that you may have.</p>
+
+  <p><span id="antcall">ant sqlbroadcaster</span> will start the
+     program that monitors the hsqldb .script file and broadcasts any
+     new SQL events to a socket.
+
+  <p><span id="antcall">ant dbupdater</span> will start the program
+     that makes changes to the database. The program first populates
+     the database with data and then starts randomly updating the
+     database.</p>
+
+  <p><span id="antcall">ant example9</span> starts the actual Bhavaya
+     persistence layer example. A BeanCollection is obtained for all
+     instruments whose currency is GBP. A listener is then added to
+     the collection, which echos any changes to the Collection to the
+     console. The properties for the demo are specified in <a
+     href="../examples/example9/application9.xml.txt">application9.xml</a>.
+     (schema.xml and criterion.xml are similar to those used in
+     previous examples and are available in the example9 subdirectory
+     of the extracted download.)</p>
+
+  <p><a href="persistence.html">back</a></p>
+
+  <hr>
+
+  <p><small><b>1</b> The solution used for Sybase databases is where
+     the database has a secondary database to which the first is
+     replicated. Auditing is switched on in the secondary
+     database. The audit log tables of the secondary are automatically
+     populated with SQL statements that only apply to one row of the
+     data. The hsqldb database in server mode has a file (with
+     extension .script) which contains SQL statements for
+     reconstructing the entire database.</small></p>
+
+<!-- Navigation menu -->
+<p><br></p>
+<div class="toplinks" id="banner">
+    <p>
+    <table border="0" cellspacing="0" cellpadding="0"  width="100%">
+        <tr>
+            <td><a href="../intro.html">Bhavaya&nbsp;Home</a></td>
+            <td><a href="../overview.html">Overview</a></td>
+            <td><a href="../architecture.html">Architecture</a></td>
+            <td><a href="../quickstart.html">Quickstart</a></td>
+            <td><a href="../download.html">Download</a></td>
+	    <td><a href="../feedback.html">Feedback</a></td>
+        </tr>
+    </table>
+    </p>
+</div>
+<!-- Navigation Menu -->
+
+</div>
+</div>
+</body>
+</html>

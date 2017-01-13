@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration>
+
+   <!--  This appender logs to stderr, but only logs messages with a priority of warning or greater -->
+    <appender name="stdErrConsole" class="org.apache.log4j.ConsoleAppender">
+        <param name="target" value="System.err"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5.5p - %-17.17t - %-23.23c{1} - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="WARN"/>
+        </filter>
+    </appender>
+
+    <!-- This appender logs to stdout, but only logs messages with a priority of info or less -->
+    <appender name="stdOutConsole" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5.5p - %-17.17t - %-23.23c{1} - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="DEBUG"/>
+            <param name="LevelMax" value="INFO"/>
+        </filter>
+    </appender>
+
+    <appender name="standardLogFile" class="org.apache.log4j.RollingFileAppender">
+        <param name="MaxFileSize" value="10Mb"/>
+        <param name="MaxBackupIndex" value="4"/>
+        <param name="file" value="${logDirectory}/${applicationId}.log"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} - %-5p - %-20t - %-23.23c{1} - %m%n"/>
+        </layout>
+    </appender>
+
+    <root>
+        <priority value="ERROR"/>
+        <appender-ref ref="stdOutConsole"/>
+        <appender-ref ref="stdErrConsole"/>
+        <appender-ref ref="standardLogFile"/>
+    </root>
+
+</log4j:configuration>
